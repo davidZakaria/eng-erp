@@ -8,10 +8,14 @@ datasource db {
 }
 
 enum Role {
+  ADMIN
   PROJECT_MANAGER
   HEAD_ENGINEER
   SITE_ENGINEER
   CONSULTANT
+  ARCH_CONSULTANT
+  STRUCT_CONSULTANT
+  MEP_CONSULTANT
 }
 
 enum ModelStatus {
@@ -20,6 +24,28 @@ enum ModelStatus {
   REVISION_REQUESTED
   APPROVED_FOR_CONSTRUCTION
   SUPERSEDED
+}
+
+enum Discipline {
+  ARCHITECTURAL
+  STRUCTURAL
+  MEP
+  INFRASTRUCTURE
+}
+
+enum ItemStatus {
+  DRAFT
+  PENDING_REVIEW
+  REVISION_REQUESTED
+  APPROVED_FOR_CONSTRUCTION
+  DEVIATION_PENDING_OWNER
+  SUPERSEDED
+}
+
+enum PanelPhase {
+  R
+  Y
+  B
 }
 
 model User {
@@ -37,6 +63,7 @@ model User {
   auditLogs        AuditLog[]
   boqsCreated      ComponentBOQ[]    @relation("BoqCreator")
   executionLogs    ExecutionLog[]    @relation("SiteEngineerLogs")
+  uploadedDrawings Drawing[]
 }
 
 model AuditLog {
@@ -154,4 +181,85 @@ model ExecutionLog {
   buildingComponent BuildingComponent @relation(fields: [buildingComponentId], references: [id])
   siteEngineer      User              @relation("SiteEngineerLogs", fields: [siteEngineerId], references: [id])
   modelSubmission   ModelSubmission?  @relation(fields: [modelSubmissionId], references: [id])
+}
+
+model CSIDivision {
+  id         String             @id @default(uuid())
+  code       String             @unique
+  title      String
+  vendors    ApprovedVendor[]
+  submittals MaterialSubmittal[]
+}
+
+model ApprovedVendor {
+  id         String              @id @default(uuid())
+  name       String
+  country    String?
+  divisionId String
+  csiDivision CSIDivision        @relation(fields: [divisionId], references: [id])
+  submittals MaterialSubmittal[]
+}
+
+model Drawing {
+  id            String     @id @default(uuid())
+  drawingNumber String
+  title         String
+  discipline    Discipline
+  revision      Int        @default(0)
+  status        ItemStatus @default(PENDING_REVIEW)
+  fileUrl       String
+  uploaderId    String
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  uploader User @relation(fields: [uploaderId], references: [id])
+
+  @@unique([drawingNumber, revision])
+}
+
+model PourClearance {
+  id                  String   @id @default(uuid())
+  zone                String
+  floorLevel          String
+  formworkApproved    Boolean  @default(false)
+  rebarApproved       Boolean  @default(false)
+  ptCablesXApproved   Boolean  @default(false)
+  ptCablesYApproved   Boolean  @default(false)
+  status              String   @default("PENDING")
+  updatedAt           DateTime @updatedAt
+}
+
+model MaterialSubmittal {
+  id                   String     @id @default(uuid())
+  equipmentTag         String
+  proposedVendor       String
+  isApprovedVendor     Boolean
+  equivalenceLetterUrl String?
+  status               ItemStatus @default(PENDING_REVIEW)
+  divisionId           String
+  csiDivision          CSIDivision     @relation(fields: [divisionId], references: [id])
+  vendorId             String?
+  vendor               ApprovedVendor? @relation(fields: [vendorId], references: [id])
+}
+
+model ElectricalPanel {
+  id             String         @id @default(uuid())
+  panelReference String         @unique
+  location       String
+  incomingCB     String
+  isUnbalanced   Boolean        @default(false)
+  circuits       PanelCircuit[]
+}
+
+model PanelCircuit {
+  id              String          @id @default(uuid())
+  circuitNumber   Int
+  mcbRating       Float
+  wireSize        String
+  loadType        String
+  connectedLoadVA Float
+  demandFactor    Float
+  phase           PanelPhase
+  panelId         String
+  panel           ElectricalPanel @relation(fields: [panelId], references: [id])
 }

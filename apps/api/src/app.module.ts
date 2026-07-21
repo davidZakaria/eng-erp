@@ -8,6 +8,9 @@ import { ModelsModule } from './models/models.module';
 import { BoqModule } from './boq/boq.module';
 import { ExecutionModule } from './execution/execution.module';
 import { ReportsModule } from './reports/reports.module';
+import { DrawingsModule } from './drawings/drawings.module';
+import { StructuralModule } from './structural/structural.module';
+import { MepModule } from './mep/mep.module';
 
 @Module({
   imports: [
@@ -20,6 +23,9 @@ import { ReportsModule } from './reports/reports.module';
     BoqModule,
     ExecutionModule,
     ReportsModule,
+    DrawingsModule,
+    StructuralModule,
+    MepModule,
   ],
 })
 export class AppModule {}

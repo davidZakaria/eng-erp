@@ -1,0 +1,31 @@
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+
+export class CreateMaterialSubmittalDto {
+  @IsString()
+  @IsNotEmpty()
+  equipmentTag!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  proposedVendor!: string;
+
+  @IsBoolean()
+  isApprovedVendor!: boolean;
+
+  @IsOptional()
+  @IsString()
+  equivalenceLetterUrl?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  divisionId!: string;
+
+  @IsOptional()
+  @IsString()
+  vendorId?: string;
+}

@@ -49,3 +49,8 @@ export async function POST(request: NextRequest) {
   const path = request.nextUrl.searchParams.get('path') ?? '';
   return proxy(request, path);
 }
+
+export async function PATCH(request: NextRequest) {
+  const path = request.nextUrl.searchParams.get('path') ?? '';
+  return proxy(request, path);
+}

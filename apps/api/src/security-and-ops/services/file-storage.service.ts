@@ -114,19 +114,46 @@ export class FileStorageService implements OnModuleInit {
     const contentType = this.resolveContentType(fileName);
 
     if (this.minioAvailable) {
-      const [bucket, ...rest] = objectKey.split('/');
-      const objectName = rest.join('/');
-      const stream = await this.client.getObject(bucket, objectName);
-      const chunks: Buffer[] = [];
-      for await (const chunk of stream) {
-        chunks.push(Buffer.from(chunk));
+      try {
+        const [bucket, ...rest] = objectKey.split('/');
+        const objectName = rest.join('/');
+        const stream = await this.client.getObject(bucket, objectName);
+        const chunks: Buffer[] = [];
+        for await (const chunk of stream) {
+          chunks.push(Buffer.from(chunk));
+        }
+        return { buffer: Buffer.concat(chunks), contentType, fileName };
+      } catch (error) {
+        if (this.isMissingObjectError(error)) {
+          this.logger.warn(
+            `MinIO object missing (${objectKey}) — trying local fallback`,
+          );
+          return this.readLocalFile(objectKey, contentType, fileName);
+        }
+        throw error;
       }
-      return { buffer: Buffer.concat(chunks), contentType, fileName };
     }
 
+    return this.readLocalFile(objectKey, contentType, fileName);
+  }
+
+  private async readLocalFile(
+    objectKey: string,
+    contentType: string,
+    fileName: string,
+  ) {
     const fullPath = join(this.localStorageRoot, objectKey);
     const buffer = await readFile(fullPath);
     return { buffer, contentType, fileName };
+  }
+
+  private isMissingObjectError(error: unknown): boolean {
+    return (
+      typeof error === 'object' &&
+      error !== null &&
+      'code' in error &&
+      (error as { code: string }).code === 'NoSuchKey'
+    );
   }
 
   private resolveContentType(fileName: string): string {

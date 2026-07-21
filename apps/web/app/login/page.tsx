@@ -89,7 +89,7 @@ export default function LoginPage() {
           </button>
 
           <p className="mt-4 text-xs text-[var(--muted)] text-center">
-            Demo: consultant@eng-njd.local / head@eng-njd.local — Password123!
+            Demo: arch@ / struct@ / mep@ / head@eng-njd.local — Password123!
           </p>
         </form>
       </div>

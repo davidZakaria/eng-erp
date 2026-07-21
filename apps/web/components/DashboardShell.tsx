@@ -3,8 +3,12 @@
 import { AuthUser } from '@/lib/types';
 import { useRouter } from 'next/navigation';
 
-const roleLabels: Record<AuthUser['role'], string> = {
+const roleLabels: Record<string, string> = {
+  ADMIN: 'Administrator',
   CONSULTANT: 'Consultant',
+  ARCH_CONSULTANT: 'Architectural Consultant',
+  STRUCT_CONSULTANT: 'Structural Consultant',
+  MEP_CONSULTANT: 'MEP Consultant',
   HEAD_ENGINEER: 'Head Engineer',
   PROJECT_MANAGER: 'Project Manager',
   SITE_ENGINEER: 'Site Engineer',
@@ -34,7 +38,7 @@ export function DashboardShell({
               Eng-NJD
             </p>
             <p className="text-xs text-[var(--muted)]">
-              Engineering Dashboard · {roleLabels[user.role]}
+              Engineering Dashboard · {roleLabels[user.role] ?? user.role}
             </p>
           </div>
           <div className="flex items-center gap-4">
