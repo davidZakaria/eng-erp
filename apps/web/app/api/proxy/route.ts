@@ -11,9 +11,9 @@ async function proxy(request: NextRequest, path: string) {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const contentType = request.headers.get('content-type');
-  if (contentType) {
-    headers['Content-Type'] = contentType;
+  const requestContentType = request.headers.get('content-type');
+  if (requestContentType) {
+    headers['Content-Type'] = requestContentType;
   }
 
   const body =
@@ -28,9 +28,15 @@ async function proxy(request: NextRequest, path: string) {
   });
 
   const data = await res.arrayBuffer();
+  const responseHeaders = new Headers();
+  const responseContentType = res.headers.get('Content-Type');
+  if (responseContentType) responseHeaders.set('Content-Type', responseContentType);
+  const disposition = res.headers.get('Content-Disposition');
+  if (disposition) responseHeaders.set('Content-Disposition', disposition);
+
   return new NextResponse(data, {
     status: res.status,
-    headers: { 'Content-Type': res.headers.get('Content-Type') ?? 'application/json' },
+    headers: responseHeaders,
   });
 }
 

@@ -7,9 +7,11 @@ import {
   UploadedFile,
   UseInterceptors,
   BadRequestException,
+  Res,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Role } from '@prisma/client';
+import type { Response } from 'express';
 import { ModelsService } from './models.service';
 import { CreateModelSubmissionDto, ReviewModelSubmissionDto } from './dto/model-submission.dto';
 import { Roles } from '../common/decorators/roles.decorator';
@@ -51,6 +53,26 @@ export class ModelsController {
   @Get('submissions/revisions-required')
   findRevisionsRequired(@CurrentUser() user: JwtPayload) {
     return this.modelsService.findRevisionRequired(user.sub);
+  }
+
+  @Get('submissions/:id/file')
+  async getSubmissionFile(
+    @Param('id') id: string,
+    @CurrentUser() user: JwtPayload,
+    @Res() res: Response,
+  ) {
+    const file = await this.modelsService.getSubmissionFile(
+      id,
+      user.sub,
+      user.role,
+    );
+    const disposition = file.previewable ? 'inline' : 'attachment';
+    res.setHeader('Content-Type', file.contentType);
+    res.setHeader(
+      'Content-Disposition',
+      `${disposition}; filename="${file.fileName}"`,
+    );
+    res.send(file.buffer);
   }
 
   @Roles(Role.HEAD_ENGINEER)

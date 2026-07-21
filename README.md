@@ -8,29 +8,48 @@ NestJS + Prisma + PostgreSQL + MinIO + Next.js monorepo for Egypt real-estate en
 - Docker Desktop
 - PostgreSQL client tools (`pg_dump` on PATH for nightly backups)
 
-## Quick Start
+## Quick Start (Windows + Docker)
 
-```bash
+```powershell
 # 1. Install dependencies
 npm install
 
 # 2. Copy environment
-cp .env.example apps/api/.env
+Copy-Item .env.example apps\api\.env
+Copy-Item apps\web\.env.example apps\web\.env.local
 
-# 3. Start infrastructure
+# 3. Open Docker Desktop from Start menu — wait for "Engine running"
+
+# 4. Start infrastructure (retry if pull fails with "unexpected EOF")
+docker context use desktop-linux
 docker compose up -d
 
-# 4. Run migrations & seed
+# Or run the all-in-one setup script:
+# .\scripts\setup-docker.ps1
+
+# 5. Run migrations & seed
 npm run db:generate
 npm run db:migrate
 npm run db:seed
 
-# 5. Start API (port 3001) and Web (port 3000)
+# 6. Start API (port 3001) and Web (port 3000)
 npm run dev:api
 npm run dev:web
 ```
 
 Open http://localhost:3000
+
+### Docker troubleshooting (Windows)
+
+| Problem | Fix |
+|---------|-----|
+| `docker info` hangs | Open **Docker Desktop** → wait for **Engine running** → new PowerShell |
+| `unexpected EOF` during pull | Network blip — run `docker compose pull` then `docker compose up -d` again |
+| `pipe/dockerDesktopLinuxEngine` not found | Docker Desktop not started — launch it from Start menu |
+| `>>` prompt in PowerShell | Press **Ctrl+C**, run one command per line |
+| Wrong context | `docker context use desktop-linux` |
+
+**MinIO console:** http://localhost:9001 — login `minioadmin` / `minioadmin123`
 
 ## Demo Users (password: `Password123!`)
 

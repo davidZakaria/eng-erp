@@ -6,4 +6,6 @@ dist/
 *.log
 coverage/
 .turbo/
+.local-storage/
+apps/api/.local-storage/
 apps/api/prisma/migrations/**/migration_lock.toml

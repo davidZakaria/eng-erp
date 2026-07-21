@@ -3,6 +3,11 @@
 import { useEffect, useState } from 'react';
 import { ModelSubmission, VarianceReportRow } from '@/lib/types';
 import { clientApi } from '@/lib/client-api';
+import {
+  getSubmissionFileUrl,
+  isPdfFileName,
+  fileLabelFromUrl,
+} from '@/lib/model-files';
 
 function formatDate(iso: string | null) {
   if (!iso) return '—';
@@ -38,6 +43,10 @@ export function HeadEngineerDashboard() {
     if (tab === 'reviews') loadReviews().catch(() => {});
     else loadVariance().catch(() => {});
   }, [tab]);
+
+  function openFile(model: ModelSubmission) {
+    window.open(getSubmissionFileUrl(model.id), '_blank', 'noopener,noreferrer');
+  }
 
   async function submitReview() {
     if (!reviewModal) return;
@@ -90,13 +99,14 @@ export function HeadEngineerDashboard() {
                 <th className="text-left px-4 py-3 font-medium">Project</th>
                 <th className="text-left px-4 py-3 font-medium">Consultant</th>
                 <th className="text-left px-4 py-3 font-medium">Version</th>
+                <th className="text-left px-4 py-3 font-medium">File</th>
                 <th className="text-right px-4 py-3 font-medium">Actions</th>
               </tr>
             </thead>
             <tbody>
               {pending.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-4 py-8 text-center text-[var(--muted)]">
+                  <td colSpan={6} className="px-4 py-8 text-center text-[var(--muted)]">
                     No models pending review.
                   </td>
                 </tr>
@@ -107,6 +117,15 @@ export function HeadEngineerDashboard() {
                     <td className="px-4 py-3">{model.project?.name}</td>
                     <td className="px-4 py-3">{model.consultant?.fullName}</td>
                     <td className="px-4 py-3">v{model.versionNumber}</td>
+                    <td className="px-4 py-3">
+                      <button
+                        onClick={() => openFile(model)}
+                        className="text-[var(--accent)] hover:underline text-xs"
+                        title={fileLabelFromUrl(model.fileUrl)}
+                      >
+                        {isPdfFileName(model.fileUrl) ? 'Preview PDF' : 'Download CAD'}
+                      </button>
+                    </td>
                     <td className="px-4 py-3 text-right space-x-2">
                       <button
                         onClick={() =>
@@ -180,9 +199,17 @@ export function HeadEngineerDashboard() {
                 ? 'Approve Model'
                 : 'Request Revision'}
             </h3>
-            <p className="text-sm text-[var(--muted)] mb-4">
-              {reviewModal.model.title}
+            <p className="text-sm text-[var(--muted)] mb-2">
+              {reviewModal.model.title} · v{reviewModal.model.versionNumber}
             </p>
+            <button
+              onClick={() => openFile(reviewModal.model)}
+              className="mb-4 text-sm text-[var(--accent)] hover:underline"
+            >
+              {isPdfFileName(reviewModal.model.fileUrl)
+                ? 'Preview drawing (PDF)'
+                : 'Download drawing (CAD)'}
+            </button>
             <textarea
               value={comments}
               onChange={(e) => setComments(e.target.value)}

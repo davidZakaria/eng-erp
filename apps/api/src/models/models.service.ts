@@ -222,4 +222,54 @@ export class ModelsService {
       orderBy: { updatedAt: 'desc' },
     });
   }
+
+  async getSubmissionFile(submissionId: string, userId: string, role: Role) {
+    const submission = await this.prisma.modelSubmission.findFirst({
+      where: { id: submissionId, deletedAt: null },
+    });
+
+    if (!submission) {
+      throw new NotFoundException('Model submission not found');
+    }
+
+    this.assertFileAccess(submission, userId, role);
+
+    const file = await this.fileStorage.getFile(submission.fileUrl);
+    const previewable = file.fileName.toLowerCase().endsWith('.pdf');
+
+    return { ...file, previewable };
+  }
+
+  private assertFileAccess(
+    submission: {
+      consultantId: string;
+      status: ModelStatus;
+      isLocked: boolean;
+    },
+    userId: string,
+    role: Role,
+  ) {
+    if (role === Role.CONSULTANT && submission.consultantId !== userId) {
+      throw new ForbiddenException('You can only access your own submissions');
+    }
+
+    if (
+      role === Role.SITE_ENGINEER &&
+      (submission.status !== ModelStatus.APPROVED_FOR_CONSTRUCTION ||
+        !submission.isLocked)
+    ) {
+      throw new ForbiddenException(
+        'Site engineers can only access approved construction models',
+      );
+    }
+
+    if (
+      role !== Role.CONSULTANT &&
+      role !== Role.SITE_ENGINEER &&
+      role !== Role.HEAD_ENGINEER &&
+      role !== Role.PROJECT_MANAGER
+    ) {
+      throw new ForbiddenException('Insufficient permissions to access this file');
+    }
+  }
 }

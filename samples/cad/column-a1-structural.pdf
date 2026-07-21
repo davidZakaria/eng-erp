@@ -1,0 +1,63 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792]
+   /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 520 >>
+stream
+BT
+/F1 18 Tf
+50 720 Td
+(Eng-NJD Prototype Drawing) Tj
+0 -30 Td
+/F1 12 Tf
+(Project: Jamila | Building: G1/J) Tj
+0 -24 Td
+(Component: Column A1 - Structural) Tj
+0 -40 Td
+/F1 10 Tf
+(Planned concrete: 12.5 m3) Tj
+0 -18 Td
+(Rebar: 8mm + 16mm) Tj
+0 -40 Td
+/F1 11 Tf
+(--- Column cross-section schematic ---) Tj
+0 -30 Td
+(400 x 400 mm) Tj
+0 -200 Td
+/F1 9 Tf
+(Use this PDF to test Consultant model upload.) Tj
+ET
+0.15 w
+150 350 200 200 re S
+150 350 m 350 550 l S
+150 550 m 350 350 l S
+180 380 20 0 360 0 20 re S
+320 380 20 0 360 0 20 re S
+180 480 20 0 360 0 20 re S
+320 480 20 0 360 0 20 re S
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000268 00000 n 
+0000000840 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+918
+%%EOF
