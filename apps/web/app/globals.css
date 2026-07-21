@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0f1419;
+  --surface: #1a2332;
+  --border: #2d3a4f;
+  --text: #e8edf4;
+  --muted: #8b9cb3;
+  --accent: #c45c26;
+  --accent-hover: #d9733d;
+  --danger: #e05252;
+  --success: #3d9a6a;
+}
+
+body {
+  background: linear-gradient(160deg, #0f1419 0%, #152033 45%, #1a2838 100%);
+  color: var(--text);
+  min-height: 100vh;
+}

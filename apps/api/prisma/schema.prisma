@@ -1,0 +1,157 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  PROJECT_MANAGER
+  HEAD_ENGINEER
+  SITE_ENGINEER
+  CONSULTANT
+}
+
+enum ModelStatus {
+  DRAFT
+  PENDING_REVIEW
+  REVISION_REQUESTED
+  APPROVED_FOR_CONSTRUCTION
+  SUPERSEDED
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  fullName     String
+  role         Role
+  deletedAt    DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  modelSubmissions ModelSubmission[] @relation("ConsultantSubmissions")
+  modelReviews     ModelReview[]     @relation("ReviewerReviews")
+  auditLogs        AuditLog[]
+  boqsCreated      ComponentBOQ[]    @relation("BoqCreator")
+  executionLogs    ExecutionLog[]    @relation("SiteEngineerLogs")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String
+  action      String
+  targetTable String
+  targetId    String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Project {
+  id        String    @id @default(cuid())
+  name      String
+  code      String?
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  buildings        Building[]
+  modelSubmissions ModelSubmission[]
+}
+
+model Building {
+  id        String    @id @default(cuid())
+  projectId String
+  name      String
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  project    Project             @relation(fields: [projectId], references: [id])
+  components BuildingComponent[]
+}
+
+model BuildingComponent {
+  id         String    @id @default(cuid())
+  buildingId String
+  name       String
+  type       String
+  deletedAt  DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  building      Building       @relation(fields: [buildingId], references: [id])
+  boq           ComponentBOQ?
+  executionLogs ExecutionLog[]
+}
+
+model ModelSubmission {
+  id            String      @id @default(cuid())
+  projectId     String
+  consultantId  String
+  title         String
+  fileUrl       String
+  versionNumber Int
+  status        ModelStatus @default(DRAFT)
+  isLocked      Boolean     @default(false)
+  deletedAt     DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  project      Project       @relation(fields: [projectId], references: [id])
+  consultant   User          @relation("ConsultantSubmissions", fields: [consultantId], references: [id])
+  reviews      ModelReview[]
+  executionLogs ExecutionLog[]
+
+  @@index([projectId, title])
+}
+
+model ModelReview {
+  id                 String      @id @default(cuid())
+  modelSubmissionId  String
+  reviewerId         String
+  statusDecision     ModelStatus
+  comments           String
+  createdAt          DateTime    @default(now())
+
+  modelSubmission ModelSubmission @relation(fields: [modelSubmissionId], references: [id])
+  reviewer        User            @relation("ReviewerReviews", fields: [reviewerId], references: [id])
+}
+
+model ComponentBOQ {
+  id                    String    @id @default(cuid())
+  buildingComponentId   String    @unique
+  plannedConcreteM3     Float
+  plannedRebarByDiameter Json
+  plannedStartDate      DateTime
+  plannedEndDate        DateTime
+  createdById           String
+  deletedAt             DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  buildingComponent BuildingComponent @relation(fields: [buildingComponentId], references: [id])
+  createdBy         User              @relation("BoqCreator", fields: [createdById], references: [id])
+}
+
+model ExecutionLog {
+  id                    String    @id @default(cuid())
+  buildingComponentId   String
+  siteEngineerId        String
+  modelSubmissionId     String?
+  actualConcreteM3      Float
+  actualRebarByDiameter Json
+  actualPourDate        DateTime
+  notes                 String?
+  deletedAt             DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  buildingComponent BuildingComponent @relation(fields: [buildingComponentId], references: [id])
+  siteEngineer      User              @relation("SiteEngineerLogs", fields: [siteEngineerId], references: [id])
+  modelSubmission   ModelSubmission?  @relation(fields: [modelSubmissionId], references: [id])
+}
