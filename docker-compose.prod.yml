@@ -55,8 +55,8 @@ services:
       mc mb --ignore-existing local/eng-njd-documents;
       mc mb --ignore-existing local/cad-files;
       mc mb --ignore-existing local/backups;
-      mc cors set /tmp/cors.json local/eng-njd-documents || true;
-      mc cors set /tmp/cors.json local/cad-files || true;
+      mc cors set local/eng-njd-documents /tmp/cors.json || true;
+      mc cors set local/cad-files /tmp/cors.json || true;
       exit 0;
       "
     volumes:
