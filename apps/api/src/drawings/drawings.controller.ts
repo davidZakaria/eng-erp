@@ -8,13 +8,14 @@ import {
   Patch,
   Post,
   Query,
+  Req,
   Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Role } from '@prisma/client';
-import type { Response } from 'express';
+import type { Request, Response } from 'express';
 import { DrawingsService } from './drawings.service';
 import { UploadDrawingDto } from './dto/upload-drawing.dto';
 import { ReviewDrawingDto } from './dto/review-drawing.dto';
@@ -121,19 +122,36 @@ export class DrawingsController {
   async getDrawingFile(
     @Param('id') id: string,
     @CurrentUser() user: JwtPayload,
+    @Req() req: Request,
     @Res() res: Response,
   ) {
+    const rangeHeader = req.headers.range;
     const file = await this.drawingsService.getDrawingFile(
       id,
       user.sub,
       user.role,
+      typeof rangeHeader === 'string' ? rangeHeader : undefined,
     );
     const disposition = file.previewable ? 'inline' : 'attachment';
+
     res.setHeader('Content-Type', file.contentType);
     res.setHeader(
       'Content-Disposition',
       `${disposition}; filename="${file.fileName}"`,
     );
+    res.setHeader('Accept-Ranges', 'bytes');
+
+    if (file.partial) {
+      res.status(206);
+      res.setHeader(
+        'Content-Range',
+        `bytes ${file.start}-${file.end}/${file.size}`,
+      );
+      res.setHeader('Content-Length', file.buffer.length);
+    } else {
+      res.setHeader('Content-Length', file.buffer.length);
+    }
+
     res.send(file.buffer);
   }
 

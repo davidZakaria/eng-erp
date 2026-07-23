@@ -353,7 +353,12 @@ export class DrawingsService {
     });
   }
 
-  async getDrawingFile(drawingId: string, userId: string, role: Role) {
+  async getDrawingFile(
+    drawingId: string,
+    userId: string,
+    role: Role,
+    rangeHeader?: string,
+  ) {
     const drawing = await this.prisma.drawing.findUnique({
       where: { id: drawingId },
     });
@@ -364,10 +369,46 @@ export class DrawingsService {
 
     this.assertFileAccess(drawing, userId, role);
 
-    const file = await this.fileStorage.getFile(drawing.fileUrl);
-    const previewable = file.fileName.toLowerCase().endsWith('.pdf');
+    const meta = await this.fileStorage.statFile(drawing.fileUrl);
+    const previewable = meta.fileName.toLowerCase().endsWith('.pdf');
+    const byteRange = rangeHeader
+      ? parseByteRange(rangeHeader, meta.size)
+      : undefined;
 
-    return { ...file, previewable };
+    if (byteRange) {
+      const buffer = await this.fileStorage.getFilePart(
+        drawing.fileUrl,
+        byteRange.start,
+        byteRange.end,
+      );
+      return {
+        buffer,
+        contentType: meta.contentType,
+        fileName: meta.fileName,
+        previewable,
+        size: meta.size,
+        start: byteRange.start,
+        end: byteRange.end,
+        partial: true,
+      };
+    }
+
+    const buffer = await this.fileStorage.getFilePart(
+      drawing.fileUrl,
+      0,
+      meta.size > 0 ? meta.size - 1 : 0,
+    );
+
+    return {
+      buffer,
+      contentType: meta.contentType,
+      fileName: meta.fileName,
+      previewable,
+      size: meta.size,
+      start: 0,
+      end: meta.size > 0 ? meta.size - 1 : 0,
+      partial: false,
+    };
   }
 
   private assertFileAccess(
@@ -388,4 +429,25 @@ export class DrawingsService {
       );
     }
   }
+}
+
+function parseByteRange(
+  rangeHeader: string,
+  size: number,
+): { start: number; end: number } | undefined {
+  const match = /^bytes=(\d+)-(\d*)$/i.exec(rangeHeader.trim());
+  if (!match || size <= 0) {
+    return undefined;
+  }
+
+  const start = Number.parseInt(match[1], 10);
+  const end = match[2]
+    ? Number.parseInt(match[2], 10)
+    : size - 1;
+
+  if (Number.isNaN(start) || Number.isNaN(end) || start > end || start >= size) {
+    return undefined;
+  }
+
+  return { start, end: Math.min(end, size - 1) };
 }

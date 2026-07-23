@@ -2,7 +2,7 @@ import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as Minio from 'minio';
 import { randomUUID } from 'crypto';
-import { mkdir, writeFile, readFile } from 'fs/promises';
+import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
 
 @Injectable()
@@ -109,6 +109,20 @@ export class FileStorageService implements OnModuleInit {
     buffer: Buffer;
     contentType: string;
     fileName: string;
+    size: number;
+  }> {
+    const meta = await this.statFile(objectKey);
+    if (meta.size === 0) {
+      return { buffer: Buffer.alloc(0), contentType: meta.contentType, fileName: meta.fileName, size: 0 };
+    }
+    const buffer = await this.getFilePart(objectKey, 0, meta.size - 1);
+    return { buffer, contentType: meta.contentType, fileName: meta.fileName, size: meta.size };
+  }
+
+  async statFile(objectKey: string): Promise<{
+    size: number;
+    contentType: string;
+    fileName: string;
   }> {
     const fileName = objectKey.split('/').pop() ?? 'drawing';
     const contentType = this.resolveContentType(fileName);
@@ -117,34 +131,82 @@ export class FileStorageService implements OnModuleInit {
       try {
         const [bucket, ...rest] = objectKey.split('/');
         const objectName = rest.join('/');
-        const stream = await this.client.getObject(bucket, objectName);
-        const chunks: Buffer[] = [];
-        for await (const chunk of stream) {
-          chunks.push(Buffer.from(chunk));
-        }
-        return { buffer: Buffer.concat(chunks), contentType, fileName };
+        const stat = await this.client.statObject(bucket, objectName);
+        return { size: stat.size, contentType, fileName };
       } catch (error) {
         if (this.isMissingObjectError(error)) {
-          this.logger.warn(
-            `MinIO object missing (${objectKey}) — trying local fallback`,
-          );
-          return this.readLocalFile(objectKey, contentType, fileName);
+          return this.statLocalFile(objectKey, contentType, fileName);
         }
         throw error;
       }
     }
 
-    return this.readLocalFile(objectKey, contentType, fileName);
+    return this.statLocalFile(objectKey, contentType, fileName);
   }
 
-  private async readLocalFile(
+  async getFilePart(
+    objectKey: string,
+    start: number,
+    end: number,
+  ): Promise<Buffer> {
+    const length = end - start + 1;
+    if (length <= 0) {
+      return Buffer.alloc(0);
+    }
+
+    if (this.minioAvailable) {
+      try {
+        const [bucket, ...rest] = objectKey.split('/');
+        const objectName = rest.join('/');
+        const stream = await this.client.getPartialObject(
+          bucket,
+          objectName,
+          start,
+          length,
+        );
+        const chunks: Buffer[] = [];
+        for await (const chunk of stream) {
+          chunks.push(Buffer.from(chunk));
+        }
+        return Buffer.concat(chunks);
+      } catch (error) {
+        if (this.isMissingObjectError(error)) {
+          return this.readLocalFilePart(objectKey, start, end);
+        }
+        throw error;
+      }
+    }
+
+    return this.readLocalFilePart(objectKey, start, end);
+  }
+
+  private async statLocalFile(
     objectKey: string,
     contentType: string,
     fileName: string,
   ) {
+    const { stat } = await import('fs/promises');
     const fullPath = join(this.localStorageRoot, objectKey);
-    const buffer = await readFile(fullPath);
-    return { buffer, contentType, fileName };
+    const fileStat = await stat(fullPath);
+    return { size: fileStat.size, contentType, fileName };
+  }
+
+  private async readLocalFilePart(
+    objectKey: string,
+    start: number,
+    end: number,
+  ) {
+    const { open } = await import('fs/promises');
+    const fullPath = join(this.localStorageRoot, objectKey);
+    const length = end - start + 1;
+    const handle = await open(fullPath, 'r');
+    try {
+      const buffer = Buffer.alloc(length);
+      await handle.read(buffer, 0, length, start);
+      return buffer;
+    } finally {
+      await handle.close();
+    }
   }
 
   private isMissingObjectError(error: unknown): boolean {

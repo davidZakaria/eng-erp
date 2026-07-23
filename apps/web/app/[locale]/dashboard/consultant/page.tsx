@@ -6,6 +6,7 @@ import AwsS3 from '@uppy/aws-s3';
 import { useTranslations } from 'next-intl';
 
 import { DrawingRegister } from '@/components/drawings/DrawingRegister';
+import { TransferProgress } from '@/components/TransferProgress';
 import { clientApi } from '@/lib/client-api';
 import {
   contentTypeForFileName,
@@ -34,6 +35,9 @@ export default function ConsultantDashboardPage() {
   const [fileName, setFileName] = useState('');
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [uploadPhase, setUploadPhase] = useState<
+    'idle' | 'active' | 'retrying' | 'error'
+  >('idle');
 
   const uppy = useMemo(() => {
     const instance = new Uppy({
@@ -122,14 +126,19 @@ export default function ConsultantDashboardPage() {
       progressData: { bytesUploaded: number; bytesTotal: number | null },
     ) => {
       if (!progressData.bytesTotal) return;
+      setUploadPhase((phase) => (phase === 'retrying' ? 'active' : phase));
       setProgress(
         Math.round((progressData.bytesUploaded / progressData.bytesTotal) * 100),
       );
+      setStatus((current) =>
+        current === t('uploadInterrupted') ? current : t('uploadingVault'),
+      );
     };
 
-    const onUploadError = (_file: unknown, error: Error) => {
-      setUploading(false);
-      setStatus(error?.message || t('uploadInterrupted'));
+    const onUploadError = () => {
+      setUploadPhase('retrying');
+      setUploading(true);
+      setStatus(t('uploadInterrupted'));
     };
 
     const onComplete = async (result: {
@@ -139,9 +148,12 @@ export default function ConsultantDashboardPage() {
       setUploading(false);
 
       if (result.failed?.length) {
-        setStatus(t('uploadInterrupted'));
+        setUploadPhase('error');
+        setStatus(t('uploadFailedFinal'));
         return;
       }
+
+      setUploadPhase('active');
 
       try {
         setStatus(t('registering'));
@@ -174,6 +186,7 @@ export default function ConsultantDashboardPage() {
         }
 
         setStatus(t('submitted'));
+        setUploadPhase('idle');
         setDrawingNumber('');
         setTitle('');
         setDisciplineCode('');
@@ -186,6 +199,7 @@ export default function ConsultantDashboardPage() {
         if (fileInputRef.current) fileInputRef.current.value = '';
         setRefreshKey((k) => k + 1);
       } catch (err) {
+        setUploadPhase('error');
         setStatus(err instanceof Error ? err.message : t('registrationFailed'));
       }
     };
@@ -236,6 +250,7 @@ export default function ConsultantDashboardPage() {
     }
 
     setUploading(true);
+    setUploadPhase('active');
     setStatus(t('uploadingVault'));
     uppy.getFiles().forEach((file) => {
       uppy.setFileMeta(file.id, {
@@ -370,15 +385,12 @@ export default function ConsultantDashboardPage() {
         </button>
 
         {uploading && (
-          <div className="mb-4">
-            <div className="h-2 rounded bg-[var(--surface-elevated)] overflow-hidden">
-              <div
-                className="h-full bg-[var(--accent)] transition-all"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-            <p className="text-xs text-[var(--muted)] mt-1">{progress}%</p>
-          </div>
+          <TransferProgress
+            percent={progress}
+            phase={uploadPhase === 'retrying' ? 'retrying' : uploadPhase === 'error' ? 'error' : 'active'}
+            activeLabel={status || t('uploadingVault')}
+            retryLabel={t('uploadInterrupted')}
+          />
         )}
 
         <div className="flex flex-wrap items-center gap-4">
@@ -393,7 +405,7 @@ export default function ConsultantDashboardPage() {
           <span className="text-sm text-[var(--muted)]">
             {fileName ? t('fileReady') : t('noFileSelected')}
           </span>
-          {status && (
+          {status && !uploading && (
             <span className="text-sm text-[var(--text)]">{status}</span>
           )}
         </div>

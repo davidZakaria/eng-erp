@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { TransferProgress } from '@/components/TransferProgress';
 import { Drawing } from '@/lib/types';
 import {
   getDrawingFileUrl,
   isDwgFileUrl,
   isPdfFileUrl,
 } from '@/lib/drawing-files';
+import { downloadWithResume } from '@/lib/resilient-download';
 
 function downloadFileName(drawing: Drawing): string {
   const ext = drawing.fileUrl.split('.').pop() ?? 'file';
@@ -21,6 +23,9 @@ export function DrawingFileButton({ drawing }: { drawing: Drawing }) {
   const t = useTranslations('drawings');
   const tCommon = useTranslations('common');
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [phase, setPhase] = useState<'active' | 'retrying' | 'error'>('active');
+  const [status, setStatus] = useState('');
   const [error, setError] = useState('');
 
   function actionLabel(): string {
@@ -32,19 +37,23 @@ export function DrawingFileButton({ drawing }: { drawing: Drawing }) {
   async function openFile() {
     setLoading(true);
     setError('');
+    setStatus('');
+    setProgress(0);
+    setPhase('active');
 
     try {
-      const res = await fetch(getDrawingFileUrl(drawing.id));
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(
-          Array.isArray(body.message)
-            ? body.message.join(', ')
-            : (body.message ?? `Failed to load file (${res.status})`),
-        );
-      }
+      const blob = await downloadWithResume(getDrawingFileUrl(drawing.id), {
+        onProgress: (percent) => {
+          setProgress(percent);
+          setPhase('active');
+          setStatus(t('downloadingFile'));
+        },
+        onRetry: () => {
+          setPhase('retrying');
+          setStatus(t('downloadInterrupted'));
+        },
+      });
 
-      const blob = await res.blob();
       const objectUrl = URL.createObjectURL(blob);
 
       if (isPdfFileUrl(drawing.fileUrl)) {
@@ -56,15 +65,20 @@ export function DrawingFileButton({ drawing }: { drawing: Drawing }) {
         anchor.click();
         URL.revokeObjectURL(objectUrl);
       }
+
+      setStatus('');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to open file');
+      setPhase('error');
+      setError(
+        err instanceof Error ? err.message : t('downloadFailedFinal'),
+      );
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="text-end">
+    <div className="text-end min-w-[160px]">
       <button
         type="button"
         onClick={openFile}
@@ -73,8 +87,16 @@ export function DrawingFileButton({ drawing }: { drawing: Drawing }) {
       >
         {loading ? tCommon('loading') : actionLabel()}
       </button>
+      {loading && (
+        <TransferProgress
+          percent={progress}
+          phase={phase}
+          activeLabel={status || t('downloadingFile')}
+          retryLabel={t('downloadInterrupted')}
+        />
+      )}
       {error && (
-        <p className="text-[10px] text-[var(--danger)] mt-1 max-w-[140px] ms-auto">
+        <p className="text-[10px] text-[var(--danger)] mt-1 max-w-[160px] ms-auto">
           {error}
         </p>
       )}
