@@ -54,6 +54,26 @@ Do **not** run certbot with multiple unrelated domains in one command.
 
 ## Eng-NJD shows "Not secure"
 
+Usually you are on **http://** not **https://**. Check:
+
+```bash
+curl -sI http://eng-njd.duckdns.org/en/login | head -5   # should be 301 → https
+curl -sI https://eng-njd.duckdns.org/en/login | head -5  # should be 200
+```
+
+If HTTP returns **200** (not 301), port 80 is serving the site without redirecting. Fix:
+
+```bash
+cd /opt/eng-njd
+git pull origin main
+# Issue cert if missing
+sudo certbot certonly --nginx -d eng-njd.duckdns.org
+chmod +x deploy/nginx/apply-ssl-config.sh
+./deploy/nginx/apply-ssl-config.sh eng-njd.duckdns.org
+```
+
+Then open **https://eng-njd.duckdns.org/en/login** (note the `https://`).
+
 Expected until certbot runs. The Docker stack is HTTP on localhost; host nginx must terminate TLS with Let's Encrypt. After `certbot --nginx -d eng-njd.duckdns.org`, use `https://eng-njd.duckdns.org/en/login`.
 
 Ensure `deploy/vps.env` has:
