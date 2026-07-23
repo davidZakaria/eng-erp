@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useOptionalDrawingReviewNotifications } from '@/components/drawings/DrawingReviewNotificationsProvider';
 
-export function PendingDrawingsHeaderBadge({ label }: { label: string }) {
+export function PendingDrawingsHeaderBadge() {
   const tDrawings = useTranslations('drawings');
   const ctx = useOptionalDrawingReviewNotifications();
   const pendingCount = ctx?.pendingCount ?? 0;
