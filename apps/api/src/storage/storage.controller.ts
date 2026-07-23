@@ -119,14 +119,20 @@ export class StorageController {
       throw new BadRequestException('Request body is empty');
     }
 
-    const { ETag } = await this.storageService.uploadPartBody(
-      key,
-      uploadId,
-      partNum,
-      body,
-    );
+    try {
+      const { ETag } = await this.storageService.uploadPartBody(
+        key,
+        uploadId,
+        partNum,
+        body,
+      );
 
-    res.setHeader('ETag', ETag);
+      res.setHeader('ETag', ETag);
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : 'Upload part failed';
+      throw new BadRequestException(message);
+    }
   }
 
   @Roles(

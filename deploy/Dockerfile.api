@@ -23,5 +23,7 @@ COPY --from=builder /app/apps/api/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/apps/api/tsconfig.seed.json ./tsconfig.seed.json
 COPY --from=builder /app/apps/api/package.json ./package.json
 COPY samples/cad ./samples/cad
+COPY deploy/docker-entrypoint-api.sh ./docker-entrypoint-api.sh
+RUN chmod +x ./docker-entrypoint-api.sh
 EXPOSE 3001
-CMD ["node", "dist/src/main.js"]
+ENTRYPOINT ["./docker-entrypoint-api.sh"]

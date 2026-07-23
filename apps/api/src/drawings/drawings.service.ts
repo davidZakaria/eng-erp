@@ -7,6 +7,7 @@ import {
 import { Discipline, ItemStatus, Role } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.module';
 import { FileStorageService } from '../security-and-ops/services/file-storage.service';
+import { StorageService } from '../storage/storage.service';
 import { isAllowedCadExtension } from './dto/upload-drawing.dto';
 import { ReviewDrawingDto } from './dto/review-drawing.dto';
 import {
@@ -27,6 +28,7 @@ export class DrawingsService {
   constructor(
     private prisma: PrismaService,
     private fileStorage: FileStorageService,
+    private storageService: StorageService,
   ) {}
 
   async uploadDrawing(
@@ -114,7 +116,7 @@ export class DrawingsService {
     const normalizedNumber = drawingNumber.trim().toUpperCase();
 
     try {
-      await this.fileStorage.statFile(fileUrl);
+      await this.storageService.verifyStoredObject(fileUrl);
     } catch {
       throw new BadRequestException(
         'Uploaded file was not found in storage. Please upload again.',

@@ -6,6 +6,7 @@ import {
   CreateBucketCommand,
   CreateMultipartUploadCommand,
   HeadBucketCommand,
+  HeadObjectCommand,
   ListPartsCommand,
   PutObjectCommand,
   S3Client,
@@ -13,6 +14,14 @@ import {
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { randomUUID } from 'crypto';
+
+function normalizeEtag(etag: string): string {
+  const trimmed = etag.trim().replace(/^W\//, '');
+  if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
+    return trimmed;
+  }
+  return `"${trimmed.replace(/^"|"$/g, '')}"`;
+}
 
 @Injectable()
 export class StorageService implements OnModuleInit {
@@ -164,7 +173,24 @@ export class StorageService implements OnModuleInit {
       throw new Error('Upload part did not return ETag');
     }
 
-    return { ETag: result.ETag };
+    return { ETag: normalizeEtag(result.ETag) };
+  }
+
+  async verifyStoredObject(fileUrl: string) {
+    const slash = fileUrl.indexOf('/');
+    if (slash <= 0) {
+      throw new Error('Invalid storage path');
+    }
+
+    const bucket = fileUrl.slice(0, slash);
+    const key = fileUrl.slice(slash + 1);
+
+    await this.internalClient.send(
+      new HeadObjectCommand({
+        Bucket: bucket,
+        Key: key,
+      }),
+    );
   }
 
   async listMultipartParts(key: string, uploadId: string) {
@@ -194,7 +220,12 @@ export class StorageService implements OnModuleInit {
         Key: key,
         UploadId: uploadId,
         MultipartUpload: {
-          Parts: parts.sort((a, b) => a.PartNumber - b.PartNumber),
+          Parts: parts
+            .map((part) => ({
+              PartNumber: part.PartNumber,
+              ETag: normalizeEtag(part.ETag),
+            }))
+            .sort((a, b) => a.PartNumber - b.PartNumber),
         },
       }),
     );

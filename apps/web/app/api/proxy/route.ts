@@ -40,46 +40,56 @@ async function proxy(request: NextRequest, path: string) {
   const isReadWithoutBody =
     request.method === 'GET' || request.method === 'HEAD';
 
-  const fetchInit: RequestInit & { duplex?: 'half' } = {
-    method: request.method,
-    headers,
-  };
+  try {
+    const fetchInit: RequestInit & { duplex?: 'half' } = {
+      method: request.method,
+      headers,
+    };
 
-  if (!isReadWithoutBody && request.body) {
-    fetchInit.body = request.body;
-    fetchInit.duplex = 'half';
-  }
-
-  const res = await fetch(`${API_BASE}${path}`, fetchInit);
-
-  const responseHeaders = new Headers();
-  for (const name of FORWARDED_HEADERS) {
-    const value = res.headers.get(name);
-    if (value) {
-      responseHeaders.set(name, value);
+    if (!isReadWithoutBody) {
+      if (request.body) {
+        fetchInit.body = request.body;
+        fetchInit.duplex = 'half';
+      } else {
+        fetchInit.body = await request.arrayBuffer();
+      }
     }
-  }
 
-  if (isReadWithoutBody) {
-    return new NextResponse(res.body, {
+    const res = await fetch(`${API_BASE}${path}`, fetchInit);
+
+    const responseHeaders = new Headers();
+    for (const name of FORWARDED_HEADERS) {
+      const value = res.headers.get(name);
+      if (value) {
+        responseHeaders.set(name, value);
+      }
+    }
+
+    if (isReadWithoutBody) {
+      return new NextResponse(res.body, {
+        status: res.status,
+        headers: responseHeaders,
+      });
+    }
+
+    const contentLength = res.headers.get('content-length');
+    if (contentLength === '0' || res.status === 204) {
+      return new NextResponse(null, {
+        status: res.status,
+        headers: responseHeaders,
+      });
+    }
+
+    const data = await res.arrayBuffer();
+    return new NextResponse(data, {
       status: res.status,
       headers: responseHeaders,
     });
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : 'Proxy request failed';
+    return NextResponse.json({ message }, { status: 502 });
   }
-
-  const contentLength = res.headers.get('content-length');
-  if (contentLength === '0' || res.status === 204) {
-    return new NextResponse(null, {
-      status: res.status,
-      headers: responseHeaders,
-    });
-  }
-
-  const data = await res.arrayBuffer();
-  return new NextResponse(data, {
-    status: res.status,
-    headers: responseHeaders,
-  });
 }
 
 function readPath(request: NextRequest) {
