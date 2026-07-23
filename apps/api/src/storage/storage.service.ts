@@ -17,19 +17,16 @@ import { randomUUID } from 'crypto';
 @Injectable()
 export class StorageService implements OnModuleInit {
   private readonly logger = new Logger(StorageService.name);
-  private client!: S3Client;
+  /** Internal MinIO — create/complete/list/abort multipart. */
+  private internalClient!: S3Client;
+  /** Public URL the browser uses — must match presigned host/path for signature validation. */
+  private presignClient!: S3Client;
   private bucket!: string;
 
   constructor(private configService: ConfigService) {}
 
-  async onModuleInit() {
-    const endpoint =
-      this.configService.get<string>('S3_ENDPOINT') ?? 'http://localhost:9000';
-
-    this.bucket =
-      this.configService.get<string>('S3_BUCKET_NAME') ?? 'eng-njd-documents';
-
-    this.client = new S3Client({
+  private buildClient(endpoint: string): S3Client {
+    return new S3Client({
       region: 'us-east-1',
       endpoint,
       forcePathStyle: true,
@@ -40,6 +37,28 @@ export class StorageService implements OnModuleInit {
           this.configService.get<string>('S3_SECRET_KEY') ?? 'password123',
       },
     });
+  }
+
+  async onModuleInit() {
+    const internalEndpoint =
+      this.configService.get<string>('S3_ENDPOINT') ?? 'http://minio:9000';
+    const publicEndpoint = this.configService
+      .get<string>('S3_PUBLIC_ENDPOINT')
+      ?.replace(/\/$/, '');
+
+    this.bucket =
+      this.configService.get<string>('S3_BUCKET_NAME') ?? 'eng-njd-documents';
+
+    this.internalClient = this.buildClient(internalEndpoint);
+    this.presignClient = publicEndpoint
+      ? this.buildClient(publicEndpoint)
+      : this.internalClient;
+
+    if (publicEndpoint) {
+      this.logger.log(
+        `Browser uploads presigned against ${publicEndpoint} (internal ${internalEndpoint})`,
+      );
+    }
 
     await this.ensureBucket();
   }
@@ -51,25 +70,19 @@ export class StorageService implements OnModuleInit {
 
   private async ensureBucket() {
     try {
-      await this.client.send(new HeadBucketCommand({ Bucket: this.bucket }));
+      await this.internalClient.send(
+        new HeadBucketCommand({ Bucket: this.bucket }),
+      );
     } catch {
       try {
-        await this.client.send(new CreateBucketCommand({ Bucket: this.bucket }));
+        await this.internalClient.send(
+          new CreateBucketCommand({ Bucket: this.bucket }),
+        );
         this.logger.log(`Created S3 bucket: ${this.bucket}`);
       } catch (error) {
         this.logger.warn(`Could not ensure bucket ${this.bucket}: ${error}`);
       }
     }
-  }
-
-  private rewritePublicUrl(url: string): string {
-    const publicEndpoint = this.configService.get<string>('S3_PUBLIC_ENDPOINT');
-    const internalEndpoint =
-      this.configService.get<string>('S3_ENDPOINT') ?? 'http://localhost:9000';
-    if (!publicEndpoint || publicEndpoint === internalEndpoint) {
-      return url;
-    }
-    return url.replace(internalEndpoint, publicEndpoint.replace(/\/$/, ''));
   }
 
   async generateUploadUrl(fileName: string, contentType: string) {
@@ -81,11 +94,9 @@ export class StorageService implements OnModuleInit {
       ContentType: contentType,
     });
 
-    const presignedUrl = this.rewritePublicUrl(
-      await getSignedUrl(this.client, command, {
-        expiresIn: 15 * 60,
-      }),
-    );
+    const presignedUrl = await getSignedUrl(this.presignClient, command, {
+      expiresIn: 15 * 60,
+    });
 
     return {
       presignedUrl,
@@ -97,7 +108,7 @@ export class StorageService implements OnModuleInit {
   async createMultipartUpload(fileName: string, contentType: string) {
     const key = this.buildFileKey(fileName);
 
-    const result = await this.client.send(
+    const result = await this.internalClient.send(
       new CreateMultipartUploadCommand({
         Bucket: this.bucket,
         Key: key,
@@ -125,17 +136,15 @@ export class StorageService implements OnModuleInit {
       PartNumber: partNumber,
     });
 
-    const url = this.rewritePublicUrl(
-      await getSignedUrl(this.client, command, {
-        expiresIn: 15 * 60,
-      }),
-    );
+    const url = await getSignedUrl(this.presignClient, command, {
+      expiresIn: 15 * 60,
+    });
 
     return { url };
   }
 
   async listMultipartParts(key: string, uploadId: string) {
-    const result = await this.client.send(
+    const result = await this.internalClient.send(
       new ListPartsCommand({
         Bucket: this.bucket,
         Key: key,
@@ -155,7 +164,7 @@ export class StorageService implements OnModuleInit {
     uploadId: string,
     parts: { PartNumber: number; ETag: string }[],
   ) {
-    await this.client.send(
+    await this.internalClient.send(
       new CompleteMultipartUploadCommand({
         Bucket: this.bucket,
         Key: key,
@@ -174,7 +183,7 @@ export class StorageService implements OnModuleInit {
   }
 
   async abortMultipartUpload(key: string, uploadId: string) {
-    await this.client.send(
+    await this.internalClient.send(
       new AbortMultipartUploadCommand({
         Bucket: this.bucket,
         Key: key,

@@ -127,6 +127,11 @@ export default function ConsultantDashboardPage() {
       );
     };
 
+    const onUploadError = (_file: unknown, error: Error) => {
+      setUploading(false);
+      setStatus(error?.message || t('uploadInterrupted'));
+    };
+
     const onComplete = async (result: {
       successful?: { meta: Record<string, unknown> }[];
       failed?: unknown[];
@@ -186,10 +191,12 @@ export default function ConsultantDashboardPage() {
     };
 
     uppy.on('upload-progress', onProgress);
+    uppy.on('upload-error', onUploadError);
     uppy.on('complete', onComplete);
 
     return () => {
       uppy.off('upload-progress', onProgress);
+      uppy.off('upload-error', onUploadError);
       uppy.off('complete', onComplete);
       uppy.destroy();
     };

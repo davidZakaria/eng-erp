@@ -28,9 +28,12 @@ services:
     container_name: eng-njd-minio
     restart: unless-stopped
     command: server /data --console-address ":9001"
+    env_file:
+      - deploy/vps.env
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_SERVER_URL: ${S3_PUBLIC_ENDPOINT}
     volumes:
       - eng_njd_minio_data:/data
     ports:
