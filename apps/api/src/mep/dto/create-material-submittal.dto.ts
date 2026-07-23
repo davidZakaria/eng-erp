@@ -38,4 +38,8 @@ export class CreateMaterialSubmittalDto {
   @IsOptional()
   @IsString()
   vendorId?: string;
+
+  @IsOptional()
+  @IsString()
+  specSectionId?: string;
 }

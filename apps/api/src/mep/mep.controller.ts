@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Role } from '@prisma/client';
 import { MepService } from './mep.service';
 import { CreateMaterialSubmittalDto } from './dto/create-material-submittal.dto';
+import { ReviewMaterialSubmittalDto } from './dto/review-material-submittal.dto';
 import { Roles } from '../common/decorators/roles.decorator';
 
 @Controller('mep')
@@ -30,6 +31,20 @@ export class MepController {
   @Get('submittals')
   findAllSubmittals() {
     return this.mepService.findAllSubmittals();
+  }
+
+  @Roles(
+    Role.HEAD_ENGINEER,
+    Role.PROJECT_MANAGER,
+    Role.ADMIN,
+    Role.SUPER_ADMIN,
+  )
+  @Post('submittals/:id/review')
+  reviewSubmittal(
+    @Param('id') id: string,
+    @Body() dto: ReviewMaterialSubmittalDto,
+  ) {
+    return this.mepService.reviewSubmittal(id, dto);
   }
 
   @Roles(

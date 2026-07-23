@@ -1,17 +1,17 @@
 'use client';
 
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { DrawingRegister } from '@/components/drawings/DrawingRegister';
+import { MepConsultantPanel } from '@/components/mep/MepSubmittalForm';
 import { TransferProgress } from '@/components/TransferProgress';
 import { clientApi } from '@/lib/client-api';
 import {
-  contentTypeForFileName,
   DRAWING_DISCIPLINES,
 } from '@/lib/drawing-upload';
 import { uploadDrawingFileMultipart } from '@/lib/resilient-multipart-upload';
-import { Discipline } from '@/lib/types';
+import { Discipline, Role } from '@/lib/types';
 
 const ALLOWED_EXTENSIONS = ['.dwg', '.dxf', '.pdf'];
 
@@ -22,8 +22,11 @@ function isAllowedDrawingFile(file: File): boolean {
 
 export default function ConsultantDashboardPage() {
   const t = useTranslations('drawings');
+  const tNav = useTranslations('nav');
   const tDisc = useTranslations('disciplines');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [role, setRole] = useState<Role | null>(null);
+  const [tab, setTab] = useState<'drawings' | 'mep'>('drawings');
   const [refreshKey, setRefreshKey] = useState(0);
   const [drawingNumber, setDrawingNumber] = useState('');
   const [title, setTitle] = useState('');
@@ -42,6 +45,19 @@ export default function ConsultantDashboardPage() {
   const [uploadPhase, setUploadPhase] = useState<
     'idle' | 'active' | 'retrying' | 'error'
   >('idle');
+
+  useEffect(() => {
+    fetch('/api/auth/session')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((session: { user?: { role: Role } } | null) => {
+        if (!session?.user?.role) return;
+        setRole(session.user.role);
+        if (session.user.role === 'MEP_CONSULTANT') {
+          setTab('mep');
+        }
+      })
+      .catch(() => undefined);
+  }, []);
 
   function onFileChosen(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -134,8 +150,41 @@ export default function ConsultantDashboardPage() {
     }
   }
 
+  const isMepConsultant = role === 'MEP_CONSULTANT';
+
   return (
     <div className="space-y-8">
+      {isMepConsultant && (
+        <div className="flex gap-1 border-b border-[var(--border)] overflow-x-auto">
+          <button
+            type="button"
+            onClick={() => setTab('mep')}
+            className={`px-4 py-2 text-sm border-b-2 -mb-px transition whitespace-nowrap ${
+              tab === 'mep'
+                ? 'border-[var(--accent)] text-[var(--text)]'
+                : 'border-transparent text-[var(--muted)] hover:text-[var(--text)]'
+            }`}
+          >
+            {tNav('mepSubmittals')}
+          </button>
+          <button
+            type="button"
+            onClick={() => setTab('drawings')}
+            className={`px-4 py-2 text-sm border-b-2 -mb-px transition whitespace-nowrap ${
+              tab === 'drawings'
+                ? 'border-[var(--accent)] text-[var(--text)]'
+                : 'border-transparent text-[var(--muted)] hover:text-[var(--text)]'
+            }`}
+          >
+            {t('uploadDrawing')}
+          </button>
+        </div>
+      )}
+
+      {isMepConsultant && tab === 'mep' ? (
+        <MepConsultantPanel />
+      ) : (
+        <>
       <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
         <h2 className="text-lg font-medium text-[var(--text)]">{t('uploadDrawing')}</h2>
         <p className="text-xs text-[var(--muted)] mb-4">{t('uploadHint')}</p>
@@ -277,6 +326,8 @@ export default function ConsultantDashboardPage() {
       </section>
 
       <DrawingRegister key={refreshKey} />
+        </>
+      )}
     </div>
   );
 }

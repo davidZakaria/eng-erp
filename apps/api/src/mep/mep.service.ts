@@ -6,6 +6,18 @@ import {
 import { ItemStatus, PanelPhase } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.module';
 import { CreateMaterialSubmittalDto } from './dto/create-material-submittal.dto';
+import { ReviewMaterialSubmittalDto } from './dto/review-material-submittal.dto';
+
+const SUBMITTAL_INCLUDE = {
+  csiDivision: true,
+  vendor: true,
+  specSection: { select: { code: true, title: true, divisionCode: true } },
+} as const;
+
+const REVIEWABLE_STATUSES: ItemStatus[] = [
+  ItemStatus.PENDING_REVIEW,
+  ItemStatus.DEVIATION_PENDING_OWNER,
+];
 
 export interface PanelLoadResult {
   panelId: string;
@@ -27,6 +39,24 @@ export class MepService {
 
     if (!division) {
       throw new NotFoundException('CSI Division not found');
+    }
+
+    if (dto.specSectionId) {
+      const specSection = await this.prisma.specSection.findFirst({
+        where: { id: dto.specSectionId, deletedAt: null },
+      });
+      if (!specSection) {
+        throw new NotFoundException('Spec section not found');
+      }
+    }
+
+    if (dto.vendorId) {
+      const vendor = await this.prisma.approvedVendor.findUnique({
+        where: { id: dto.vendorId },
+      });
+      if (!vendor || vendor.divisionId !== division.id) {
+        throw new BadRequestException('Vendor is not valid for this division');
+      }
     }
 
     let status: ItemStatus = ItemStatus.PENDING_REVIEW;
@@ -57,23 +87,36 @@ export class MepService {
         status,
         divisionId: dto.divisionId,
         vendorId: dto.vendorId,
+        specSectionId: dto.specSectionId,
       },
-      include: {
-        csiDivision: true,
-        vendor: true,
-        specSection: { select: { code: true, title: true, divisionCode: true } },
-      },
+      include: SUBMITTAL_INCLUDE,
     });
   }
 
   findAllSubmittals() {
     return this.prisma.materialSubmittal.findMany({
       orderBy: { equipmentTag: 'asc' },
-      include: {
-        csiDivision: true,
-        vendor: true,
-        specSection: { select: { code: true, title: true, divisionCode: true } },
-      },
+      include: SUBMITTAL_INCLUDE,
+    });
+  }
+
+  async reviewSubmittal(id: string, dto: ReviewMaterialSubmittalDto) {
+    const submittal = await this.prisma.materialSubmittal.findUnique({
+      where: { id },
+    });
+
+    if (!submittal) {
+      throw new NotFoundException('Submittal not found');
+    }
+
+    if (!REVIEWABLE_STATUSES.includes(submittal.status)) {
+      throw new BadRequestException('Submittal is not pending review');
+    }
+
+    return this.prisma.materialSubmittal.update({
+      where: { id },
+      data: { status: dto.statusDecision },
+      include: SUBMITTAL_INCLUDE,
     });
   }
 
