@@ -9,6 +9,19 @@ const nextConfig: NextConfig = {
   // Monorepo: trace deps from repo root so vendor chunks resolve correctly.
   outputFileTracingRoot: path.join(__dirname, '../..'),
   transpilePackages: ['next-intl'],
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: 'upgrade-insecure-requests',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
