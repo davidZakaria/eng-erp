@@ -56,12 +56,15 @@ export function DrawingsAdminTab({
   refreshToken = 0,
   focusPendingFilter = false,
   defaultStatusFilter = '',
+  enableBulkDelete = false,
   onPendingChanged,
   onFocusPendingHandled,
 }: {
   refreshToken?: number;
   focusPendingFilter?: boolean;
   defaultStatusFilter?: string;
+  /** Super Admin only — check-all and bulk delete. */
+  enableBulkDelete?: boolean;
   onPendingChanged?: () => void;
   onFocusPendingHandled?: () => void;
 }) {
@@ -486,7 +489,7 @@ export function DrawingsAdminTab({
       )}
 
       <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
-        {filtered.length > 0 && (
+        {enableBulkDelete && filtered.length > 0 && (
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border)] px-4 py-2">
             <label className="inline-flex items-center gap-2 text-sm text-[var(--text)] cursor-pointer">
               <input
@@ -513,17 +516,19 @@ export function DrawingsAdminTab({
           <table className="w-full text-sm min-w-[1100px]">
             <thead className="bg-[var(--surface-elevated)] text-[var(--muted)]">
               <tr>
-                <th className="w-10 px-4 py-3">
-                  <span className="sr-only">{t('checkAllVisible', { count: filtered.length })}</span>
-                  <input
-                    type="checkbox"
-                    checked={allFilteredSelected}
-                    onChange={toggleSelectAll}
-                    disabled={filtered.length === 0}
-                    className="rounded border-[var(--border)]"
-                    aria-label={t('checkAllVisible', { count: filtered.length })}
-                  />
-                </th>
+                {enableBulkDelete && (
+                  <th className="w-10 px-4 py-3">
+                    <span className="sr-only">{t('checkAllVisible', { count: filtered.length })}</span>
+                    <input
+                      type="checkbox"
+                      checked={allFilteredSelected}
+                      onChange={toggleSelectAll}
+                      disabled={filtered.length === 0}
+                      className="rounded border-[var(--border)]"
+                      aria-label={t('checkAllVisible', { count: filtered.length })}
+                    />
+                  </th>
+                )}
                 <th className="text-start px-4 py-3">{tCommon('number')}</th>
                 <th className="text-start px-4 py-3">{tCommon('title')}</th>
                 <th className="text-start px-4 py-3">{tDrawings('discipline')}</th>
@@ -537,22 +542,27 @@ export function DrawingsAdminTab({
             <tbody>
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={9} className="px-4 py-8 text-center text-[var(--muted)]">
+                  <td
+                    colSpan={enableBulkDelete ? 9 : 8}
+                    className="px-4 py-8 text-center text-[var(--muted)]"
+                  >
                     {tDrawings('noPending')}
                   </td>
                 </tr>
               ) : (
                 filtered.map((d) => (
                   <tr key={d.id} className="border-t border-[var(--border)]">
-                    <td className="px-4 py-3">
-                      <input
-                        type="checkbox"
-                        checked={selectedIds.has(d.id)}
-                        onChange={() => toggleRow(d.id)}
-                        className="rounded border-[var(--border)]"
-                        aria-label={`${d.drawingNumber} · ${d.title}`}
-                      />
-                    </td>
+                    {enableBulkDelete && (
+                      <td className="px-4 py-3">
+                        <input
+                          type="checkbox"
+                          checked={selectedIds.has(d.id)}
+                          onChange={() => toggleRow(d.id)}
+                          className="rounded border-[var(--border)]"
+                          aria-label={`${d.drawingNumber} · ${d.title}`}
+                        />
+                      </td>
+                    )}
                     <td className="px-4 py-3 font-mono">{d.drawingNumber}</td>
                     <td className="px-4 py-3">{d.title}</td>
                     <td className="px-4 py-3">{tDisc(d.discipline)}</td>

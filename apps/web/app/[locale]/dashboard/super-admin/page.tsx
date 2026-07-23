@@ -70,6 +70,7 @@ export default function SuperAdminDashboardPage() {
         <DrawingsAdminTab
           refreshToken={listRefresh}
           defaultStatusFilter="PENDING_REVIEW"
+          enableBulkDelete
           focusPendingFilter={focusPending}
           onPendingChanged={() => {
             refreshPending().catch(() => {});
