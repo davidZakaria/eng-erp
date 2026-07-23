@@ -10,6 +10,7 @@ const FORWARDED_HEADERS = [
   'content-range',
   'accept-ranges',
   'content-length',
+  'etag',
 ] as const;
 
 async function proxy(request: NextRequest, path: string) {
@@ -82,6 +83,10 @@ export async function HEAD(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  return proxy(request, readPath(request));
+}
+
+export async function PUT(request: NextRequest) {
   return proxy(request, readPath(request));
 }
 

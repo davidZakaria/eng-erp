@@ -13,7 +13,7 @@ import {
   DRAWING_DISCIPLINES,
   MultipartCreateResponse,
   MultipartPartResponse,
-  SignPartResponse,
+  proxyMultipartUploadPartUrl,
 } from '@/lib/drawing-upload';
 import { Discipline } from '@/lib/types';
 
@@ -80,19 +80,11 @@ export default function ConsultantDashboardPage() {
           `/storage/multipart/list-parts?${query.toString()}`,
         );
       },
-      signPart: async (_file, { uploadId, key, partNumber }) => {
-        const query = new URLSearchParams({
-          key,
-          uploadId,
-          partNumber: String(partNumber),
-        });
-
-        const data = await clientApi<SignPartResponse>(
-          `/storage/multipart/sign-part?${query.toString()}`,
-        );
-
-        return { method: 'PUT', url: data.url };
-      },
+      signPart: async (_file, { uploadId, key, partNumber }) => ({
+        method: 'PUT',
+        url: proxyMultipartUploadPartUrl(key, uploadId, partNumber),
+        headers: { 'Content-Type': 'application/octet-stream' },
+      }),
       completeMultipartUpload: async (file, { uploadId, key, parts }) => {
         const data = await clientApi<{ fileUrl: string; fileKey: string }>(
           '/storage/multipart/complete',

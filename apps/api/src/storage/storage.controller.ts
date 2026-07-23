@@ -1,4 +1,16 @@
-import { BadRequestException, Body, Controller, Get, Post, Query } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Post,
+  Put,
+  Query,
+  Req,
+  Res,
+} from '@nestjs/common';
+import { SkipThrottle } from '@nestjs/throttler';
+import type { Request, Response } from 'express';
 import { Role } from '@prisma/client';
 import { StorageService } from './storage.service';
 import { Roles } from '../common/decorators/roles.decorator';
@@ -66,6 +78,51 @@ export class StorageController {
       uploadId,
       Number(partNumber),
     );
+  }
+
+  @Roles(
+    Role.CONSULTANT,
+    Role.ARCH_CONSULTANT,
+    Role.STRUCT_CONSULTANT,
+    Role.MEP_CONSULTANT,
+  )
+  @SkipThrottle()
+  @Put('multipart/upload-part')
+  async uploadPart(
+    @Query('key') key: string | undefined,
+    @Query('uploadId') uploadId: string | undefined,
+    @Query('partNumber') partNumber: string | undefined,
+    @Req() req: Request,
+    @Res() res: Response,
+  ) {
+    if (!key || !uploadId || !partNumber) {
+      throw new BadRequestException('key, uploadId, and partNumber are required');
+    }
+
+    const partNum = Number(partNumber);
+    if (!Number.isInteger(partNum) || partNum < 1) {
+      throw new BadRequestException('partNumber must be a positive integer');
+    }
+
+    const chunks: Buffer[] = [];
+    for await (const chunk of req) {
+      chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+    }
+    const body = Buffer.concat(chunks);
+
+    if (body.length === 0) {
+      throw new BadRequestException('Request body is empty');
+    }
+
+    const { ETag } = await this.storageService.uploadPartBody(
+      key,
+      uploadId,
+      partNum,
+      body,
+    );
+
+    res.setHeader('ETag', ETag);
+    res.status(200).send('');
   }
 
   @Roles(

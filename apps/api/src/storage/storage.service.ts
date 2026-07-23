@@ -143,6 +143,30 @@ export class StorageService implements OnModuleInit {
     return { url };
   }
 
+  /** Upload one multipart part via the internal MinIO client (browser uses API proxy). */
+  async uploadPartBody(
+    key: string,
+    uploadId: string,
+    partNumber: number,
+    body: Buffer,
+  ) {
+    const result = await this.internalClient.send(
+      new UploadPartCommand({
+        Bucket: this.bucket,
+        Key: key,
+        UploadId: uploadId,
+        PartNumber: partNumber,
+        Body: body,
+      }),
+    );
+
+    if (!result.ETag) {
+      throw new Error('Upload part did not return ETag');
+    }
+
+    return { ETag: result.ETag };
+  }
+
   async listMultipartParts(key: string, uploadId: string) {
     const result = await this.internalClient.send(
       new ListPartsCommand({

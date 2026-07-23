@@ -32,6 +32,21 @@ export interface SignPartResponse {
   url: string;
 }
 
+/** Same-origin proxy URL so multipart parts upload via API → MinIO (no browser CORS). */
+export function proxyMultipartUploadPartUrl(
+  key: string,
+  uploadId: string,
+  partNumber: number,
+): string {
+  const query = new URLSearchParams({
+    key,
+    uploadId,
+    partNumber: String(partNumber),
+  });
+  const apiPath = `/storage/multipart/upload-part?${query.toString()}`;
+  return `/api/proxy?path=${encodeURIComponent(apiPath)}`;
+}
+
 export interface MultipartPartResponse {
   PartNumber?: number;
   Size?: number;

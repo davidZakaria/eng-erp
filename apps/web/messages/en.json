@@ -157,7 +157,7 @@
   },
   "drawings": {
     "uploadDrawing": "Upload Drawing",
-    "uploadHint": "Resilient direct-to-MinIO multipart upload with automatic retry on network drops. DWG preferred; DXF and PDF also accepted.",
+    "uploadHint": "Resilient multipart upload with automatic retry on network drops. DWG preferred; DXF and PDF also accepted.",
     "drawingNumber": "Drawing Number",
     "drawingTitle": "Title",
     "discipline": "Discipline",
