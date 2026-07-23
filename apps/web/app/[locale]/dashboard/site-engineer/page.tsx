@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ApprovedDrawingsTab } from '@/components/site-engineer/ApprovedDrawingsTab';
-import { LogPourTab } from '@/components/site-engineer/LogPourTab';
+import { SitePourTrackerTab } from '@/components/site-engineer/SitePourTrackerTab';
 import { SiteDefectsTab } from '@/components/site-engineer/SiteDefectsTab';
 import { SiteBoqTab } from '@/components/site-engineer/SiteBoqTab';
 import { SiteRfisTab } from '@/components/site-engineer/SiteRfisTab';
@@ -36,7 +36,7 @@ export default function SiteEngineerDashboardPage() {
       />
 
       {tab === 'drawings' && <ApprovedDrawingsTab />}
-      {tab === 'pours' && <LogPourTab />}
+      {tab === 'pours' && <SitePourTrackerTab />}
       {tab === 'boq' && <SiteBoqTab />}
       {tab === 'defects' && <SiteDefectsTab />}
       {tab === 'rfis' && <SiteRfisTab />}

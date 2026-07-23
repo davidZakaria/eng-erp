@@ -49,6 +49,12 @@ enum PanelPhase {
   B
 }
 
+enum TrackerStatus {
+  PLANNED
+  IN_PROGRESS
+  DONE
+}
+
 model User {
   id           String    @id @default(cuid())
   email        String    @unique
@@ -69,6 +75,7 @@ model User {
   conversations    Conversation[]    @relation("UserConversations")
   messages         Message[]
   chatModeration   ChatModeration?
+  pourTrackerLogs  PourTrackerEntry[] @relation("PourTrackerLogger")
 }
 
 model AuditLog {
@@ -377,4 +384,76 @@ model ChatModeration {
   warningCount Int       @default(0)
   bannedUntil  DateTime?
   updatedAt    DateTime  @updatedAt
+}
+
+model PourTrackerEntry {
+  id                  String         @id @default(cuid())
+  buildingLabel       String
+  halfZone            String?
+  floorLevel          String?
+  elementType         String
+  elementLabel        String?
+  rebarByDiameter     Json           @default("{}")
+  concreteM3          Float?
+  rebarCostEGP        Float?
+  concreteCostEGP     Float?
+  laborCostEGP        Float?
+  plannedDurationDays Int?
+  plannedStart        DateTime?
+  plannedEnd          DateTime?
+  actualPourDate      DateTime?
+  status              TrackerStatus  @default(PLANNED)
+  sourceRow           Int?
+  notes               String?
+  loggedById          String?
+  deletedAt           DateTime?
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+
+  loggedBy User? @relation("PourTrackerLogger", fields: [loggedById], references: [id])
+
+  @@index([buildingLabel, floorLevel])
+}
+
+model SchedulePlan {
+  id            String    @id @default(cuid())
+  name          String
+  projectLabel  String?
+  planDeadline  DateTime?
+  buildingCodes String[]
+  deletedAt     DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lines         ScheduleLine[]
+}
+
+model ScheduleLine {
+  id            String   @id @default(cuid())
+  planId        String
+  itemCode      String
+  parentCode    String?
+  description   String
+  unit          String?
+  categoryLabel String?
+  sortOrder     Int      @default(0)
+  plan          SchedulePlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  progress      ScheduleBuildingProgress[]
+
+  @@index([planId, sortOrder])
+}
+
+model ScheduleBuildingProgress {
+  id           String    @id @default(cuid())
+  lineId       String
+  buildingCode String
+  quantity     Float?
+  rateEGP      Float?
+  durationDays Int?
+  startDate    DateTime?
+  endDate      DateTime?
+  lineTotalEGP Float?
+  status       String?
+  line         ScheduleLine @relation(fields: [lineId], references: [id], onDelete: Cascade)
+
+  @@unique([lineId, buildingCode])
 }

@@ -12,7 +12,8 @@
     "prisma:migrate:deploy": "prisma migrate deploy",
     "prisma:seed": "ts-node --project tsconfig.seed.json prisma/seed.ts",
     "prisma:seed:production": "ts-node --project tsconfig.seed.json prisma/seed.ts",
-    "extract:jamila": "py -3 scripts/extract-jamila-sample.py"
+    "extract:jamila": "py -3 scripts/extract-jamila-sample.py",
+    "extract:head-engineer": "py -3 scripts/extract-head-engineer-excels.py"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1091.0",

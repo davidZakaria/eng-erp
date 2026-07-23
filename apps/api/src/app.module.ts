@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { ScheduleModule } from '@nestjs/schedule';
+import { ScheduleModule as NestScheduleModule } from '@nestjs/schedule';
 import { PrismaModule } from './prisma/prisma.module';
 import { SecurityAndOpsModule } from './security-and-ops/security-and-ops.module';
 import { ProjectsModule } from './projects/projects.module';
@@ -21,6 +21,8 @@ import { AuditModule } from './audit/audit.module';
 import { BackupsModule } from './backups/backups.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ChatModule } from './chat/chat.module';
+import { PourTrackerModule } from './pour-tracker/pour-tracker.module';
+import { ProjectScheduleModule } from './schedule/schedule.module';
 import { AppController } from './app.controller';
 
 @Module({
@@ -35,7 +37,7 @@ import { AppController } from './app.controller';
         },
       ],
     }),
-    ScheduleModule.forRoot(),
+    NestScheduleModule.forRoot(),
     PrismaModule,
     SecurityAndOpsModule,
     UsersModule,
@@ -43,6 +45,8 @@ import { AppController } from './app.controller';
     BackupsModule,
     CatalogModule,
     ChatModule,
+    PourTrackerModule,
+    ProjectScheduleModule,
     ProjectsModule,
     ModelsModule,
     BoqModule,

@@ -102,7 +102,9 @@
     "siteDefects": "Site Defects",
     "openRfis": "RFIs",
     "projectCatalog": "Project Catalog",
-    "boqManagement": "BOQ Management"
+    "boqManagement": "BOQ Management",
+    "concreteRebar": "Concrete & Rebar",
+    "projectSchedule": "Project Schedule (4D)"
   },
   "catalog": {
     "hint": "Jamila master data — CSI spec sections, approved vendors, and electrical load schedules from the construction package.",
@@ -286,6 +288,55 @@
     "noRecords": "No pour clearance records found.",
     "checklistSaved": "Checklist saved."
   },
+  "pourTracker": {
+    "hint": "Jamila concrete & rebar register — track pours by building, floor, element, and rebar diameter (kg). Re-import from the head engineer Excel when updated.",
+    "siteHint": "Log field pours with rebar weights per diameter. Data feeds the head engineer matrix and 5D execution reports.",
+    "building": "Building",
+    "halfZone": "Half / Zone",
+    "floor": "Floor",
+    "element": "Element",
+    "elementDetail": "Element detail",
+    "elementColumns": "Columns",
+    "elementSlab": "Slab",
+    "elementCombined": "Columns + Slab",
+    "elementFoundation": "Foundation",
+    "rebarGrid": "Rebar weight by diameter (kg)",
+    "concreteM3": "Concrete (m³)",
+    "rebarCost": "Rebar cost (EGP)",
+    "concreteCost": "Concrete cost (EGP)",
+    "plannedEnd": "Planned end",
+    "actualPour": "Actual pour",
+    "totalEntries": "Total rows",
+    "doneEntries": "Completed",
+    "totalRebarKg": "Total rebar (kg)",
+    "totalConcreteM3": "Total concrete (m³)",
+    "recentEntries": "Recent entries",
+    "empty": "No pour tracker data yet. Import from Excel or log a pour from site.",
+    "reimportExcel": "Re-import from Excel",
+    "importSuccess": "Imported {count} pour tracker rows from Excel seed.",
+    "importFailed": "Excel import failed.",
+    "status": {
+      "PLANNED": "Planned",
+      "IN_PROGRESS": "In progress",
+      "DONE": "Done"
+    }
+  },
+  "schedulePlan": {
+    "hint": "Jura Phase 1 construction plan — quantity, rate, duration, and start/end dates per building block (4D schedule).",
+    "deadline": "Plan deadline",
+    "itemCode": "Item",
+    "unit": "Unit",
+    "qty": "Qty",
+    "rate": "Rate",
+    "days": "Days",
+    "start": "Start",
+    "end": "End",
+    "done": "Done",
+    "empty": "No schedule plan loaded. Import the Jura Excel plan.",
+    "reimportExcel": "Re-import Jura plan",
+    "importSuccess": "Imported {count} schedule lines from Excel.",
+    "importFailed": "Schedule import failed."
+  },
   "execution": {
     "boq": "Bill of Quantities",
     "planned": "Planned Qty",
@@ -456,6 +507,14 @@
           "tip": "Structural QA/QC — pre-pour checklist and clearance.",
           "guide": "Run the pour clearance checklist: formwork, rebar, post-tension (PT), and hold points. The system blocks approval if open NCRs, MEP conflicts, or site defects exist on the pour zone. Only clear pours that pass every gate."
         },
+        "concreteRebar": {
+          "tip": "Jamila concrete & rebar matrix from the head engineer Excel.",
+          "guide": "Track every pour by building, half, floor, and element with rebar weights for diameters 6–25 mm, concrete m³, costs, and actual pour dates. Use Re-import from Excel after updating the spreadsheet."
+        },
+        "schedule": {
+          "tip": "Jura 4D plan — schedule and cost by building block.",
+          "guide": "Review the Phase 1 plan with quantity, rate, duration, start/end dates for buildings B05, B06, and B07. Red end dates indicate overdue items; Done marks completed scope."
+        },
         "execution": {
           "tip": "Field Execution (5D BIM) — BOQ planned vs installed quantities.",
           "guide": "Track Bill of Quantities (BOQ) progress: planned quantity, logged installs, and percent complete. Rows turn red at 100%. To exceed planned quantity you need a Variation Order (VO) — do not over-install without approval."
@@ -483,8 +542,8 @@
           "guide": "This register shows drawings approved by the head engineer. Do not use superseded or pending sheets. Download the latest revision before starting work on site."
         },
         "pours": {
-          "tip": "Log concrete pours after head-engineer clearance.",
-          "guide": "Record pour date, location, and volume once structural QA/QC clearance is granted. Pours logged without clearance may be flagged for audit."
+          "tip": "Log concrete and rebar pours after head-engineer clearance.",
+          "guide": "Enter building, floor, element, rebar weights (6–25 mm), concrete m³, and actual pour date. Data feeds the head engineer Jamila matrix. Pours without clearance may be flagged in audit."
         },
         "boq": {
           "tip": "BOQ Progress — log installed quantities in the field.",

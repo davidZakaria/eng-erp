@@ -9,6 +9,7 @@ import {
   loadJamilaData,
   seedJamilaCatalog,
 } from './jamila-seed-data';
+import { seedHeadEngineerTrackers } from './head-engineer-seed';
 
 const prisma = new PrismaClient();
 const repoRoot = existsSync(join(__dirname, '../samples/cad'))
@@ -236,6 +237,8 @@ async function main() {
     dxf: s201FileUrl,
     pdf: a103FileUrl,
   });
+
+  await seedHeadEngineerTrackers(prisma);
 
   console.log('\nSeed complete — Jamila data from sample study Excel only.');
   console.log('Source: apps/api/prisma/seed-data/jamila-from-sample.json');

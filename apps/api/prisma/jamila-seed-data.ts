@@ -110,6 +110,10 @@ export async function clearSyntheticSeedData(prisma: PrismaClient) {
   await prisma.rFI.deleteMany({});
   await prisma.nonConformanceReport.deleteMany({});
   await prisma.pourClearance.deleteMany({});
+  await prisma.pourTrackerEntry.deleteMany({});
+  await prisma.scheduleBuildingProgress.deleteMany({});
+  await prisma.scheduleLine.deleteMany({});
+  await prisma.schedulePlan.deleteMany({});
   await prisma.componentBOQ.deleteMany({});
   await prisma.buildingComponent.deleteMany({});
   await prisma.auditLog.deleteMany({});

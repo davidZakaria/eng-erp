@@ -324,3 +324,61 @@ export const TEAM_ROLES: Role[] = [
 ];
 
 export const ALL_MANAGEABLE_ROLES: Role[] = ['SUPER_ADMIN', ...TEAM_ROLES];
+
+export type TrackerStatus = 'PLANNED' | 'IN_PROGRESS' | 'DONE';
+
+export const REBAR_DIAMETERS = ['6', '8', '10', '12', '16', '18', '22', '25'] as const;
+
+export interface PourTrackerEntry {
+  id: string;
+  buildingLabel: string;
+  halfZone: string | null;
+  floorLevel: string | null;
+  elementType: string;
+  elementLabel: string | null;
+  rebarByDiameter: Record<string, number>;
+  concreteM3: number | null;
+  rebarCostEGP: number | null;
+  concreteCostEGP: number | null;
+  laborCostEGP: number | null;
+  plannedDurationDays: number | null;
+  plannedStart: string | null;
+  plannedEnd: string | null;
+  actualPourDate: string | null;
+  status: TrackerStatus;
+  notes: string | null;
+  loggedBy?: { id: string; fullName: string; email: string } | null;
+}
+
+export interface ScheduleBuildingProgress {
+  id: string;
+  buildingCode: string;
+  quantity: number | null;
+  rateEGP: number | null;
+  durationDays: number | null;
+  startDate: string | null;
+  endDate: string | null;
+  lineTotalEGP: number | null;
+  status: string | null;
+}
+
+export interface ScheduleLine {
+  id: string;
+  itemCode: string;
+  parentCode: string | null;
+  description: string;
+  unit: string | null;
+  categoryLabel: string | null;
+  sortOrder: number;
+  progress: ScheduleBuildingProgress[];
+}
+
+export interface SchedulePlan {
+  id: string;
+  name: string;
+  projectLabel: string | null;
+  planDeadline: string | null;
+  buildingCodes: string[];
+  lines?: ScheduleLine[];
+  _count?: { lines: number };
+}

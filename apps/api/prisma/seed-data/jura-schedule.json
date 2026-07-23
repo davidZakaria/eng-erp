@@ -1,0 +1,2334 @@
+{
+  "plan": {
+    "name": "Jura PH1 Plan till 30-Nov-2026 - H",
+    "projectLabel": "Jura Phase 1 — Buildings 5, 6, 7",
+    "planDeadline": "2026-11-22",
+    "buildingCodes": [
+      "B05",
+      "B06",
+      "B07"
+    ]
+  },
+  "lines": [
+    {
+      "itemCode": "1-1",
+      "parentCode": "1",
+      "description": "خرسانة مسلحة لصب سقف واعمد وشخيشخة سلم",
+      "unit": "مقط",
+      "categoryLabel": "أعمال الخرسانات المسلحة + الربير",
+      "sortOrder": 1,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 20.0,
+          "rateEGP": 8000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-01",
+          "endDate": "2026-07-16",
+          "lineTotalEGP": 160000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "1-1",
+      "parentCode": "1",
+      "description": "بالمقطوعية اعمال مبانى و البند يشمل الخامات و المصنعيات و كل مايلزم لنهو الاعمال على اكمل وجه",
+      "unit": "مقط",
+      "categoryLabel": "أعمال المبانى :",
+      "sortOrder": 2,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 2638819.0,
+          "durationDays": 30,
+          "startDate": "2026-07-01",
+          "endDate": "2026-07-31",
+          "lineTotalEGP": 2638819.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "2-1",
+      "parentCode": "2",
+      "description": "بالمتر المسطح توريد وعمل بياض تخشين لزوم الأسقف والحوائط الداخلية تتكون من طرطشة ابتدائية بسمك لا يقل عن 0.5 سم مكونة من رمل وأسمنت وماء وبمحتوي أسمنتي لا يقل عن 450 كجم/م3 رمل وطبقة بطانة وضهارة بسمك لا يقل عن 2.5 سم بمحتوي أسمنتي لا يقل عن 300 كجم/م3 رمل ومحمل علي السعر البؤج والأوتار وزوايا الأركان والعدد والسقايل وشبكك ممدد مجلفن في مناطق اتصال المباني بالعناصر الخرسانية قبل عمل البياض وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال البيــــاض :",
+      "sortOrder": 3,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 0.0,
+          "rateEGP": 155.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 10000.0,
+          "rateEGP": 130.0,
+          "durationDays": 45,
+          "startDate": "2026-07-01",
+          "endDate": "2026-08-15",
+          "lineTotalEGP": 1300000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "2-2",
+      "parentCode": "2",
+      "description": "بالمتر المسطح تنفيذ بياض  خارجى لزوم الواجهات شامل الاسلحة والطبانات & والمناور تتكون من طرطشة ابتدائية بسمك لا يقل عن 0.5 سم مكونة من رمل وأسمنت وماء وبمحتوي أسمنتي لا يقل عن 450 كجم/م3 رمل وطبقة بطانة وضهارة بسمك لا يقل عن 2.5 سم بمحتوي أسمنتي لا يقل عن 300 كجم/م3 والبند يشمل السعر البؤج والأوتار والتشوينات والعدد اللازمة وتوريد وتركيب وفك و تشغيل السقالات وشبك فايبر وذلك حسب العينة المعتمدة من المهندس المشرف  في مناطق اتصال المباني بالعناصر الخرسانية قبل عمل البياض وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف والبند لايشمل توريد الرمل والاسمنت وسلك الفايبر .",
+      "unit": "م2",
+      "categoryLabel": "أعمال البيــــاض :",
+      "sortOrder": 4,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 2000.0,
+          "rateEGP": 255.0,
+          "durationDays": 30,
+          "startDate": "2026-07-15",
+          "endDate": "2026-08-14",
+          "lineTotalEGP": 510000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 2100.0,
+          "rateEGP": 255.0,
+          "durationDays": 75,
+          "startDate": "2026-07-01",
+          "endDate": "2026-09-14",
+          "lineTotalEGP": 535500.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "2-3",
+      "parentCode": "2",
+      "description": "بالمتر الطولى توريد وعمل بياض ذات أساس أسمنتى لزوم flower box (دراي مكس او مايماثلها) بالتقاسيم والعراميس الموضحة بالرسومات التفصيلية وباللون  والملمس المطلوب والعدد والسقايل وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال البيــــاض :",
+      "sortOrder": 5,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1000.0,
+          "rateEGP": 450.0,
+          "durationDays": 21,
+          "startDate": "2026-07-22",
+          "endDate": "2026-08-12",
+          "lineTotalEGP": 450000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 800.0,
+          "rateEGP": 450.0,
+          "durationDays": 30,
+          "startDate": "2026-09-14",
+          "endDate": "2026-10-14",
+          "lineTotalEGP": 360000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "3-1",
+      "parentCode": "3",
+      "description": "بالمترالمسطح توريد وعمل دهانات ببوية البلاسـتيك القابل للغسيل لزوم الاسقف والحوائط الداخلية من انتاج شركة يوتن أو مايماثلها والفئة تشمل الوجه التحضيري والمعجون الجاهز وثلاثة اوجه ببوية البلاستيك باللون المطلوب وطبقا لمواصفات الشركة المنتجة و عمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال الدهانات",
+      "sortOrder": 6,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 14000.0,
+          "rateEGP": 40.0,
+          "durationDays": 45,
+          "startDate": "2026-06-10",
+          "endDate": "2026-07-25",
+          "lineTotalEGP": 560000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 21000.0,
+          "rateEGP": 170.0,
+          "durationDays": 60,
+          "startDate": "2026-06-10",
+          "endDate": "2026-08-09",
+          "lineTotalEGP": 3570000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 15000.0,
+          "rateEGP": 170.0,
+          "durationDays": 60,
+          "startDate": "2026-08-15",
+          "endDate": "2026-10-14",
+          "lineTotalEGP": 2550000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "3-2",
+      "parentCode": "3",
+      "description": "بالمتر المسطح تنفيذ دهانات خارجية اسمنتية ذات اساس اكريلك  لزوم الواجهات و المناور  (دراي مكس او مايماثلها) بالتقاسيم والعراميس الموضحة بالرسومات التفصيلية وباللون  والملمس المطلوب  شامل دهان الوجه التحضيرى  وعمل  كل مايلزم لتنفيذ البند طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف والبند لايشمل توريد مادة الدهانات",
+      "unit": "م2",
+      "categoryLabel": "أعمال الدهانات",
+      "sortOrder": 7,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": 50.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 4100.0,
+          "rateEGP": 135.0,
+          "durationDays": 30,
+          "startDate": "2026-08-14",
+          "endDate": "2026-09-13",
+          "lineTotalEGP": 553500.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 3700.0,
+          "rateEGP": 135.0,
+          "durationDays": 30,
+          "startDate": "2026-10-14",
+          "endDate": "2026-11-13",
+          "lineTotalEGP": 499500.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "3-3",
+      "parentCode": "3",
+      "description": "بالمتر الطولى توريد و تركيب فيوتك لزوم الحمامات",
+      "unit": "م.ط",
+      "categoryLabel": "أعمال الدهانات",
+      "sortOrder": 8,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 630.0,
+          "rateEGP": 40.0,
+          "durationDays": 30,
+          "startDate": "2026-07-10",
+          "endDate": "2026-08-09",
+          "lineTotalEGP": 25200.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 950.0,
+          "rateEGP": 40.0,
+          "durationDays": 30,
+          "startDate": "2026-08-09",
+          "endDate": "2026-09-08",
+          "lineTotalEGP": 38000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 630.0,
+          "rateEGP": 40.0,
+          "durationDays": 30,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-30",
+          "lineTotalEGP": 25200.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "4-1",
+      "parentCode": "4",
+      "description": "بالمترالمسطح  تركيب سيراميك لزوم الارضيات طبقا للعينة الموردة بالموقع لزوم  الشاليهات  بمونة مكونة من محتوي أسمنت لا يقل عن 300 كجم أسمنت/م3 والبند يشمل اعمال التشوينات  وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف  والبند لا يشمل توريد الرمل والاسمنت ومادة السقية",
+      "unit": "م2",
+      "categoryLabel": "أعمال الرخام والسيراميك",
+      "sortOrder": 9,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 2800.0,
+          "rateEGP": 300.0,
+          "durationDays": 40,
+          "startDate": "2026-06-17",
+          "endDate": "2026-07-27",
+          "lineTotalEGP": 840000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 3500.0,
+          "rateEGP": 300.0,
+          "durationDays": 40,
+          "startDate": "2026-09-21",
+          "endDate": "2026-10-31",
+          "lineTotalEGP": 1050000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "4-2",
+      "parentCode": "4",
+      "description": "بالمترالمسطح  تركيب سيراميك لزوم الحوائط طبقا للعينة الموردة بالموقع لزوم  الشاليهات  بمونة مكونة من محتوي أسمنت لا يقل عن 300 كجم أسمنت/م3 والبند يشمل اعمال التشوينات  وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف  والبند لا يشمل توريد الرمل والاسمنت ومادة السقية",
+      "unit": "م2",
+      "categoryLabel": "أعمال الرخام والسيراميك",
+      "sortOrder": 10,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1925.0,
+          "rateEGP": 300.0,
+          "durationDays": 40,
+          "startDate": "2026-06-10",
+          "endDate": "2026-07-20",
+          "lineTotalEGP": 577500.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1750.0,
+          "rateEGP": 300.0,
+          "durationDays": 30,
+          "startDate": "2026-09-14",
+          "endDate": "2026-10-14",
+          "lineTotalEGP": 525000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "4-3",
+      "parentCode": "4",
+      "description": "بالعدد توريد وتركيب معابر رخام لزوم ابواب الوحدات  الخارجية و درجات سلم رئيسي (treads & risers ) سمك 2 سم والعرض فتحة الباب  والسعر يشمل الجلي والتلميع وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف.",
+      "unit": "عدد",
+      "categoryLabel": "أعمال الرخام والسيراميك",
+      "sortOrder": 11,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 84.0,
+          "rateEGP": 950.0,
+          "durationDays": 21,
+          "startDate": "2026-07-20",
+          "endDate": "2026-08-10",
+          "lineTotalEGP": 79800.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 56.0,
+          "rateEGP": 950.0,
+          "durationDays": 21,
+          "startDate": "2026-10-06",
+          "endDate": "2026-10-27",
+          "lineTotalEGP": 53200.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "4-4",
+      "parentCode": "4",
+      "description": "بالعدد توريد وتركيب معابر رخام لزوم ابواب الوحدات الداخلى و درجات سلم رئيسي (treads & risers ) سمك4  سم والعرض فتحة الباب  والسعر يشمل الجلي والتلميع وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف.",
+      "unit": "عدد",
+      "categoryLabel": "أعمال الرخام والسيراميك",
+      "sortOrder": 12,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 350.0,
+          "rateEGP": 450.0,
+          "durationDays": 21,
+          "startDate": "2026-08-14",
+          "endDate": "2026-09-04",
+          "lineTotalEGP": 157500.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 196.0,
+          "rateEGP": 450.0,
+          "durationDays": 21,
+          "startDate": "2026-10-06",
+          "endDate": "2026-10-27",
+          "lineTotalEGP": 88200.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "4-5",
+      "parentCode": "4",
+      "description": "بالمتر المسطح توريد و تركيب ارضيات حلايب  لزوم الممرات الرئيسة سمك 2 سم و الوزرة سمك 2سم وارتفاع 10 سم  طبقا لاصول الصناعة وتعليمات جهاز الاشراف والعينة المعتمدة والبند يشمل التوريد و التركيب و التشطيب و التشوين و النقل و المعدات والألات والعماله والتركيب والعينات ورسومات التشغيل ولايشمل توريد الرمل والاسمنت و وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال الرخام والسيراميك",
+      "sortOrder": 13,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 630.0,
+          "rateEGP": 950.0,
+          "durationDays": 30,
+          "startDate": "2026-09-04",
+          "endDate": "2026-10-04",
+          "lineTotalEGP": 598500.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 427.0,
+          "rateEGP": 950.0,
+          "durationDays": 30,
+          "startDate": "2026-10-27",
+          "endDate": "2026-11-26",
+          "lineTotalEGP": 405650.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "4-6",
+      "parentCode": "4",
+      "description": "بالمتر المسطح توريد و تركيب ارضيات نيو حلايب لزوم السلالم  سمك 2 سم و الوزرة سمك 2سم وارتفاع 10 سم  طبقا لاصول الصناعة وتعليمات جهاز الاشراف والعينة المعتمدة والبند يشمل التوريد و التركيب و التشطيب و التشوين و النقل و المعدات والألات والعماله والتركيب والعينات ورسومات التشغيل ولايشمل توريد الرمل والاسمنت و وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال الرخام والسيراميك",
+      "sortOrder": 14,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 70.0,
+          "rateEGP": 950.0,
+          "durationDays": 21,
+          "startDate": "2026-07-20",
+          "endDate": "2026-08-10",
+          "lineTotalEGP": 66500.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 42.0,
+          "rateEGP": 950.0,
+          "durationDays": 21,
+          "startDate": "2026-10-06",
+          "endDate": "2026-10-27",
+          "lineTotalEGP": 39900.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "4-7",
+      "parentCode": "4",
+      "description": "بالمتر المسطح توريد و تركيب ارضيات شاورات تريستا بيج سمك 2 سم  طبقا لاصول الصناعة وتعليمات جهاز الاشراف والعينة المعتمدة والبند يشمل التوريد و التركيب و التشطيب و التشوين و النقل و المعدات والألات والعماله والتركيب والعينات ورسومات التشغيل ولايشمل توريد الرمل والاسمنت و وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال الرخام والسيراميك",
+      "sortOrder": 15,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 72.0,
+          "rateEGP": 1150.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 82800.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 168.0,
+          "rateEGP": 2050.0,
+          "durationDays": 21,
+          "startDate": "2026-07-27",
+          "endDate": "2026-08-17",
+          "lineTotalEGP": 344400.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 84.0,
+          "rateEGP": 2050.0,
+          "durationDays": 21,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-21",
+          "lineTotalEGP": 172200.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "4-8",
+      "parentCode": "4",
+      "description": "بالمتر الطولى توريد و تركيب درج نيو حلايب سمك 4 سم للنايمة و سمك 2سم للقايمة و التلابيس 15 سم طبقا لاصول الصناعة وتعليمات جهاز الاشراف والعينة المعتمدة والبند يشمل التوريد و التركيب و التشطيب و التشوين و النقل و المعدات والألات والعماله والتركيب والعينات ورسومات التشغيل ولايشمل توريد الرمل والاسمنت  و وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م.ط",
+      "categoryLabel": "أعمال الرخام والسيراميك",
+      "sortOrder": 16,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 161.0,
+          "rateEGP": 950.0,
+          "durationDays": 30,
+          "startDate": "2026-07-20",
+          "endDate": "2026-08-19",
+          "lineTotalEGP": 152950.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 320.0,
+          "rateEGP": 950.0,
+          "durationDays": 30,
+          "startDate": "2026-10-06",
+          "endDate": "2026-11-05",
+          "lineTotalEGP": 304000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-1",
+      "parentCode": "5",
+      "description": "باب خشب موسكي نموذج( D01) الحلق 6*2 والبرور 7سم والقوائم الداخليه وعدد 3 راس داخليه اعلي واسفل وبالنصف الباب 12.5سم واسقاسات الداخليه 4*3 سم كل 10سم و 2 وش mdfنفس الرسم المعتمده قشاط موسكي , ;كالون كمبيوتر واكره قطعتين تركي وعدد 4 مفصله للباب  و الدهان طبقة بي في سي باللون المختار",
+      "unit": "عدد",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 17,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 56.0,
+          "rateEGP": 2075.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 116200.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 84.0,
+          "rateEGP": 8500.0,
+          "durationDays": 45,
+          "startDate": "2026-07-15",
+          "endDate": "2026-08-29",
+          "lineTotalEGP": 714000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 56.0,
+          "rateEGP": 8500.0,
+          "durationDays": 30,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-30",
+          "lineTotalEGP": 476000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-2",
+      "parentCode": "5",
+      "description": "باب خشب موسكي نموذج( D02) لابواب الغرف الداخلية و الحلق 6*1.5 والبرور 6سم والقوائم الداخليه وعدد 3 راس داخليه اعلي واسفل وبالنصف الباب 10سم و2 وش mdf نفس الرسمه المعتمده واسقاسات الداخليه 3*4سم كل 15 سم قشاط موسكي والكالون عاده واكره عاديه قطعه واحد تركي وعدد 4 مفصله للباب والدهان طبقة بي في سي باللون المختار",
+      "unit": "عدد",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 18,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 112.0,
+          "rateEGP": 2000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 224000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 182.0,
+          "rateEGP": 8000.0,
+          "durationDays": 45,
+          "startDate": "2026-07-15",
+          "endDate": "2026-08-29",
+          "lineTotalEGP": 1456000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 112.0,
+          "rateEGP": 8000.0,
+          "durationDays": 30,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-30",
+          "lineTotalEGP": 896000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-3",
+      "parentCode": "5",
+      "description": "باب خشب موسكي نموذج( D03) لابواب الحمامات و الحلق 6*1.5 والبرور 6سم والقوائم الداخليه وعدد 3 راس داخليه اعلي واسفل وبالنصف الباب 10سم و2 وش mdf نفس الرسمه المعتمده واسقاسات الداخليه 3*4سم كل 15 سم قشاط موسكي والكالون عاده واكره عاديه قطعه واحد تركي وعدد 4 مفصله للباب والدهان طبقة بي في سي باللون المختار",
+      "unit": "عدد",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 19,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 87.0,
+          "rateEGP": 2000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 174000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 172.0,
+          "rateEGP": 8000.0,
+          "durationDays": 45,
+          "startDate": "2026-07-15",
+          "endDate": "2026-08-29",
+          "lineTotalEGP": 1376000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 87.0,
+          "rateEGP": 8000.0,
+          "durationDays": 30,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-30",
+          "lineTotalEGP": 696000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-4",
+      "parentCode": "5",
+      "description": "بالمترالمسطح توريد وتركيب شبابيك من قطاعات  الألومنيوم قطاع PS كبيرالمدهون الكتروستاتيك  حسب الطلب اللون المطلوب سواء ضلفة أو ضلفتين أو أكثر والزجاج مصنفر أو شفاف  سمك 6 مم وطبقا للتفاصيل والنماذج الموضحة بالرسومات سواء منزلقة أو محورية أو قلاب أو ثابتة أو مفصلية وشراعة ثابتة ومحمل علي السعر ضلف سلك من الالومنيوم وجميع الإكسسوارات والمقابض وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 20,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 504.0,
+          "rateEGP": 3000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 1512000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 370.0,
+          "rateEGP": 4000.0,
+          "durationDays": 45,
+          "startDate": "2026-07-15",
+          "endDate": "2026-08-29",
+          "lineTotalEGP": 1480000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 530.0,
+          "rateEGP": 4000.0,
+          "durationDays": 30,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-30",
+          "lineTotalEGP": 2120000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-5",
+      "parentCode": "5",
+      "description": "بالمتر المسطح توريد و تركيب و تصنيع شبابيك الوميتال قطاع PS صغير(قطاع الدولية6600 وكود الدهان  8019)) بسمك لايقل عن 0.9 مم بزجاج مصنفر بسمك ٦ مم Single طبقا للعينة المعتمدة بالموقع  والشروط والمواصفات الفنية  من قبل الاستشارى و السعر يشمل الاكسسوارات وتركيب ضلف سلك فايبر والتشوين و كل مايلزم لنهو الاعمال على اكمل وجه وتسليم الاستشاري.",
+      "unit": "م2",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 21,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 266.0,
+          "rateEGP": 3400.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 904400.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 336.0,
+          "rateEGP": 3550.0,
+          "durationDays": 45,
+          "startDate": "2026-07-15",
+          "endDate": "2026-08-29",
+          "lineTotalEGP": 1192800.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 266.0,
+          "rateEGP": 3550.0,
+          "durationDays": 30,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-30",
+          "lineTotalEGP": 944300.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-6",
+      "parentCode": "5",
+      "description": "ابواب غرف الخدمات",
+      "unit": "عدد",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 22,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 7.0,
+          "rateEGP": 18000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 126000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 21.0,
+          "rateEGP": 20000.0,
+          "durationDays": 45,
+          "startDate": "2026-07-15",
+          "endDate": "2026-08-29",
+          "lineTotalEGP": 420000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 7.0,
+          "rateEGP": 20000.0,
+          "durationDays": 30,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-30",
+          "lineTotalEGP": 140000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-7",
+      "parentCode": "5",
+      "description": "بالمتر المسطح توريد وتركيب هاندريل مكون من الالومنيوم سفلي مدفون من شركة الوميل بقطاع M8210 شامل الزجاج Liminated tempered Glass ( 6 mm + 0.76 mm pvb + 6 mm Clear )  من انتاج سان جوبان او سفنكس او مايماثله والاكسسوارات المستخدمة من اجود الانواع وانهاء الاعمال طبقا لاصول الصناعة وتعليمات جهاز الاشراف والعينة المعتمدة و المعدات والألات والعماله والتركيب والعينات ورسومات التشغيل و وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 23,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 124.0,
+          "rateEGP": 3700.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 458800.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 196.0,
+          "rateEGP": 3800.0,
+          "durationDays": 30,
+          "startDate": "2026-09-13",
+          "endDate": "2026-10-13",
+          "lineTotalEGP": 744800.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 124.0,
+          "rateEGP": 3800.0,
+          "durationDays": 30,
+          "startDate": "2026-10-31",
+          "endDate": "2026-11-30",
+          "lineTotalEGP": 471200.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-8",
+      "parentCode": "5",
+      "description": "هاندريل السلم (كريتال)",
+      "unit": "م2",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 24,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 196.0,
+          "rateEGP": 2800.0,
+          "durationDays": 30,
+          "startDate": "2026-09-13",
+          "endDate": "2026-10-13",
+          "lineTotalEGP": 548800.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 96.0,
+          "rateEGP": 2800.0,
+          "durationDays": 30,
+          "startDate": "2026-10-27",
+          "endDate": "2026-11-26",
+          "lineTotalEGP": 268800.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "5-9",
+      "parentCode": "5",
+      "description": "هاندريل 30 سم",
+      "unit": "م2",
+      "categoryLabel": "أعمال الابواب الشبابيك :",
+      "sortOrder": 25,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 37.5,
+          "rateEGP": 2500.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 93750.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 403.0,
+          "rateEGP": 2780.0,
+          "durationDays": 30,
+          "startDate": "2026-09-13",
+          "endDate": "2026-10-13",
+          "lineTotalEGP": 1120340.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 37.5,
+          "rateEGP": 2780.0,
+          "durationDays": 30,
+          "startDate": "2026-10-27",
+          "endDate": "2026-11-26",
+          "lineTotalEGP": 104250.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-1",
+      "parentCode": "6",
+      "description": "توريد كهرباء داخلي وحدات اعمال التأسيس و التشطيب شامل ( الانارة + البرايز + حساسات الانذار + اعمال التيار الخفيف)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 26,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 4961250.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 4961250.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 5670000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 5670000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-1",
+      "parentCode": "6",
+      "description": "تركيب كهرباء داخلي وحدات اعمال التأسيس و التشطيب شامل ( الانارة + البرايز + حساسات الانذار + اعمال التيار الخفيف)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 27,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 918749.9999999999,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 918749.9999999999,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 1050000.0,
+          "durationDays": 21,
+          "startDate": "2026-07-16",
+          "endDate": "2026-08-06",
+          "lineTotalEGP": 1050000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-2",
+      "parentCode": "6",
+      "description": "توريد لوحات الكهرباء + لوحات الصواعد + الكابلات التغذية",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 28,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 1365000.0,
+          "durationDays": 30,
+          "startDate": "2026-05-10",
+          "endDate": "2026-06-09",
+          "lineTotalEGP": 1365000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 2205000.0,
+          "durationDays": 21,
+          "startDate": "2026-06-16",
+          "endDate": "2026-07-07",
+          "lineTotalEGP": 2205000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 2520000.0,
+          "durationDays": 30,
+          "startDate": "2026-06-23",
+          "endDate": "2026-07-23",
+          "lineTotalEGP": 2520000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-2",
+      "parentCode": "6",
+      "description": "تركيب لوحات الكهرباء + لوحات الصواعد + الكابلات التغذية",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 29,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 168000.0,
+          "durationDays": 21,
+          "startDate": "2026-06-09",
+          "endDate": "2026-06-30",
+          "lineTotalEGP": 168000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 210000.0,
+          "durationDays": 21,
+          "startDate": "2026-07-07",
+          "endDate": "2026-07-28",
+          "lineTotalEGP": 210000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 240000.0,
+          "durationDays": 21,
+          "startDate": "2026-07-23",
+          "endDate": "2026-08-13",
+          "lineTotalEGP": 240000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-3",
+      "parentCode": "6",
+      "description": "توريد اعمال اضافية كهرباء ( النجف + الكاميرات )",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 30,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 161000.0,
+          "durationDays": 15,
+          "startDate": "2026-06-09",
+          "endDate": "2026-06-24",
+          "lineTotalEGP": 161000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 201250.0,
+          "durationDays": 15,
+          "startDate": "2026-07-07",
+          "endDate": "2026-07-22",
+          "lineTotalEGP": 201250.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 230000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-23",
+          "endDate": "2026-08-07",
+          "lineTotalEGP": 230000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-3",
+      "parentCode": "6",
+      "description": "تركيب اعمال اضافية كهرباء ( النجف + الكاميرات )",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 31,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 61599.99999999999,
+          "durationDays": 15,
+          "startDate": "2026-06-24",
+          "endDate": "2026-07-09",
+          "lineTotalEGP": 61599.99999999999,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 77000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-22",
+          "endDate": "2026-08-06",
+          "lineTotalEGP": 77000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 88000.0,
+          "durationDays": 15,
+          "startDate": "2026-08-07",
+          "endDate": "2026-08-22",
+          "lineTotalEGP": 88000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-5",
+      "parentCode": "6",
+      "description": "اعمال توريد حوامل التكييف تأسيس شامل مسار تغذية الفريون",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 32,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 595000.0,
+          "durationDays": 21,
+          "startDate": "2026-05-10",
+          "endDate": "2026-05-31",
+          "lineTotalEGP": 595000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 743750.0,
+          "durationDays": 21,
+          "startDate": "2026-05-31",
+          "endDate": "2026-06-21",
+          "lineTotalEGP": 743750.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 850000.0,
+          "durationDays": 21,
+          "startDate": "2026-06-21",
+          "endDate": "2026-07-12",
+          "lineTotalEGP": 850000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-5",
+      "parentCode": "6",
+      "description": "اعمال تركيب حوامل التكييف تأسيس شامل مسار تغذية الفريون",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 33,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 175000.0,
+          "durationDays": 15,
+          "startDate": "2026-06-10",
+          "endDate": "2026-06-25",
+          "lineTotalEGP": 175000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 218750.0,
+          "durationDays": 15,
+          "startDate": "2026-06-21",
+          "endDate": "2026-07-06",
+          "lineTotalEGP": 218750.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 250000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-12",
+          "endDate": "2026-07-27",
+          "lineTotalEGP": 250000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-7",
+      "parentCode": "6",
+      "description": "توريد اعمال مكافحة الحريق تأسيس (مواسير + رشاشات)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 34,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 217000.0,
+          "durationDays": 15,
+          "startDate": "2026-06-10",
+          "endDate": "2026-06-25",
+          "lineTotalEGP": 217000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 271250.0,
+          "durationDays": 15,
+          "startDate": "2026-06-25",
+          "endDate": "2026-07-10",
+          "lineTotalEGP": 271250.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 310000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-25",
+          "lineTotalEGP": 310000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-7",
+      "parentCode": "6",
+      "description": "تركيب اعمال  مكافحة الحريق تأسيس (مواسير + رشاشات)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 35,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 80500.0,
+          "durationDays": 15,
+          "startDate": "2026-06-25",
+          "endDate": "2026-07-10",
+          "lineTotalEGP": 80500.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 100625.0,
+          "durationDays": 15,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-25",
+          "lineTotalEGP": 100625.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 115000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-25",
+          "endDate": "2026-08-09",
+          "lineTotalEGP": 115000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-8",
+      "parentCode": "6",
+      "description": "توريد اعمال مكافحة الحريق ( ZCV + FHC + FC)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 36,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 1085000.0,
+          "durationDays": 15,
+          "startDate": "2026-06-10",
+          "endDate": "2026-06-25",
+          "lineTotalEGP": 1085000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 1085000.0,
+          "durationDays": 15,
+          "startDate": "2026-06-25",
+          "endDate": "2026-07-10",
+          "lineTotalEGP": 1085000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 1550000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-25",
+          "lineTotalEGP": 1550000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-8",
+      "parentCode": "6",
+      "description": "تركيب اعمال  مكافحة الحريق ( ZCV + FHC + FC)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 37,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 157500.0,
+          "durationDays": 15,
+          "startDate": "2026-06-25",
+          "endDate": "2026-07-10",
+          "lineTotalEGP": 157500.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 196875.0,
+          "durationDays": 15,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-25",
+          "lineTotalEGP": 196875.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 225000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-25",
+          "endDate": "2026-08-09",
+          "lineTotalEGP": 225000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-9",
+      "parentCode": "6",
+      "description": "توريد اعمال الصرف الصحى تأسيس و تشطيب داخل الوحدات ( مواسير - احواض حمام - احواض مطبخ - طبة التسليك)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 38,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 503999.99999999994,
+          "durationDays": 15,
+          "startDate": "2026-06-10",
+          "endDate": "2026-06-25",
+          "lineTotalEGP": 503999.99999999994,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 962499.9999999999,
+          "durationDays": 15,
+          "startDate": "2026-06-25",
+          "endDate": "2026-07-10",
+          "lineTotalEGP": 962499.9999999999,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 1100000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-25",
+          "lineTotalEGP": 1100000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-9",
+      "parentCode": "6",
+      "description": "اعمال تركيب الصرف الصحى تأسيس و تشطيب داخل الوحدات ( مواسير - احواض حمام - احواض مطبخ - طبة التسليك)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 39,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 68600.0,
+          "durationDays": 21,
+          "startDate": "2026-06-25",
+          "endDate": "2026-07-16",
+          "lineTotalEGP": 68600.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 85750.0,
+          "durationDays": 30,
+          "startDate": "2026-07-10",
+          "endDate": "2026-08-09",
+          "lineTotalEGP": 85750.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 98000.0,
+          "durationDays": 30,
+          "startDate": "2026-07-25",
+          "endDate": "2026-08-24",
+          "lineTotalEGP": 98000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-10",
+      "parentCode": "6",
+      "description": "توريد اعمال الصرف الصحى الصواعد الخارجية (مواسير + جليترابات + جرجورى صرف المطر)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 40,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 244999.99999999997,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 244999.99999999997,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 306250.0,
+          "durationDays": 15,
+          "startDate": "2026-06-25",
+          "endDate": "2026-07-10",
+          "lineTotalEGP": 306250.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 350000.0,
+          "durationDays": 15,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-25",
+          "lineTotalEGP": 350000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-10",
+      "parentCode": "6",
+      "description": "اعمال تركيب الصرف الصحى الصواعد الخارجية (مواسير + جليترابات + جرجورى صرف المطر)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 41,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 134400.0,
+          "durationDays": 21,
+          "startDate": "2026-06-10",
+          "endDate": "2026-07-01",
+          "lineTotalEGP": 134400.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 168000.0,
+          "durationDays": 21,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-31",
+          "lineTotalEGP": 168000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 192000.0,
+          "durationDays": 21,
+          "startDate": "2026-07-25",
+          "endDate": "2026-08-15",
+          "lineTotalEGP": 192000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-11",
+      "parentCode": "6",
+      "description": "توريد اعمال تغذية المياة ( مواسير + عدادات + محابس عزل + محابس تصريف هواء)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 42,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 406000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 406000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 507499.99999999994,
+          "durationDays": 21,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-31",
+          "lineTotalEGP": 507499.99999999994,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 580000.0,
+          "durationDays": 21,
+          "startDate": "2026-07-25",
+          "endDate": "2026-08-15",
+          "lineTotalEGP": 580000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-11",
+      "parentCode": "6",
+      "description": "اعمال تركيب تغذية المياة ( مواسير + عدادات + محابس عزل + محابس تصريف هواء)",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 43,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 147000.0,
+          "durationDays": 21,
+          "startDate": "2026-06-10",
+          "endDate": "2026-07-01",
+          "lineTotalEGP": 147000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 183750.0,
+          "durationDays": 21,
+          "startDate": "2026-07-31",
+          "endDate": "2026-08-21",
+          "lineTotalEGP": 183750.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 210000.0,
+          "durationDays": 21,
+          "startDate": "2026-08-15",
+          "endDate": "2026-09-05",
+          "lineTotalEGP": 210000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-12",
+      "parentCode": "6",
+      "description": "مصاعد توريد و تركيب",
+      "unit": "مقط",
+      "categoryLabel": "MEP Interior",
+      "sortOrder": 44,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 1420000.0,
+          "durationDays": 45,
+          "startDate": "2026-07-10",
+          "endDate": "2026-08-24",
+          "lineTotalEGP": 1420000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 2.0,
+          "rateEGP": 976499.9999999999,
+          "durationDays": 45,
+          "startDate": "2026-08-24",
+          "endDate": "2026-10-08",
+          "lineTotalEGP": 1952999.9999999998,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 1420000.0,
+          "durationDays": 45,
+          "startDate": "2026-10-08",
+          "endDate": "2026-11-22",
+          "lineTotalEGP": 1420000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "7-1",
+      "parentCode": "7",
+      "description": "بالمتر المسطح توريد وتركيب تجاليد للواجهات PVC بلون الخشب لزوم  الواجهات  طبقا للرسومات و علي المقاول تقديم كافه العينات و الكتالوجات و النشرات الفنيه و رسومات التشغيل و تفاصيل العلاقات م عالبنود الاخري للمراجعه و الاعتماد من الاستشاري قبل البدا بالتنفيذ وعمل كل مايلزم طبقا للمواصفات الفنية واصوال الصناعة وتعليمات المهندس المشرف",
+      "unit": "م2",
+      "categoryLabel": "أعمال الوجهات :",
+      "sortOrder": 45,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 600.0,
+          "rateEGP": 2600.0,
+          "durationDays": 21,
+          "startDate": "2026-06-10",
+          "endDate": "2026-07-01",
+          "lineTotalEGP": 1560000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 600.0,
+          "rateEGP": 2600.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 1560000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 600.0,
+          "rateEGP": 2600.0,
+          "durationDays": 21,
+          "startDate": "2026-11-13",
+          "endDate": "2026-12-04",
+          "lineTotalEGP": 1560000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "8-1",
+      "parentCode": "8",
+      "description": "بالمترالمسطح توريد وتركيب اسقف معلقة من الواح الجبسوم بورد مع اكسسورات التثبيت لتسوية الفواصل و السطح تمهيدا للدهان و ذلك طبقا لتعليمات المهندس الاستشاري شاملا المواد والمصنعية",
+      "unit": "م2",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 46,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 427.0,
+          "rateEGP": 1800.0,
+          "durationDays": 21,
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-31",
+          "lineTotalEGP": 768600.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1078.0,
+          "rateEGP": 1800.0,
+          "durationDays": 21,
+          "startDate": "2026-07-25",
+          "endDate": "2026-08-15",
+          "lineTotalEGP": 1940400.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 419.0,
+          "rateEGP": 1800.0,
+          "durationDays": 21,
+          "startDate": "2026-08-09",
+          "endDate": "2026-08-30",
+          "lineTotalEGP": 754200.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-13",
+      "parentCode": "6",
+      "description": "اجمالي توريد اعمال شبكات الكهرباء (الاكشاك + الكابلات) للمرحلة الاولى فقط",
+      "unit": "مقط",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 47,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": 10800000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-13",
+      "parentCode": "6",
+      "description": "اجمالي تركيب اعمال شبكات الكهرباء",
+      "unit": "م2",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 48,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 9440.0,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": 829.41,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-14",
+      "parentCode": "6",
+      "description": "اجمالي توريد اعمال شبكات الصرف الصحي (مواسير + غرف تفتيش + جليترابات+ غرف تهدئة+ محطة الرفع) للمرحلة الاولى فقط",
+      "unit": "م2",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 49,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 9440.0,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": 820.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-14",
+      "parentCode": "6",
+      "description": "اجمالي تركيب اعمال شبكات الصرف الصحي",
+      "unit": "م2",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 50,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 9440.0,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": 613.28,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-15",
+      "parentCode": "6",
+      "description": "اجمالي توريد اعمال شبكات الري  للمرحلة الاولى فقط",
+      "unit": "م2",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 51,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 9440.0,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": 230.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-15",
+      "parentCode": "6",
+      "description": "اجمالي تركيب اعمال شبكات الري",
+      "unit": "م2",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 52,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 9440.0,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": 33.69,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-16",
+      "parentCode": "6",
+      "description": "اجمالي توريد اعمال شبكات التغذية (مواسير + غرف التفتيش + G.V)  للمرحلة الاولى فقط",
+      "unit": "م2",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 53,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 9440.0,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": 560.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-16",
+      "parentCode": "6",
+      "description": "اجمالي تركيب اعمال شبكات التغذية و الصرف الصحي و الري و الكهرباء",
+      "unit": "م2",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 54,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": null,
+          "rateEGP": null,
+          "durationDays": 135,
+          "startDate": "2026-06-10",
+          "endDate": "2026-10-23",
+          "lineTotalEGP": null,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-4",
+      "parentCode": "6",
+      "description": "توريد الاعمال الاضافية (بوتاجاز + ثلاجة + غسالة + تليفزيون + شاور)",
+      "unit": "مقط",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 55,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 1978200.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 1978200.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 2472750.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 2472750.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 2826000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 2826000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-4",
+      "parentCode": "6",
+      "description": "تركيب الاعمال الاضافية (بوتاجاز + ثلاجة + غسالة + تليفزيون + شاور)",
+      "unit": "مقط",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 56,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 149800.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 149800.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 187250.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 187250.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 214000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 214000.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-6",
+      "parentCode": "6",
+      "description": "توريد اعمال الميكانيكا الاضافية (تكييفات + سخانات)",
+      "unit": "مقط",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 57,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 3687250.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 3687250.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 4609062.5,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 4609062.5,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 5267500.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 5267500.0,
+          "status": "PLANNED"
+        }
+      ]
+    },
+    {
+      "itemCode": "6-6",
+      "parentCode": "6",
+      "description": "تركيب اعمال  الميكانيكا الاضافية (تكييفات + سخانات)",
+      "unit": "مقط",
+      "categoryLabel": "أعمال الجبسوم بورد",
+      "sortOrder": 58,
+      "progress": [
+        {
+          "buildingCode": "B05",
+          "quantity": 1.0,
+          "rateEGP": 441000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 441000.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B06",
+          "quantity": 1.0,
+          "rateEGP": 551250.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 551250.0,
+          "status": "PLANNED"
+        },
+        {
+          "buildingCode": "B07",
+          "quantity": 1.0,
+          "rateEGP": 630000.0,
+          "durationDays": null,
+          "startDate": null,
+          "endDate": null,
+          "lineTotalEGP": 630000.0,
+          "status": "PLANNED"
+        }
+      ]
+    }
+  ]
+}

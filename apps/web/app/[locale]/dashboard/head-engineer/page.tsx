@@ -6,6 +6,8 @@ import { DrawingsAdminTab } from '@/components/admin/DrawingsAdminTab';
 import { MepSubmittalsTab } from '@/components/head-engineer/MepSubmittalsTab';
 import { PourClearanceChecklist } from '@/components/head-engineer/PourClearanceChecklist';
 import { BoqExecutionTab } from '@/components/head-engineer/BoqExecutionTab';
+import { ConcreteRebarTrackerTab } from '@/components/head-engineer/ConcreteRebarTrackerTab';
+import { ProjectScheduleTab } from '@/components/head-engineer/ProjectScheduleTab';
 import { RfisAndSnagsTab } from '@/components/head-engineer/RfisAndSnagsTab';
 import { CatalogManageTab } from '@/components/admin/CatalogManageTab';
 import { BoqAdminTab } from '@/components/admin/BoqAdminTab';
@@ -17,6 +19,8 @@ type Tab =
   | 'drawings'
   | 'mep'
   | 'structural'
+  | 'concreteRebar'
+  | 'schedule'
   | 'execution'
   | 'rfis'
   | 'catalog'
@@ -41,6 +45,8 @@ export default function HeadEngineerDashboardPage() {
     { id: 'drawings', label: tNav('pendingDrawings') },
     { id: 'mep', label: tNav('mepSubmittals') },
     { id: 'structural', label: tNav('structuralQa') },
+    { id: 'concreteRebar', label: tNav('concreteRebar') },
+    { id: 'schedule', label: tNav('projectSchedule') },
     { id: 'execution', label: tNav('fieldExecution') },
     { id: 'rfis', label: tNav('rfisAndSnags') },
     { id: 'catalog', label: tNav('projectCatalog') },
@@ -73,6 +79,8 @@ export default function HeadEngineerDashboardPage() {
       )}
       {tab === 'mep' && <MepSubmittalsTab />}
       {tab === 'structural' && <PourClearanceChecklist />}
+      {tab === 'concreteRebar' && <ConcreteRebarTrackerTab canImport />}
+      {tab === 'schedule' && <ProjectScheduleTab canImport />}
       {tab === 'execution' && <BoqExecutionTab />}
       {tab === 'rfis' && <RfisAndSnagsTab />}
       {tab === 'catalog' && <CatalogManageTab editable />}
