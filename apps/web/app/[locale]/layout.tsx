@@ -3,6 +3,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { LocaleHtmlAttributes } from '@/components/LocaleHtmlAttributes';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { InsiderChatLayer } from '@/components/chat/InsiderChatLayer';
 import { locales, type Locale } from '@/i18n/config';
 
 export function generateStaticParams() {
@@ -35,6 +36,7 @@ export default async function LocaleLayout({
       <ThemeProvider>
         <LocaleHtmlAttributes />
         <div className={fontClass}>{children}</div>
+        <InsiderChatLayer />
       </ThemeProvider>
     </NextIntlClientProvider>
   );

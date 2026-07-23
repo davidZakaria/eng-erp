@@ -20,6 +20,7 @@ import { UsersModule } from './users/users.module';
 import { AuditModule } from './audit/audit.module';
 import { BackupsModule } from './backups/backups.module';
 import { CatalogModule } from './catalog/catalog.module';
+import { ChatModule } from './chat/chat.module';
 import { AppController } from './app.controller';
 
 @Module({
@@ -41,6 +42,7 @@ import { AppController } from './app.controller';
     AuditModule,
     BackupsModule,
     CatalogModule,
+    ChatModule,
     ProjectsModule,
     ModelsModule,
     BoqModule,

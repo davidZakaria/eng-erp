@@ -66,6 +66,8 @@ model User {
   boqsCreated      ComponentBOQ[]    @relation("BoqCreator")
   executionLogs    ExecutionLog[]    @relation("SiteEngineerLogs")
   uploadedDrawings Drawing[]
+  conversations    Conversation[]    @relation("UserConversations")
+  messages         Message[]
 }
 
 model AuditLog {
@@ -346,4 +348,23 @@ model RFI {
   impactsCost Boolean  @default(false)
   dueDate     DateTime
   createdAt   DateTime @default(now())
+}
+
+model Conversation {
+  id        String    @id @default(uuid())
+  name      String?
+  isGroup   Boolean   @default(false)
+  users     User[]    @relation("UserConversations")
+  messages  Message[]
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  content        String
+  senderId       String
+  sender         User         @relation(fields: [senderId], references: [id])
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  createdAt      DateTime     @default(now())
 }

@@ -213,7 +213,8 @@
     "registerCount": "Showing {shown} of {total} sheets",
     "noDrawingsMatch": "No drawings match the current filters.",
     "withdrawSubmission": "Withdraw",
-    "confirmWithdraw": "Withdraw this pending submission?",
+    "confirmWithdrawTitle": "Withdraw submission?",
+    "confirmWithdraw": "Are you sure you want to withdraw {number} · {title}? This cannot be undone.",
     "submissionWithdrawn": "Submission withdrawn.",
     "uploadNotificationTitle": "New drawing submitted for review",
     "uploadNotificationBody": "{number} · {title}",
@@ -341,8 +342,11 @@
     "noAudit": "No audit events yet.",
     "noBackups": "No backups available.",
     "confirmDeactivate": "Deactivate this user?",
-    "confirmDelete": "Delete this record?",
-    "confirmBulkDelete": "Delete {count} selected drawing(s)?",
+    "confirmDelete": "Are you sure you want to delete this record? This cannot be undone.",
+    "confirmDeleteDrawing": "Are you sure you want to delete {number} · {title}? This cannot be undone.",
+    "confirmDeleteTitle": "Delete drawing?",
+    "confirmDeleteTitleBulk": "Delete {count} drawings?",
+    "confirmBulkDelete": "Are you sure you want to delete {count} selected drawing(s)? This cannot be undone.",
     "checkAllVisible": "Select all ({count} shown)",
     "deleteSelected": "Delete selected ({count})",
     "bulkDeleteDone": "Deleted {count} drawing(s).",
@@ -367,5 +371,17 @@
     "editStoragePath": "Edit storage path…",
     "backupRunning": "Backup running…",
     "backupDone": "Backup completed."
+  },
+  "chat": {
+    "messages": "Messages",
+    "typeMessage": "Type a message…",
+    "startChat": "Start Chat",
+    "conversations": "Conversations",
+    "noUsers": "No teammates available yet.",
+    "noConversations": "No conversations yet.",
+    "emptyThread": "Say hello to start the conversation.",
+    "send": "Send",
+    "live": "Live",
+    "offline": "Offline"
   }
 }

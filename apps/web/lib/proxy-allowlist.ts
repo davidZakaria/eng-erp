@@ -17,6 +17,7 @@ const ALLOWED_PREFIXES = [
   '/reports',
   '/models',
   '/health',
+  '/chat',
 ] as const;
 
 export function isAllowedProxyPath(path: string): boolean {

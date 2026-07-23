@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Drawing, ItemStatus } from '@/lib/types';
 import { clientApi } from '@/lib/client-api';
 import { fileExtensionFromUrl } from '@/lib/drawing-files';
+import { ConfirmDialog } from '@/components/ConfirmDialog';
 
 function statusBadgeClass(status: string): string {
   if (status === 'REVISION_REQUESTED') {
@@ -32,15 +33,21 @@ export function DrawingRegister() {
   const [packageFilter, setPackageFilter] = useState('');
 
   const [status, setStatus] = useState('');
+  const [withdrawTarget, setWithdrawTarget] = useState<Drawing | null>(null);
+  const [withdrawLoading, setWithdrawLoading] = useState(false);
 
-  async function withdrawDrawing(drawing: Drawing) {
-    if (!confirm(t('confirmWithdraw'))) return;
+  async function executeWithdraw() {
+    if (!withdrawTarget) return;
+    setWithdrawLoading(true);
     try {
-      await clientApi(`/drawings/${drawing.id}`, { method: 'DELETE' });
+      await clientApi(`/drawings/${withdrawTarget.id}`, { method: 'DELETE' });
+      setWithdrawTarget(null);
       setStatus(t('submissionWithdrawn'));
       await load();
     } catch (err) {
       setStatus(err instanceof Error ? err.message : t('registrationFailed'));
+    } finally {
+      setWithdrawLoading(false);
     }
   }
 
@@ -205,7 +212,7 @@ export function DrawingRegister() {
                       <button
                         type="button"
                         className="btn-danger !px-2 !py-1 !text-xs"
-                        onClick={() => withdrawDrawing(d)}
+                        onClick={() => setWithdrawTarget(d)}
                       >
                         {t('withdrawSubmission')}
                       </button>
@@ -217,6 +224,24 @@ export function DrawingRegister() {
           </tbody>
         </table>
       </div>
+
+      {withdrawTarget && (
+        <ConfirmDialog
+          open
+          title={t('confirmWithdrawTitle')}
+          message={t('confirmWithdraw', {
+            number: withdrawTarget.drawingNumber,
+            title: withdrawTarget.title,
+          })}
+          confirmLabel={t('withdrawSubmission')}
+          cancelLabel={tCommon('cancel')}
+          loading={withdrawLoading}
+          onConfirm={executeWithdraw}
+          onCancel={() => {
+            if (!withdrawLoading) setWithdrawTarget(null);
+          }}
+        />
+      )}
     </section>
   );
 }

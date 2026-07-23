@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { IoAdapter } from '@nestjs/platform-socket.io';
 import helmet from 'helmet';
 import * as express from 'express';
 import { AppModule } from './app.module';
@@ -9,6 +10,8 @@ import { parseCorsOrigins, parseTrustProxy } from './config/env';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = app.get(ConfigService);
+
+  app.useWebSocketAdapter(new IoAdapter(app));
 
   const expressApp = app.getHttpAdapter().getInstance();
   expressApp.set('trust proxy', parseTrustProxy(config));

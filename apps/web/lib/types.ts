@@ -30,6 +30,33 @@ export interface AuthUser {
   role: Role;
 }
 
+export interface ChatUser {
+  id: string;
+  email: string;
+  fullName: string;
+  role: Role;
+  isActive: boolean;
+}
+
+export interface ChatMessage {
+  id: string;
+  content: string;
+  senderId: string;
+  conversationId: string;
+  createdAt: string;
+  sender: ChatUser;
+}
+
+export interface ChatConversation {
+  id: string;
+  name: string | null;
+  isGroup: boolean;
+  updatedAt: string;
+  users: ChatUser[];
+  lastMessage: ChatMessage | null;
+  peer: ChatUser | null;
+}
+
 export interface ManagedUser {
   id: string;
   email: string;

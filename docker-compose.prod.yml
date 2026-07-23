@@ -77,6 +77,8 @@ services:
         condition: service_healthy
       minio:
         condition: service_started
+    ports:
+      - '127.0.0.1:${ENG_NJD_API_PORT:-13001}:3001'
     networks:
       - eng_njd_net
 

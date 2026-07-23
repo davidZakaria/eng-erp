@@ -6,6 +6,7 @@ import { Discipline, Drawing, ItemStatus } from '@/lib/types';
 import { clientApi } from '@/lib/client-api';
 import { fileExtensionFromUrl, getDrawingFileUrl } from '@/lib/drawing-files';
 import { DrawingFileButton } from '@/components/drawings/DrawingFileButton';
+import { ConfirmDialog } from '@/components/ConfirmDialog';
 
 type ReviewDecision = 'APPROVED_FOR_CONSTRUCTION' | 'REVISION_REQUESTED';
 
@@ -89,6 +90,12 @@ export function DrawingsAdminTab({
   const [showStoragePath, setShowStoragePath] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
   const [bulkDeleting, setBulkDeleting] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState<
+    | { type: 'single'; drawing: Drawing }
+    | { type: 'bulk'; count: number }
+    | null
+  >(null);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   const load = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
@@ -209,42 +216,48 @@ export function DrawingsAdminTab({
     }
   }
 
-  async function removeDrawing(drawing: Drawing) {
-    if (!confirm(t('confirmDelete'))) return;
-    setMessage('');
-    try {
-      await clientApi(`/drawings/${drawing.id}`, { method: 'DELETE' });
-      setSelectedIds((prev) => {
-        const next = new Set(prev);
-        next.delete(drawing.id);
-        return next;
-      });
-      setMessage(t('drawingDeleted'));
-      onPendingChanged?.();
-      await load();
-    } catch (err) {
-      setMessage(err instanceof Error ? err.message : t('saveFailed'));
-    }
+  function requestRemoveDrawing(drawing: Drawing) {
+    setDeleteConfirm({ type: 'single', drawing });
   }
 
-  async function removeSelected() {
-    const ids = filtered.filter((d) => selectedIds.has(d.id)).map((d) => d.id);
-    if (ids.length === 0) return;
-    if (!confirm(t('confirmBulkDelete', { count: ids.length }))) return;
+  function requestRemoveSelected() {
+    const count = filtered.filter((d) => selectedIds.has(d.id)).length;
+    if (count === 0) return;
+    setDeleteConfirm({ type: 'bulk', count });
+  }
+
+  async function executeDeleteConfirm() {
+    if (!deleteConfirm) return;
 
     setMessage('');
-    setBulkDeleting(true);
+    setDeleteLoading(true);
+
     try {
-      for (const id of ids) {
-        await clientApi(`/drawings/${id}`, { method: 'DELETE' });
+      if (deleteConfirm.type === 'single') {
+        const { drawing } = deleteConfirm;
+        await clientApi(`/drawings/${drawing.id}`, { method: 'DELETE' });
+        setSelectedIds((prev) => {
+          const next = new Set(prev);
+          next.delete(drawing.id);
+          return next;
+        });
+        setMessage(t('drawingDeleted'));
+      } else {
+        const ids = filtered.filter((d) => selectedIds.has(d.id)).map((d) => d.id);
+        for (const id of ids) {
+          await clientApi(`/drawings/${id}`, { method: 'DELETE' });
+        }
+        setSelectedIds(new Set());
+        setMessage(t('bulkDeleteDone', { count: ids.length }));
       }
-      setSelectedIds(new Set());
-      setMessage(t('bulkDeleteDone', { count: ids.length }));
+
+      setDeleteConfirm(null);
       onPendingChanged?.();
       await load();
     } catch (err) {
       setMessage(err instanceof Error ? err.message : t('saveFailed'));
     } finally {
+      setDeleteLoading(false);
       setBulkDeleting(false);
     }
   }
@@ -504,7 +517,7 @@ export function DrawingsAdminTab({
               type="button"
               className="btn-danger !px-3 !py-1.5 !text-xs"
               disabled={selectedCount === 0 || bulkDeleting}
-              onClick={removeSelected}
+              onClick={requestRemoveSelected}
             >
               {bulkDeleting
                 ? tCommon('loading')
@@ -617,7 +630,7 @@ export function DrawingsAdminTab({
                       <button
                         type="button"
                         className="btn-danger !px-2 !py-1 !text-xs"
-                        onClick={() => removeDrawing(d)}
+                        onClick={() => requestRemoveDrawing(d)}
                       >
                         {tCommon('delete')}
                       </button>
@@ -629,6 +642,32 @@ export function DrawingsAdminTab({
           </table>
         </div>
       </section>
+
+      {deleteConfirm && (
+        <ConfirmDialog
+          open
+          title={
+            deleteConfirm.type === 'bulk'
+              ? t('confirmDeleteTitleBulk', { count: deleteConfirm.count })
+              : t('confirmDeleteTitle')
+          }
+          message={
+            deleteConfirm.type === 'bulk'
+              ? t('confirmBulkDelete', { count: deleteConfirm.count })
+              : t('confirmDeleteDrawing', {
+                  number: deleteConfirm.drawing.drawingNumber,
+                  title: deleteConfirm.drawing.title,
+                })
+          }
+          confirmLabel={tCommon('delete')}
+          cancelLabel={tCommon('cancel')}
+          loading={deleteLoading}
+          onConfirm={executeDeleteConfirm}
+          onCancel={() => {
+            if (!deleteLoading) setDeleteConfirm(null);
+          }}
+        />
+      )}
 
       {reviewModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">

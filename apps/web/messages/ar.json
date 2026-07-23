@@ -213,7 +213,8 @@
     "registerCount": "عرض {shown} من {total} لوحة",
     "noDrawingsMatch": "لا توجد لوحات مطابقة للفلاتر الحالية.",
     "withdrawSubmission": "سحب",
-    "confirmWithdraw": "هل تريد سحب هذا الإرسال المعلق؟",
+    "confirmWithdrawTitle": "سحب الإرسال؟",
+    "confirmWithdraw": "هل أنت متأكد أنك تريد سحب {number} · {title}؟ لا يمكن التراجع عن هذا.",
     "submissionWithdrawn": "تم سحب الإرسال.",
     "uploadNotificationTitle": "لوحة جديدة بانتظار المراجعة",
     "uploadNotificationBody": "{number} · {title}",
@@ -341,8 +342,11 @@
     "noAudit": "لا توجد أحداث تدقيق بعد.",
     "noBackups": "لا توجد نسخ احتياطية متاحة.",
     "confirmDeactivate": "هل تريد إيقاف تفعيل هذا المستخدم؟",
-    "confirmDelete": "هل تريد حذف هذا السجل؟",
-    "confirmBulkDelete": "هل تريد حذف {count} لوحة محددة؟",
+    "confirmDelete": "هل أنت متأكد أنك تريد حذف هذا السجل؟ لا يمكن التراجع عن هذا.",
+    "confirmDeleteDrawing": "هل أنت متأكد أنك تريد حذف {number} · {title}؟ لا يمكن التراجع عن هذا.",
+    "confirmDeleteTitle": "حذف اللوحة؟",
+    "confirmDeleteTitleBulk": "حذف {count} لوحة؟",
+    "confirmBulkDelete": "هل أنت متأكد أنك تريد حذف {count} لوحة محددة؟ لا يمكن التراجع عن هذا.",
     "checkAllVisible": "تحديد الكل ({count} معروض)",
     "deleteSelected": "حذف المحدد ({count})",
     "bulkDeleteDone": "تم حذف {count} لوحة.",
@@ -367,5 +371,17 @@
     "editStoragePath": "تعديل مسار التخزين…",
     "backupRunning": "جارٍ إنشاء النسخة الاحتياطية…",
     "backupDone": "اكتملت النسخة الاحتياطية."
+  },
+  "chat": {
+    "messages": "الرسائل",
+    "typeMessage": "اكتب رسالة…",
+    "startChat": "بدء محادثة",
+    "conversations": "المحادثات",
+    "noUsers": "لا يوجد زملاء متاحون بعد.",
+    "noConversations": "لا توجد محادثات بعد.",
+    "emptyThread": "قل مرحباً لبدء المحادثة.",
+    "send": "إرسال",
+    "live": "متصل",
+    "offline": "غير متصل"
   }
 }
