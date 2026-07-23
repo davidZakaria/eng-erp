@@ -56,7 +56,7 @@ function ToastItem({
   }
 
   return (
-    <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 shadow-xl">
+    <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow)]">
       <div className="flex items-start gap-3">
         <div className="mt-0.5 rounded-full bg-[var(--accent)] p-2 text-white">
           <MessageCircle className="h-4 w-4" />

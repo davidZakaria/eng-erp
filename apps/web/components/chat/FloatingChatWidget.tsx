@@ -332,7 +332,7 @@ export function FloatingChatWidget() {
   return (
     <div className="fixed bottom-4 end-4 z-[60]">
       {open && (
-        <div className="mb-3 flex h-[28rem] w-[22rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] shadow-2xl">
+        <div className="mb-3 flex h-[28rem] w-[22rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow)]">
           <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-3">
             <div className="min-w-0">
               {view === 'chat' && activeConversation ? (

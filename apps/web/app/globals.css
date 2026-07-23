@@ -31,6 +31,10 @@
   --chip-cost-bg: #fef9c3;
   --chip-cost-text: #713f12;
   --chip-cost-border: #eab308;
+  --overlay: rgba(15, 23, 42, 0.55);
+  --toggle-knob: #ffffff;
+  --warning: #d97706;
+  --shadow: 0 10px 40px rgba(15, 23, 42, 0.12);
   color-scheme: light;
 }
 
@@ -63,6 +67,10 @@
   --chip-cost-bg: #3b2f0e;
   --chip-cost-text: #fde047;
   --chip-cost-border: #a16207;
+  --overlay: rgba(0, 0, 0, 0.72);
+  --toggle-knob: #f8fafc;
+  --warning: #fbbf24;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
   color-scheme: dark;
 }
 
@@ -186,4 +194,12 @@ th {
 .btn-browse:hover {
   border-color: var(--accent);
   color: var(--accent) !important;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+* {
+  scrollbar-color: var(--border) var(--surface-elevated);
 }

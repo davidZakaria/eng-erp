@@ -13,7 +13,7 @@ export function TransferProgress({
 }) {
   const barClass =
     phase === 'retrying'
-      ? 'bg-amber-500'
+      ? 'bg-[var(--warning)]'
       : phase === 'error'
         ? 'bg-[var(--danger)]'
         : 'bg-[var(--accent)]';

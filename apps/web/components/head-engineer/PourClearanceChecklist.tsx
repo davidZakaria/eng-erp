@@ -197,7 +197,7 @@ export function PourClearanceChecklist() {
               }`}
             >
               <span
-                className={`absolute top-0.5 h-6 w-6 rounded-full bg-white transition ${
+                className={`absolute top-0.5 h-6 w-6 rounded-full bg-[var(--toggle-knob)] shadow-sm transition ${
                   checklist[key] ? 'start-5' : 'start-0.5'
                 }`}
               />

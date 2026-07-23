@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { useRouter } from '@/navigation';
 
 export default function LoginPage() {
@@ -45,7 +47,12 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4">
+    <main className="relative min-h-screen flex items-center justify-center px-4">
+      <div className="absolute top-4 end-4 flex items-center gap-2">
+        <LanguageSwitcher />
+        <ThemeToggle />
+      </div>
+
       <div className="w-full max-w-md">
         <div className="mb-10 text-center">
           <p className="font-[family-name:var(--font-display)] text-5xl tracking-tight text-[var(--text)]">
