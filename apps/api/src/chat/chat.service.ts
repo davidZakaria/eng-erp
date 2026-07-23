@@ -2,10 +2,14 @@ import {
   ForbiddenException,
   Injectable,
   NotFoundException,
+  OnModuleInit,
 } from '@nestjs/common';
 import { Role } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.module';
 import { JwtPayload } from '../common/decorators/current-user.decorator';
+
+export const GLOBAL_CONVERSATION_ID = '00000000-0000-4000-8000-000000000001';
+export const GLOBAL_CONVERSATION_NAME = 'Insider Lounge';
 
 const USER_SELECT = {
   id: true,
@@ -22,8 +26,64 @@ const MESSAGE_INCLUDE = {
 } as const;
 
 @Injectable()
-export class ChatService {
+export class ChatService implements OnModuleInit {
   constructor(private prisma: PrismaService) {}
+
+  async onModuleInit() {
+    await this.ensureGlobalConversation();
+  }
+
+  async ensureGlobalConversation() {
+    await this.prisma.conversation.upsert({
+      where: { id: GLOBAL_CONVERSATION_ID },
+      create: {
+        id: GLOBAL_CONVERSATION_ID,
+        name: GLOBAL_CONVERSATION_NAME,
+        isGroup: true,
+        isGlobal: true,
+      },
+      update: {
+        name: GLOBAL_CONVERSATION_NAME,
+        isGroup: true,
+        isGlobal: true,
+      },
+    });
+  }
+
+  async syncGlobalMembership(userId: string) {
+    await this.ensureGlobalConversation();
+
+    await this.prisma.conversation.update({
+      where: { id: GLOBAL_CONVERSATION_ID },
+      data: {
+        users: {
+          connect: { id: userId },
+        },
+      },
+    });
+  }
+
+  async syncAllActiveUsersToGlobalChat() {
+    await this.ensureGlobalConversation();
+
+    const users = await this.prisma.user.findMany({
+      where: { deletedAt: null, isActive: true },
+      select: { id: true },
+    });
+
+    if (users.length === 0) {
+      return;
+    }
+
+    await this.prisma.conversation.update({
+      where: { id: GLOBAL_CONVERSATION_ID },
+      data: {
+        users: {
+          connect: users.map((user) => ({ id: user.id })),
+        },
+      },
+    });
+  }
 
   async getChatUsers(actor: JwtPayload) {
     const users = await this.prisma.user.findMany({
@@ -44,6 +104,8 @@ export class ChatService {
   }
 
   async getConversations(userId: string) {
+    await this.syncGlobalMembership(userId);
+
     const conversations = await this.prisma.conversation.findMany({
       where: {
         users: { some: { id: userId } },
@@ -56,20 +118,17 @@ export class ChatService {
           include: MESSAGE_INCLUDE,
         },
       },
-      orderBy: { updatedAt: 'desc' },
+      orderBy: [{ isGlobal: 'desc' }, { updatedAt: 'desc' }],
     });
 
-    return conversations.map((conversation) => ({
-      id: conversation.id,
-      name: conversation.name,
-      isGroup: conversation.isGroup,
-      updatedAt: conversation.updatedAt,
-      users: conversation.users,
-      lastMessage: conversation.messages[0] ?? null,
-      peer: conversation.isGroup
-        ? null
-        : (conversation.users.find((user) => user.id !== userId) ?? null),
-    }));
+    return conversations.map((conversation) =>
+      this.toConversationSummary(conversation, userId),
+    );
+  }
+
+  async getGlobalConversation(userId: string) {
+    await this.syncGlobalMembership(userId);
+    return this.getConversationSummary(userId, GLOBAL_CONVERSATION_ID);
   }
 
   async getMessages(userId: string, conversationId: string) {
@@ -107,6 +166,24 @@ export class ChatService {
     return message;
   }
 
+  async getConversationMemberIds(conversationId: string) {
+    const conversation = await this.prisma.conversation.findUnique({
+      where: { id: conversationId },
+      select: {
+        id: true,
+        name: true,
+        isGlobal: true,
+        users: { select: { id: true } },
+      },
+    });
+
+    if (!conversation) {
+      throw new NotFoundException('Conversation not found');
+    }
+
+    return conversation;
+  }
+
   async createDirectMessage(user1Id: string, user2Id: string) {
     if (user1Id === user2Id) {
       throw new ForbiddenException('Cannot start a chat with yourself');
@@ -128,6 +205,7 @@ export class ChatService {
     const existingCandidates = await this.prisma.conversation.findMany({
       where: {
         isGroup: false,
+        isGlobal: false,
         users: { some: { id: user1Id } },
       },
       include: {
@@ -189,10 +267,45 @@ export class ChatService {
       throw new NotFoundException('Conversation not found');
     }
 
+    return this.toConversationSummary(conversation, userId);
+  }
+
+  private toConversationSummary(
+    conversation: {
+      id: string;
+      name: string | null;
+      isGroup: boolean;
+      isGlobal: boolean;
+      updatedAt: Date;
+      users: Array<{
+        id: string;
+        email: string;
+        fullName: string;
+        role: Role;
+        isActive: boolean;
+      }>;
+      messages: Array<{
+        id: string;
+        content: string;
+        senderId: string;
+        conversationId: string;
+        createdAt: Date;
+        sender: {
+          id: string;
+          email: string;
+          fullName: string;
+          role: Role;
+          isActive: boolean;
+        };
+      }>;
+    },
+    userId: string,
+  ) {
     return {
       id: conversation.id,
       name: conversation.name,
       isGroup: conversation.isGroup,
+      isGlobal: conversation.isGlobal,
       updatedAt: conversation.updatedAt,
       users: conversation.users,
       lastMessage: conversation.messages[0] ?? null,

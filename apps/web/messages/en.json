@@ -382,6 +382,13 @@
     "emptyThread": "Say hello to start the conversation.",
     "send": "Send",
     "live": "Live",
-    "offline": "Offline"
+    "offline": "Offline",
+    "globalChat": "Team Lounge",
+    "globalChatHint": "Everyone on the platform can see messages here.",
+    "newMessageFrom": "New message from {name}",
+    "languageWarning": "Inappropriate language detected. Warning {count} of {total}.",
+    "chatBanned": "You are muted for 1 minute after 3 language violations.",
+    "mutedUntil": "Muted for {seconds}s due to language violations.",
+    "mutedPlaceholder": "You are temporarily muted…"
   }
 }

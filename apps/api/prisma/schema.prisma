@@ -68,6 +68,7 @@ model User {
   uploadedDrawings Drawing[]
   conversations    Conversation[]    @relation("UserConversations")
   messages         Message[]
+  chatModeration   ChatModeration?
 }
 
 model AuditLog {
@@ -354,6 +355,7 @@ model Conversation {
   id        String    @id @default(uuid())
   name      String?
   isGroup   Boolean   @default(false)
+  isGlobal  Boolean   @default(false)
   users     User[]    @relation("UserConversations")
   messages  Message[]
   updatedAt DateTime  @updatedAt
@@ -367,4 +369,12 @@ model Message {
   conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id])
   createdAt      DateTime     @default(now())
+}
+
+model ChatModeration {
+  userId       String    @id
+  user         User      @relation(fields: [userId], references: [id])
+  warningCount Int       @default(0)
+  bannedUntil  DateTime?
+  updatedAt    DateTime  @updatedAt
 }

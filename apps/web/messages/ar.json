@@ -382,6 +382,13 @@
     "emptyThread": "قل مرحباً لبدء المحادثة.",
     "send": "إرسال",
     "live": "متصل",
-    "offline": "غير متصل"
+    "offline": "غير متصل",
+    "globalChat": "صالة الفريق",
+    "globalChatHint": "يمكن للجميع على المنصة رؤية الرسائل هنا.",
+    "newMessageFrom": "رسالة جديدة من {name}",
+    "languageWarning": "تم رصد لغة غير لائقة. تحذير {count} من {total}.",
+    "chatBanned": "تم كتمك لمدة دقيقة واحدة بعد 3 مخالفات لغوية.",
+    "mutedUntil": "مكتوم لمدة {seconds} ثانية بسبب مخالفات لغوية.",
+    "mutedPlaceholder": "أنت مكتوم مؤقتًا…"
   }
 }

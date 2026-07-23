@@ -51,10 +51,32 @@ export interface ChatConversation {
   id: string;
   name: string | null;
   isGroup: boolean;
+  isGlobal: boolean;
   updatedAt: string;
   users: ChatUser[];
   lastMessage: ChatMessage | null;
   peer: ChatUser | null;
+}
+
+export interface ChatModerationState {
+  warningCount: number;
+  bannedUntil: string | null;
+  isBanned: boolean;
+}
+
+export interface ChatMessageNotification {
+  message: ChatMessage;
+  conversationId: string;
+  conversationName: string;
+  senderName: string;
+  preview: string;
+}
+
+export interface ChatToastNotification {
+  id: string;
+  title: string;
+  body: string;
+  conversationId: string;
 }
 
 export interface ManagedUser {

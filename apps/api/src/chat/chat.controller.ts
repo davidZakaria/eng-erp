@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ChatService } from './chat.service';
+import { ChatModerationService } from './chat-moderation.service';
 import {
   CurrentUser,
   JwtPayload,
@@ -8,11 +9,28 @@ import { CreateDirectMessageDto } from './dto/create-direct-message.dto';
 
 @Controller('chat')
 export class ChatController {
-  constructor(private chatService: ChatService) {}
+  constructor(
+    private chatService: ChatService,
+    private moderationService: ChatModerationService,
+  ) {}
 
   @Get('users')
   getUsers(@CurrentUser() user: JwtPayload) {
     return this.chatService.getChatUsers(user);
+  }
+
+  @Get('status')
+  async getStatus(@CurrentUser() user: JwtPayload) {
+    await this.chatService.syncGlobalMembership(user.sub);
+    const moderation = await this.moderationService.getState(user.sub);
+    const globalConversation = await this.chatService.getGlobalConversation(
+      user.sub,
+    );
+
+    return {
+      moderation,
+      globalConversation,
+    };
   }
 
   @Get('conversations')

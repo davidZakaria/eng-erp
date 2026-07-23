@@ -8,13 +8,20 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import {
+  ForbiddenException,
   Injectable,
   Logger,
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Server, Socket } from 'socket.io';
-import { ChatService } from './chat.service';
+import {
+  ChatService,
+  GLOBAL_CONVERSATION_ID,
+  GLOBAL_CONVERSATION_NAME,
+} from './chat.service';
+import { ChatLanguageFilterService } from './chat-language-filter.service';
+import { ChatModerationService } from './chat-moderation.service';
 import { JwtPayload } from '../common/decorators/current-user.decorator';
 
 type AuthenticatedSocket = Socket & {
@@ -33,6 +40,8 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   constructor(
     private chatService: ChatService,
+    private languageFilter: ChatLanguageFilterService,
+    private moderationService: ChatModerationService,
     private jwtService: JwtService,
   ) {}
 
@@ -45,6 +54,17 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
       const payload = await this.jwtService.verifyAsync<JwtPayload>(token);
       client.data.user = payload;
+
+      await client.join(this.userRoom(payload.sub));
+      await this.chatService.syncGlobalMembership(payload.sub);
+      await client.join(GLOBAL_CONVERSATION_ID);
+
+      const moderation = await this.moderationService.getState(payload.sub);
+      client.emit('chatStatus', {
+        moderation,
+        globalConversationId: GLOBAL_CONVERSATION_ID,
+      });
+
       this.logger.debug(`Client connected: ${payload.sub}`);
     } catch {
       client.emit('error', { message: 'Unauthorized' });
@@ -91,13 +111,97 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
       return;
     }
 
-    const message = await this.chatService.sendMessage(
-      user.sub,
-      conversationId,
-      content,
-    );
+    try {
+      await this.moderationService.assertCanSend(user.sub);
 
-    this.server.to(conversationId).emit('newMessage', message);
+      const filterResult = this.languageFilter.check(content);
+      if (!filterResult.clean) {
+        const violation = await this.moderationService.recordViolation(user.sub);
+        client.emit('chatModeration', {
+          ...violation,
+          message: violation.justBanned
+            ? 'banned'
+            : `warning-${violation.warningCount}`,
+        });
+
+        if (violation.justBanned) {
+          client.emit('chatBanned', {
+            bannedUntil: violation.bannedUntil,
+          });
+        }
+
+        return;
+      }
+
+      const message = await this.chatService.sendMessage(
+        user.sub,
+        conversationId,
+        content,
+      );
+
+      this.server.to(conversationId).emit('newMessage', message);
+      await this.notifyRecipients(message, conversationId, user.sub);
+    } catch (error) {
+      let message = 'Unable to send message';
+      if (error instanceof ForbiddenException) {
+        const response = error.getResponse();
+        if (typeof response === 'string') {
+          message = response;
+        } else if (
+          typeof response === 'object' &&
+          response &&
+          'message' in response
+        ) {
+          const raw = (response as { message?: string | string[] }).message;
+          message = Array.isArray(raw) ? raw.join(', ') : String(raw ?? message);
+        }
+      }
+
+      client.emit('error', { message });
+
+      if (message.includes('muted')) {
+        const moderation = await this.moderationService.getState(user.sub);
+        client.emit('chatBanned', { bannedUntil: moderation.bannedUntil });
+      }
+    }
+  }
+
+  private async notifyRecipients(
+    message: {
+      id: string;
+      content: string;
+      senderId: string;
+      conversationId: string;
+      createdAt: Date;
+      sender: { fullName: string };
+    },
+    conversationId: string,
+    senderId: string,
+  ) {
+    const conversation =
+      await this.chatService.getConversationMemberIds(conversationId);
+
+    const conversationName = conversation.isGlobal
+      ? GLOBAL_CONVERSATION_NAME
+      : (conversation.name ?? 'Direct message');
+
+    for (const member of conversation.users) {
+      if (member.id === senderId) {
+        continue;
+      }
+
+      this.server.to(this.userRoom(member.id)).emit('messageNotification', {
+        message,
+        conversationId,
+        conversationName,
+        senderName: message.sender.fullName,
+        preview: message.content,
+      });
+    }
+  }
+
+  private userRoom(userId: string) {
+    return `user:${userId}`;
   }
 
   private requireUser(client: AuthenticatedSocket): JwtPayload {
