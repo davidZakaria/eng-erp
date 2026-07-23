@@ -84,6 +84,8 @@ export function DrawingsAdminTab({
   const [comments, setComments] = useState('');
   const [reviewLoading, setReviewLoading] = useState(false);
   const [showStoragePath, setShowStoragePath] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
+  const [bulkDeleting, setBulkDeleting] = useState(false);
 
   const load = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
@@ -116,6 +118,34 @@ export function DrawingsAdminTab({
     if (!statusFilter) return drawings;
     return drawings.filter((d) => d.status === statusFilter);
   }, [drawings, statusFilter]);
+
+  const allFilteredSelected =
+    filtered.length > 0 && filtered.every((d) => selectedIds.has(d.id));
+  const selectedCount = filtered.filter((d) => selectedIds.has(d.id)).length;
+
+  function toggleRow(id: string) {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  }
+
+  function toggleSelectAll() {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (allFilteredSelected) {
+        filtered.forEach((d) => next.delete(d.id));
+      } else {
+        filtered.forEach((d) => next.add(d.id));
+      }
+      return next;
+    });
+  }
 
   function openCreate() {
     setCreating(true);
@@ -181,11 +211,38 @@ export function DrawingsAdminTab({
     setMessage('');
     try {
       await clientApi(`/drawings/${drawing.id}`, { method: 'DELETE' });
+      setSelectedIds((prev) => {
+        const next = new Set(prev);
+        next.delete(drawing.id);
+        return next;
+      });
       setMessage(t('drawingDeleted'));
       onPendingChanged?.();
       await load();
     } catch (err) {
       setMessage(err instanceof Error ? err.message : t('saveFailed'));
+    }
+  }
+
+  async function removeSelected() {
+    const ids = filtered.filter((d) => selectedIds.has(d.id)).map((d) => d.id);
+    if (ids.length === 0) return;
+    if (!confirm(t('confirmBulkDelete', { count: ids.length }))) return;
+
+    setMessage('');
+    setBulkDeleting(true);
+    try {
+      for (const id of ids) {
+        await clientApi(`/drawings/${id}`, { method: 'DELETE' });
+      }
+      setSelectedIds(new Set());
+      setMessage(t('bulkDeleteDone', { count: ids.length }));
+      onPendingChanged?.();
+      await load();
+    } catch (err) {
+      setMessage(err instanceof Error ? err.message : t('saveFailed'));
+    } finally {
+      setBulkDeleting(false);
     }
   }
 
@@ -429,10 +486,44 @@ export function DrawingsAdminTab({
       )}
 
       <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+        {filtered.length > 0 && (
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border)] px-4 py-2">
+            <label className="inline-flex items-center gap-2 text-sm text-[var(--text)] cursor-pointer">
+              <input
+                type="checkbox"
+                checked={allFilteredSelected}
+                onChange={toggleSelectAll}
+                className="rounded border-[var(--border)]"
+              />
+              {t('checkAllVisible', { count: filtered.length })}
+            </label>
+            <button
+              type="button"
+              className="btn-danger !px-3 !py-1.5 !text-xs"
+              disabled={selectedCount === 0 || bulkDeleting}
+              onClick={removeSelected}
+            >
+              {bulkDeleting
+                ? tCommon('loading')
+                : t('deleteSelected', { count: selectedCount })}
+            </button>
+          </div>
+        )}
         <div className="overflow-x-auto">
           <table className="w-full text-sm min-w-[1100px]">
             <thead className="bg-[var(--surface-elevated)] text-[var(--muted)]">
               <tr>
+                <th className="w-10 px-4 py-3">
+                  <span className="sr-only">{t('checkAllVisible', { count: filtered.length })}</span>
+                  <input
+                    type="checkbox"
+                    checked={allFilteredSelected}
+                    onChange={toggleSelectAll}
+                    disabled={filtered.length === 0}
+                    className="rounded border-[var(--border)]"
+                    aria-label={t('checkAllVisible', { count: filtered.length })}
+                  />
+                </th>
                 <th className="text-start px-4 py-3">{tCommon('number')}</th>
                 <th className="text-start px-4 py-3">{tCommon('title')}</th>
                 <th className="text-start px-4 py-3">{tDrawings('discipline')}</th>
@@ -446,13 +537,22 @@ export function DrawingsAdminTab({
             <tbody>
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-[var(--muted)]">
+                  <td colSpan={9} className="px-4 py-8 text-center text-[var(--muted)]">
                     {tDrawings('noPending')}
                   </td>
                 </tr>
               ) : (
                 filtered.map((d) => (
                   <tr key={d.id} className="border-t border-[var(--border)]">
+                    <td className="px-4 py-3">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(d.id)}
+                        onChange={() => toggleRow(d.id)}
+                        className="rounded border-[var(--border)]"
+                        aria-label={`${d.drawingNumber} · ${d.title}`}
+                      />
+                    </td>
                     <td className="px-4 py-3 font-mono">{d.drawingNumber}</td>
                     <td className="px-4 py-3">{d.title}</td>
                     <td className="px-4 py-3">{tDisc(d.discipline)}</td>
