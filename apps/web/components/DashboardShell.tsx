@@ -5,6 +5,7 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { DrawingReviewNotificationsProvider } from '@/components/drawings/DrawingReviewNotificationsProvider';
 import { PendingDrawingsHeaderBadge } from '@/components/drawings/PendingDrawingsHeaderBadge';
+import { RoleWelcomeGuide } from '@/components/help/RoleWelcomeGuide';
 import { canReviewDrawings } from '@/lib/drawing-review';
 import { useRouter } from '@/navigation';
 import { useTranslations } from 'next-intl';
@@ -57,7 +58,10 @@ export function DashboardShell({
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
+      <main className="mx-auto max-w-6xl px-4 py-8">
+        <RoleWelcomeGuide role={user.role} />
+        {children}
+      </main>
     </div>
   );
 

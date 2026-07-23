@@ -11,6 +11,7 @@ import { CatalogManageTab } from '@/components/admin/CatalogManageTab';
 import { BoqAdminTab } from '@/components/admin/BoqAdminTab';
 import { TeamManagementTab } from '@/components/admin/TeamManagementTab';
 import { useDrawingReviewNotifications } from '@/components/drawings/DrawingReviewNotificationsProvider';
+import { DashboardTabNav } from '@/components/help/DashboardTabNav';
 
 type Tab =
   | 'drawings'
@@ -49,27 +50,15 @@ export default function HeadEngineerDashboardPage() {
 
   return (
     <div>
-      <div className="flex gap-1 mb-6 border-b border-[var(--border)] overflow-x-auto">
-        {tabs.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => setTab(item.id)}
-            className={`px-4 py-2 text-sm border-b-2 -mb-px transition whitespace-nowrap inline-flex items-center gap-2 ${
-              tab === item.id
-                ? 'border-[var(--accent)] text-[var(--text)]'
-                : 'border-transparent text-[var(--muted)] hover:text-[var(--text)]'
-            }`}
-          >
-            {item.label}
-            {item.id === 'drawings' && pendingCount > 0 && (
-              <span className="inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-[var(--accent)] px-1.5 py-0.5 text-[10px] font-semibold text-white leading-none">
-                {pendingCount}
-              </span>
-            )}
-          </button>
-        ))}
-      </div>
+      <DashboardTabNav
+        tabs={tabs.map((item) => ({
+          ...item,
+          badge: item.id === 'drawings' ? pendingCount : undefined,
+        }))}
+        activeTab={tab}
+        onTabChange={setTab}
+        helpScope="headEngineer"
+      />
 
       {tab === 'drawings' && (
         <DrawingsAdminTab

@@ -4,6 +4,8 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { DrawingRegister } from '@/components/drawings/DrawingRegister';
+import { FeatureGuideBanner } from '@/components/help/FeatureGuideBanner';
+import { DashboardTabNav } from '@/components/help/DashboardTabNav';
 import { MepConsultantPanel } from '@/components/mep/MepSubmittalForm';
 import { TransferProgress } from '@/components/TransferProgress';
 import { clientApi } from '@/lib/client-api';
@@ -23,6 +25,7 @@ function isAllowedDrawingFile(file: File): boolean {
 export default function ConsultantDashboardPage() {
   const t = useTranslations('drawings');
   const tNav = useTranslations('nav');
+  const tHelp = useTranslations('help');
   const tDisc = useTranslations('disciplines');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [role, setRole] = useState<Role | null>(null);
@@ -151,34 +154,28 @@ export default function ConsultantDashboardPage() {
   }
 
   const isMepConsultant = role === 'MEP_CONSULTANT';
+  const consultantTabs = [
+    { id: 'mep', label: tNav('mepSubmittals') },
+    { id: 'drawings', label: t('uploadDrawing') },
+  ] as const;
 
   return (
     <div className="space-y-8">
-      {isMepConsultant && (
-        <div className="flex gap-1 border-b border-[var(--border)] overflow-x-auto">
-          <button
-            type="button"
-            onClick={() => setTab('mep')}
-            className={`px-4 py-2 text-sm border-b-2 -mb-px transition whitespace-nowrap ${
-              tab === 'mep'
-                ? 'border-[var(--accent)] text-[var(--text)]'
-                : 'border-transparent text-[var(--muted)] hover:text-[var(--text)]'
-            }`}
-          >
-            {tNav('mepSubmittals')}
-          </button>
-          <button
-            type="button"
-            onClick={() => setTab('drawings')}
-            className={`px-4 py-2 text-sm border-b-2 -mb-px transition whitespace-nowrap ${
-              tab === 'drawings'
-                ? 'border-[var(--accent)] text-[var(--text)]'
-                : 'border-transparent text-[var(--muted)] hover:text-[var(--text)]'
-            }`}
-          >
-            {t('uploadDrawing')}
-          </button>
-        </div>
+      {isMepConsultant ? (
+        <DashboardTabNav
+          tabs={[...consultantTabs]}
+          activeTab={tab}
+          onTabChange={setTab}
+          helpScope="consultant"
+        />
+      ) : (
+        <FeatureGuideBanner
+          text={
+            tHelp.has('tabs.consultant.drawings.guide')
+              ? tHelp('tabs.consultant.drawings.guide')
+              : ''
+          }
+        />
       )}
 
       {isMepConsultant && tab === 'mep' ? (

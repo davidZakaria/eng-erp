@@ -413,5 +413,127 @@
     "chatBanned": "You are muted for 1 minute after 3 language violations.",
     "mutedUntil": "Muted for {seconds}s due to language violations.",
     "mutedPlaceholder": "You are temporarily muted…"
+  },
+  "help": {
+    "tooltipLabel": "Help",
+    "welcomeTitle": "How to use your dashboard",
+    "abbrevTitle": "Key abbreviations",
+    "generalTip": "Hover the help icon on each tab for a quick summary. The info banner below the tabs explains the active feature in more detail.",
+    "roleWelcome": {
+      "SUPER_ADMIN": "You manage the entire platform: users, master data, BOQ, drawing register, audit trail, and system backups. Use Pending Drawings to approve or reject consultant submissions — bulk delete is available here only.",
+      "ADMIN": "You support day-to-day administration: team access, catalog data, and drawing review workflows. Changes you make are recorded in the audit trail.",
+      "PROJECT_MANAGER": "You oversee project health: design reviews, site progress, and coordination between consultants and site teams. Drawings must be approved before site use.",
+      "HEAD_ENGINEER": "You are the technical gatekeeper on site. Review pending drawings and MEP submittals, run structural QA/QC before pours, track BOQ execution (5D BIM), and resolve RFIs and snags.",
+      "SITE_ENGINEER": "You execute work on site. View approved drawings only, log pours after head-engineer clearance, record BOQ progress, report defects, and raise RFIs when clarification is needed.",
+      "CONSULTANT": "Upload new drawing revisions (DWG, DXF, or PDF). Each new version automatically supersedes the previous one so site teams never build from outdated models.",
+      "ARCH_CONSULTANT": "Upload architectural drawings and sheets. Provide LOD metadata (sheet size, scale, package) so the register stays complete for reviewers and site teams.",
+      "STRUCT_CONSULTANT": "Upload structural drawings. Head engineers use your approved sheets for pour clearance and QA/QC checklists before concrete is placed.",
+      "MEP_CONSULTANT": "Submit MEP shop drawings and material submittals for head-engineer approval. Approved items become APPROVED FOR CONSTRUCTION; rejected items return as REVISION REQUESTED."
+    },
+    "roleAbbrev": {
+      "SUPER_ADMIN": "BOQ — Bill of Quantities\nMEP — Mechanical, Electrical, Plumbing\nRFI — Request For Information\nNCR — Non-Conformance Report\nVO — Variation Order\nLOD — Level of Development\nERP — Enterprise Resource Planning",
+      "ADMIN": "BOQ — Bill of Quantities\nRFI — Request For Information\nCSI — Construction Specifications Institute divisions",
+      "PROJECT_MANAGER": "BOQ — Bill of Quantities\nRFI — Request For Information\n5D BIM — 3D model + schedule (4D) + cost/quantities (5D)",
+      "HEAD_ENGINEER": "QA/QC — Quality Assurance / Quality Control\n5D BIM — 3D model + schedule + cost/quantities\nBOQ — Bill of Quantities\nMEP — Mechanical, Electrical, Plumbing\nRFI — Request For Information\nNCR — Non-Conformance Report\nVO — Variation Order\nPT — Post-Tension",
+      "SITE_ENGINEER": "BOQ — Bill of Quantities\nRFI — Request For Information\nNCR — Non-Conformance Report\nPT — Post-Tension\n5D BIM — Field quantities linked to the BOQ",
+      "CONSULTANT": "LOD — Level of Development (sheet metadata)\nDWG/DXF — CAD drawing formats\nSUPERSEDED — older revision replaced by a newer upload",
+      "ARCH_CONSULTANT": "LOD — Level of Development\nCSI — Spec division codes for catalog alignment",
+      "STRUCT_CONSULTANT": "PT — Post-Tension cables and stressing\nQA/QC — Quality checks before concrete pour",
+      "MEP_CONSULTANT": "MEP — Mechanical, Electrical, Plumbing\nAFC — Approved For Construction\nRR — Revision Requested (resubmit required)"
+    },
+    "tabs": {
+      "headEngineer": {
+        "drawings": {
+          "tip": "Review consultant uploads before they reach site.",
+          "guide": "Pending Drawings lists submissions awaiting your decision. Approve to release to site engineers, or reject with comments. New consultant uploads automatically supersede older versions of the same drawing number."
+        },
+        "mep": {
+          "tip": "Approve or reject MEP shop drawings and material submittals.",
+          "guide": "MEP Submittals tracks mechanical, electrical, and plumbing packages. Review each submittal against the project spec section. Approve for construction or request revision. Owner deviations may require an additional approval step."
+        },
+        "structural": {
+          "tip": "Structural QA/QC — pre-pour checklist and clearance.",
+          "guide": "Run the pour clearance checklist: formwork, rebar, post-tension (PT), and hold points. The system blocks approval if open NCRs, MEP conflicts, or site defects exist on the pour zone. Only clear pours that pass every gate."
+        },
+        "execution": {
+          "tip": "Field Execution (5D BIM) — BOQ planned vs installed quantities.",
+          "guide": "Track Bill of Quantities (BOQ) progress: planned quantity, logged installs, and percent complete. Rows turn red at 100%. To exceed planned quantity you need a Variation Order (VO) — do not over-install without approval."
+        },
+        "rfis": {
+          "tip": "RFIs and site snags — questions and defects to close.",
+          "guide": "Manage Requests For Information (RFIs) from site and consultant snags. Answer RFIs to unblock work; track snags until closed. Open items may block structural clearance or pour approval."
+        },
+        "catalog": {
+          "tip": "Project master data — CSI specs, vendors, load schedules.",
+          "guide": "Maintain the project catalog: CSI spec sections, approved vendors, and electrical load schedules. MEP submittals and BOQ lines reference this data — keep it accurate before approvals."
+        },
+        "boqAdmin": {
+          "tip": "BOQ Management — define quantity lines by CSI division.",
+          "guide": "Add and edit BOQ lines with unit, rate, and planned quantity. Site engineers log execution against these lines in Field Execution. Changes here affect progress reporting and VO thresholds."
+        },
+        "team": {
+          "tip": "Invite and manage project team members.",
+          "guide": "Create user accounts and assign roles (site engineer, consultant, etc.). Deactivated users lose access but records are preserved. Super Admin manages platform-wide access from the admin dashboard."
+        }
+      },
+      "siteEngineer": {
+        "drawings": {
+          "tip": "Approved drawings only — safe to build from.",
+          "guide": "This register shows drawings approved by the head engineer. Do not use superseded or pending sheets. Download the latest revision before starting work on site."
+        },
+        "pours": {
+          "tip": "Log concrete pours after head-engineer clearance.",
+          "guide": "Record pour date, location, and volume once structural QA/QC clearance is granted. Pours logged without clearance may be flagged for audit."
+        },
+        "boq": {
+          "tip": "BOQ Progress — log installed quantities in the field.",
+          "guide": "Update actual installed quantities against the BOQ. Progress feeds the 5D BIM view for the head engineer. Stop at 100% of planned quantity unless a Variation Order (VO) is approved."
+        },
+        "defects": {
+          "tip": "Report site defects and non-conformances.",
+          "guide": "Create site defect records with location, photo, and severity. Open defects can block pour clearance in the same zone. Close defects only after remedial work is verified."
+        },
+        "rfis": {
+          "tip": "Raise RFIs when drawings or specs are unclear.",
+          "guide": "Submit a Request For Information (RFI) with a clear question and reference drawing. Track status until the head engineer or consultant answers. Do not guess — RFIs protect quality and liability."
+        }
+      },
+      "superAdmin": {
+        "team": {
+          "tip": "Platform-wide user and role management.",
+          "guide": "Manage all users across the ERP. Assign roles, reset access, and deactivate accounts (soft delete). Every mutation is audit-logged."
+        },
+        "catalog": {
+          "tip": "Master catalog — CSI, vendors, electrical loads.",
+          "guide": "Edit project master data used by MEP, BOQ, and approvals. Keep CSI divisions and vendor lists aligned with the construction package."
+        },
+        "boq": {
+          "tip": "Global BOQ line administration.",
+          "guide": "Define and maintain BOQ items, units, rates, and planned quantities. Site execution and head-engineer dashboards read from this master list."
+        },
+        "drawings": {
+          "tip": "Full drawing register with bulk actions.",
+          "guide": "Review pending consultant uploads, edit LOD metadata, and archive records. Bulk delete is restricted to Super Admin. Approving releases drawings to site engineers."
+        },
+        "audit": {
+          "tip": "Immutable audit trail of all mutations.",
+          "guide": "Every POST, PUT, and DELETE logs the user ID and action. Use this trail for compliance, dispute resolution, and security reviews."
+        },
+        "backups": {
+          "tip": "Database and system backup snapshots.",
+          "guide": "Trigger on-demand backups before major migrations or data changes. Restore procedures should be tested on a staging environment first."
+        }
+      },
+      "consultant": {
+        "drawings": {
+          "tip": "Upload a new drawing revision to the vault.",
+          "guide": "Submit DWG, DXF, or PDF files with drawing number, title, and discipline. Fill LOD fields (sheet size, scale, package) when available. Uploading a new version marks the previous revision as SUPERSEDED automatically."
+        },
+        "mep": {
+          "tip": "Create MEP material and shop drawing submittals.",
+          "guide": "Link each submittal to a CSI spec section, attach files, and submit for head-engineer review. Status becomes APPROVED FOR CONSTRUCTION or REVISION REQUESTED. Resubmit after addressing comments."
+        }
+      }
+    }
   }
 }
