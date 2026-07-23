@@ -40,13 +40,17 @@ async function proxy(request: NextRequest, path: string) {
   const isReadWithoutBody =
     request.method === 'GET' || request.method === 'HEAD';
 
-  const body = isReadWithoutBody ? undefined : await request.arrayBuffer();
-
-  const res = await fetch(`${API_BASE}${path}`, {
+  const fetchInit: RequestInit & { duplex?: 'half' } = {
     method: request.method,
     headers,
-    body,
-  });
+  };
+
+  if (!isReadWithoutBody && request.body) {
+    fetchInit.body = request.body;
+    fetchInit.duplex = 'half';
+  }
+
+  const res = await fetch(`${API_BASE}${path}`, fetchInit);
 
   const responseHeaders = new Headers();
   for (const name of FORWARDED_HEADERS) {
@@ -58,6 +62,14 @@ async function proxy(request: NextRequest, path: string) {
 
   if (isReadWithoutBody) {
     return new NextResponse(res.body, {
+      status: res.status,
+      headers: responseHeaders,
+    });
+  }
+
+  const contentLength = res.headers.get('content-length');
+  if (contentLength === '0' || res.status === 204) {
+    return new NextResponse(null, {
       status: res.status,
       headers: responseHeaders,
     });

@@ -93,7 +93,7 @@ export class StorageController {
     @Query('uploadId') uploadId: string | undefined,
     @Query('partNumber') partNumber: string | undefined,
     @Req() req: Request,
-    @Res() res: Response,
+    @Res({ passthrough: true }) res: Response,
   ) {
     if (!key || !uploadId || !partNumber) {
       throw new BadRequestException('key, uploadId, and partNumber are required');
@@ -104,11 +104,16 @@ export class StorageController {
       throw new BadRequestException('partNumber must be a positive integer');
     }
 
-    const chunks: Buffer[] = [];
-    for await (const chunk of req) {
-      chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+    let body: Buffer;
+    if (Buffer.isBuffer(req.body)) {
+      body = req.body;
+    } else {
+      const chunks: Buffer[] = [];
+      for await (const chunk of req) {
+        chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+      }
+      body = Buffer.concat(chunks);
     }
-    const body = Buffer.concat(chunks);
 
     if (body.length === 0) {
       throw new BadRequestException('Request body is empty');
@@ -122,7 +127,6 @@ export class StorageController {
     );
 
     res.setHeader('ETag', ETag);
-    res.status(200).send('');
   }
 
   @Roles(
@@ -149,6 +153,7 @@ export class StorageController {
     Role.STRUCT_CONSULTANT,
     Role.MEP_CONSULTANT,
   )
+  @SkipThrottle()
   @Post('multipart/complete')
   completeMultipart(@Body() dto: CompleteMultipartDto) {
     return this.storageService.completeMultipartUpload(

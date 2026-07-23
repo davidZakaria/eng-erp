@@ -1,8 +1,6 @@
 'use client';
 
-import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
-import Uppy from '@uppy/core';
-import AwsS3 from '@uppy/aws-s3';
+import { ChangeEvent, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { DrawingRegister } from '@/components/drawings/DrawingRegister';
@@ -11,11 +9,16 @@ import { clientApi } from '@/lib/client-api';
 import {
   contentTypeForFileName,
   DRAWING_DISCIPLINES,
-  MultipartCreateResponse,
-  MultipartPartResponse,
-  proxyMultipartUploadPartUrl,
 } from '@/lib/drawing-upload';
+import { uploadDrawingFileMultipart } from '@/lib/resilient-multipart-upload';
 import { Discipline } from '@/lib/types';
+
+const ALLOWED_EXTENSIONS = ['.dwg', '.dxf', '.pdf'];
+
+function isAllowedDrawingFile(file: File): boolean {
+  const name = file.name.toLowerCase();
+  return ALLOWED_EXTENSIONS.some((ext) => name.endsWith(ext));
+}
 
 export default function ConsultantDashboardPage() {
   const t = useTranslations('drawings');
@@ -33,232 +36,102 @@ export default function ConsultantDashboardPage() {
   const [packageName, setPackageName] = useState('Construction Package G1');
   const [status, setStatus] = useState('');
   const [fileName, setFileName] = useState('');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [uploadPhase, setUploadPhase] = useState<
     'idle' | 'active' | 'retrying' | 'error'
   >('idle');
 
-  const uppy = useMemo(() => {
-    const instance = new Uppy({
-      autoProceed: false,
-      restrictions: {
-        maxNumberOfFiles: 1,
-        allowedFileTypes: ['.dwg', '.dxf', '.pdf'],
-      },
-    });
-
-    instance.use(AwsS3, {
-      shouldUseMultipart: true,
-      retryDelays: [0, 1000, 3000, 5000],
-      createMultipartUpload: async (file) => {
-        const contentType = contentTypeForFileName(file.name ?? '', file.type);
-        const data = await clientApi<MultipartCreateResponse>(
-          '/storage/multipart/create',
-          {
-            method: 'POST',
-            body: JSON.stringify({
-              fileName: file.name ?? 'drawing.dwg',
-              contentType,
-            }),
-          },
-        );
-
-        instance.setFileMeta(file.id, {
-          fileUrl: data.fileUrl,
-          fileKey: data.fileKey,
-        });
-
-        return { uploadId: data.uploadId, key: data.key };
-      },
-      listParts: async (_file, { uploadId, key }) => {
-        const query = new URLSearchParams({
-          key,
-          uploadId: uploadId ?? '',
-        });
-        return clientApi<MultipartPartResponse[]>(
-          `/storage/multipart/list-parts?${query.toString()}`,
-        );
-      },
-      signPart: async (_file, { uploadId, key, partNumber }) => ({
-        method: 'PUT',
-        url: proxyMultipartUploadPartUrl(key, uploadId, partNumber),
-        headers: { 'Content-Type': 'application/octet-stream' },
-      }),
-      completeMultipartUpload: async (file, { uploadId, key, parts }) => {
-        const data = await clientApi<{ fileUrl: string; fileKey: string }>(
-          '/storage/multipart/complete',
-          {
-            method: 'POST',
-            body: JSON.stringify({ key, uploadId, parts }),
-          },
-        );
-
-        instance.setFileMeta(file.id, {
-          fileUrl: data.fileUrl,
-          fileKey: data.fileKey,
-        });
-
-        return { location: data.fileUrl };
-      },
-      abortMultipartUpload: async (_file, { uploadId, key }) => {
-        await clientApi('/storage/multipart/abort', {
-          method: 'POST',
-          body: JSON.stringify({ key, uploadId }),
-        });
-      },
-    });
-
-    return instance;
-  }, []);
-
-  useEffect(() => {
-    const onProgress = (
-      _file: unknown,
-      progressData: { bytesUploaded: number; bytesTotal: number | null },
-    ) => {
-      if (!progressData.bytesTotal) return;
-      setUploadPhase((phase) => (phase === 'retrying' ? 'active' : phase));
-      setProgress(
-        Math.round((progressData.bytesUploaded / progressData.bytesTotal) * 100),
-      );
-      setStatus((current) =>
-        current === t('uploadInterrupted') ? current : t('uploadingVault'),
-      );
-    };
-
-    const onUploadError = () => {
-      setUploadPhase('retrying');
-      setUploading(true);
-      setStatus(t('uploadInterrupted'));
-    };
-
-    const onComplete = async (result: {
-      successful?: { meta: Record<string, unknown> }[];
-      failed?: unknown[];
-    }) => {
-      setUploading(false);
-
-      if (result.failed?.length) {
-        setUploadPhase('error');
-        setStatus(t('uploadFailedFinal'));
-        return;
-      }
-
-      setUploadPhase('active');
-
-      try {
-        setStatus(t('registering'));
-
-        for (const file of result.successful ?? []) {
-          const fileUrl = file.meta.fileUrl as string | undefined;
-          const drawingNumberValue = file.meta.drawingNumber as string | undefined;
-          const titleValue = file.meta.title as string | undefined;
-          const disciplineValue = file.meta.discipline as Discipline | undefined;
-
-          if (!fileUrl || !drawingNumberValue || !titleValue || !disciplineValue) {
-            throw new Error('Missing upload or drawing metadata');
-          }
-
-          await clientApi('/drawings', {
-            method: 'POST',
-            body: JSON.stringify({
-              drawingNumber: drawingNumberValue,
-              title: titleValue,
-              discipline: disciplineValue,
-              fileUrl,
-              projectNumber: (file.meta.projectNumber as string | undefined)?.trim() || undefined,
-              disciplineCode: (file.meta.disciplineCode as string | undefined)?.trim() || undefined,
-              sheetNumber: (file.meta.sheetNumber as string | undefined)?.trim() || undefined,
-              sheetSize: (file.meta.sheetSize as string | undefined)?.trim() || undefined,
-              scale: (file.meta.scale as string | undefined)?.trim() || undefined,
-              packageName: (file.meta.packageName as string | undefined)?.trim() || undefined,
-            }),
-          });
-        }
-
-        setStatus(t('submitted'));
-        setUploadPhase('idle');
-        setDrawingNumber('');
-        setTitle('');
-        setDisciplineCode('');
-        setSheetNumber('');
-        setSheetSize('');
-        setScale('');
-        setFileName('');
-        setProgress(0);
-        uppy.clear();
-        if (fileInputRef.current) fileInputRef.current.value = '';
-        setRefreshKey((k) => k + 1);
-      } catch (err) {
-        setUploadPhase('error');
-        setStatus(err instanceof Error ? err.message : t('registrationFailed'));
-      }
-    };
-
-    uppy.on('upload-progress', onProgress);
-    uppy.on('upload-error', onUploadError);
-    uppy.on('complete', onComplete);
-
-    return () => {
-      uppy.off('upload-progress', onProgress);
-      uppy.off('upload-error', onUploadError);
-      uppy.off('complete', onComplete);
-      uppy.destroy();
-    };
-  }, [uppy, t]);
-
   function onFileChosen(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    uppy.clear();
-    try {
-      uppy.addFile({
-        name: file.name,
-        type: file.type || contentTypeForFileName(file.name),
-        data: file,
-        source: 'Local',
-        isRemote: false,
-      });
-      setFileName(file.name);
-      setStatus('');
-      setProgress(0);
-    } catch (err) {
-      setStatus(err instanceof Error ? err.message : t('couldNotAddFile'));
+    if (!isAllowedDrawingFile(file)) {
+      setStatus(t('couldNotAddFile'));
       setFileName('');
+      setSelectedFile(null);
+      return;
     }
+
+    setSelectedFile(file);
+    setFileName(file.name);
+    setStatus('');
+    setProgress(0);
+    setUploadPhase('idle');
   }
 
-  function startUpload() {
+  async function startUpload() {
     if (!drawingNumber.trim() || !title.trim()) {
       setStatus(t('enterNumberTitle'));
       return;
     }
 
-    if (uppy.getFiles().length === 0) {
+    if (!selectedFile) {
       setStatus(t('chooseFileFirst'));
       return;
     }
 
     setUploading(true);
     setUploadPhase('active');
+    setProgress(0);
     setStatus(t('uploadingVault'));
-    uppy.getFiles().forEach((file) => {
-      uppy.setFileMeta(file.id, {
-        ...file.meta,
-        drawingNumber: drawingNumber.trim(),
-        title: title.trim(),
-        discipline,
-        projectNumber: projectNumber.trim(),
-        disciplineCode: disciplineCode.trim(),
-        sheetNumber: sheetNumber.trim(),
-        sheetSize: sheetSize.trim(),
-        scale: scale.trim(),
-        packageName: packageName.trim(),
+
+    try {
+      const { fileUrl } = await uploadDrawingFileMultipart(selectedFile, {
+        onProgress: (uploaded, total) => {
+          setUploadPhase((phase) => (phase === 'retrying' ? 'active' : phase));
+          setProgress(Math.round((uploaded / total) * 100));
+          setStatus((current) =>
+            current === t('uploadInterrupted') ? current : t('uploadingVault'),
+          );
+        },
+        onRetry: () => {
+          setUploadPhase('retrying');
+          setStatus(t('uploadInterrupted'));
+        },
       });
-    });
-    uppy.upload();
+
+      setUploadPhase('active');
+      setStatus(t('registering'));
+
+      await clientApi('/drawings', {
+        method: 'POST',
+        body: JSON.stringify({
+          drawingNumber: drawingNumber.trim(),
+          title: title.trim(),
+          discipline,
+          fileUrl,
+          projectNumber: projectNumber.trim() || undefined,
+          disciplineCode: disciplineCode.trim() || undefined,
+          sheetNumber: sheetNumber.trim() || undefined,
+          sheetSize: sheetSize.trim() || undefined,
+          scale: scale.trim() || undefined,
+          packageName: packageName.trim() || undefined,
+        }),
+      });
+
+      setStatus(t('submitted'));
+      setUploadPhase('idle');
+      setDrawingNumber('');
+      setTitle('');
+      setDisciplineCode('');
+      setSheetNumber('');
+      setSheetSize('');
+      setScale('');
+      setFileName('');
+      setSelectedFile(null);
+      setProgress(0);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      setRefreshKey((k) => k + 1);
+    } catch (err) {
+      setUploadPhase('error');
+      setStatus(
+        err instanceof Error ? err.message : t('uploadFailedFinal'),
+      );
+    } finally {
+      setUploading(false);
+    }
   }
 
   return (

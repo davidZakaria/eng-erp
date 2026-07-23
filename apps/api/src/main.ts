@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
+import * as express from 'express';
 import { AppModule } from './app.module';
 import { parseCorsOrigins, parseTrustProxy } from './config/env';
 
@@ -11,6 +12,10 @@ async function bootstrap() {
 
   const expressApp = app.getHttpAdapter().getInstance();
   expressApp.set('trust proxy', parseTrustProxy(config));
+  expressApp.use(
+    '/storage/multipart/upload-part',
+    express.raw({ type: 'application/octet-stream', limit: '50mb' }),
+  );
 
   app.use(
     helmet({
