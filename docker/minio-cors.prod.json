@@ -1,0 +1,8 @@
+[
+  {
+    "AllowedOrigins": ["https://eng-njd.duckdns.org"],
+    "AllowedMethods": ["GET", "PUT", "POST", "HEAD"],
+    "AllowedHeaders": ["*"],
+    "ExposeHeaders": ["ETag"]
+  }
+]

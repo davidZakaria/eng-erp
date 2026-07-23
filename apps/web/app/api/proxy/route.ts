@@ -1,15 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { TOKEN_COOKIE } from '@/lib/auth';
+import { isAllowedProxyPath } from '@/lib/proxy-allowlist';
 
 const API_BASE = process.env.API_URL ?? 'http://localhost:3001';
 
 async function proxy(request: NextRequest, path: string) {
-  const token = request.cookies.get(TOKEN_COOKIE)?.value;
-  const headers: Record<string, string> = {};
-
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
+  if (!path.startsWith('/') || !isAllowedProxyPath(path)) {
+    return NextResponse.json({ message: 'Forbidden proxy path' }, { status: 403 });
   }
+
+  const token = request.cookies.get(TOKEN_COOKIE)?.value;
+  if (!token) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  }
+
+  const headers: Record<string, string> = {
+    Authorization: `Bearer ${token}`,
+  };
 
   const requestContentType = request.headers.get('content-type');
   if (requestContentType) {
@@ -40,17 +47,22 @@ async function proxy(request: NextRequest, path: string) {
   });
 }
 
+function readPath(request: NextRequest) {
+  return request.nextUrl.searchParams.get('path') ?? '';
+}
+
 export async function GET(request: NextRequest) {
-  const path = request.nextUrl.searchParams.get('path') ?? '';
-  return proxy(request, path);
+  return proxy(request, readPath(request));
 }
 
 export async function POST(request: NextRequest) {
-  const path = request.nextUrl.searchParams.get('path') ?? '';
-  return proxy(request, path);
+  return proxy(request, readPath(request));
 }
 
 export async function PATCH(request: NextRequest) {
-  const path = request.nextUrl.searchParams.get('path') ?? '';
-  return proxy(request, path);
+  return proxy(request, readPath(request));
+}
+
+export async function DELETE(request: NextRequest) {
+  return proxy(request, readPath(request));
 }

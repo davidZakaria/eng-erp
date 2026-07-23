@@ -1,5 +1,7 @@
-import { Global, Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ScheduleModule } from '@nestjs/schedule';
 import { PrismaModule } from './prisma/prisma.module';
 import { SecurityAndOpsModule } from './security-and-ops/security-and-ops.module';
@@ -23,6 +25,15 @@ import { AppController } from './app.controller';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ThrottlerModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => [
+        {
+          ttl: Number(config.get<string>('THROTTLE_TTL_MS') ?? 60_000),
+          limit: Number(config.get<string>('THROTTLE_LIMIT') ?? 120),
+        },
+      ],
+    }),
     ScheduleModule.forRoot(),
     PrismaModule,
     SecurityAndOpsModule,
@@ -43,5 +54,6 @@ import { AppController } from './app.controller';
     StorageModule,
   ],
   controllers: [AppController],
+  providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 export class AppModule {}

@@ -63,6 +63,12 @@ export class DrawingsController {
     );
   }
 
+  @Roles(
+    Role.CONSULTANT,
+    Role.ARCH_CONSULTANT,
+    Role.STRUCT_CONSULTANT,
+    Role.MEP_CONSULTANT,
+  )
   @Post('multipart')
   @UseInterceptors(
     FileInterceptor('file', { limits: { fileSize: 500 * 1024 * 1024 } }),

@@ -45,10 +45,8 @@ async function uploadSeedCadFile(
   return objectKey;
 }
 
-async function main() {
-  const passwordHash = await bcrypt.hash('Password123!', 10);
-
-  const users = await Promise.all([
+async function seedDevelopmentUsers(passwordHash: string) {
+  return Promise.all([
     prisma.user.upsert({
       where: { email: 'super@eng-njd.local' },
       update: { role: Role.SUPER_ADMIN, isActive: true, fullName: 'System Super Admin' },
@@ -62,7 +60,7 @@ async function main() {
     }),
     prisma.user.upsert({
       where: { email: 'pm@eng-njd.local' },
-      update: { fullName: 'Ahmed Project Manager' },
+      update: { fullName: 'Ahmed Project Manager', isActive: true },
       create: {
         email: 'pm@eng-njd.local',
         passwordHash,
@@ -72,7 +70,7 @@ async function main() {
     }),
     prisma.user.upsert({
       where: { email: 'head@eng-njd.local' },
-      update: { fullName: 'Sara Head Engineer' },
+      update: { fullName: 'Sara Head Engineer', isActive: true },
       create: {
         email: 'head@eng-njd.local',
         passwordHash,
@@ -82,7 +80,7 @@ async function main() {
     }),
     prisma.user.upsert({
       where: { email: 'site@eng-njd.local' },
-      update: { fullName: 'Omar Site Engineer' },
+      update: { fullName: 'Omar Site Engineer', isActive: true },
       create: {
         email: 'site@eng-njd.local',
         passwordHash,
@@ -92,7 +90,7 @@ async function main() {
     }),
     prisma.user.upsert({
       where: { email: 'consultant@eng-njd.local' },
-      update: { fullName: 'Layla Consultant' },
+      update: { fullName: 'Layla Consultant', isActive: true },
       create: {
         email: 'consultant@eng-njd.local',
         passwordHash,
@@ -102,7 +100,7 @@ async function main() {
     }),
     prisma.user.upsert({
       where: { email: 'arch@eng-njd.local' },
-      update: { fullName: 'Nadia Arch Consultant' },
+      update: { fullName: 'Nadia Arch Consultant', isActive: true },
       create: {
         email: 'arch@eng-njd.local',
         passwordHash,
@@ -112,7 +110,7 @@ async function main() {
     }),
     prisma.user.upsert({
       where: { email: 'struct@eng-njd.local' },
-      update: { fullName: 'Karim Struct Consultant' },
+      update: { fullName: 'Karim Struct Consultant', isActive: true },
       create: {
         email: 'struct@eng-njd.local',
         passwordHash,
@@ -122,7 +120,7 @@ async function main() {
     }),
     prisma.user.upsert({
       where: { email: 'mep@eng-njd.local' },
-      update: { fullName: 'Hassan MEP Consultant' },
+      update: { fullName: 'Hassan MEP Consultant', isActive: true },
       create: {
         email: 'mep@eng-njd.local',
         passwordHash,
@@ -131,6 +129,65 @@ async function main() {
       },
     }),
   ]);
+}
+
+async function seedProductionSuperAdmin() {
+  const password = process.env.SEED_SUPER_ADMIN_PASSWORD;
+  if (!password || password.length < 12) {
+    throw new Error(
+      'SEED_SUPER_ADMIN_PASSWORD must be set (min 12 chars) when SEED_MODE=production',
+    );
+  }
+
+  const email =
+    process.env.SUPER_ADMIN_EMAIL?.trim().toLowerCase() ?? 'super@eng-njd.local';
+  const passwordHash = await bcrypt.hash(password, 12);
+
+  const superAdmin = await prisma.user.upsert({
+    where: { email },
+    update: {
+      passwordHash,
+      role: Role.SUPER_ADMIN,
+      isActive: true,
+      fullName: process.env.SUPER_ADMIN_NAME?.trim() || 'System Super Admin',
+      deletedAt: null,
+    },
+    create: {
+      email,
+      passwordHash,
+      fullName: process.env.SUPER_ADMIN_NAME?.trim() || 'System Super Admin',
+      role: Role.SUPER_ADMIN,
+      isActive: true,
+    },
+  });
+
+  await prisma.user.updateMany({
+    where: {
+      email: {
+        in: [
+          'pm@eng-njd.local',
+          'head@eng-njd.local',
+          'site@eng-njd.local',
+          'consultant@eng-njd.local',
+          'arch@eng-njd.local',
+          'struct@eng-njd.local',
+          'mep@eng-njd.local',
+        ],
+      },
+    },
+    data: { isActive: false },
+  });
+
+  return [superAdmin];
+}
+
+async function main() {
+  const seedMode = process.env.SEED_MODE ?? 'development';
+  const isProductionSeed = seedMode === 'production';
+
+  const users = isProductionSeed
+    ? await seedProductionSuperAdmin()
+    : await seedDevelopmentUsers(await bcrypt.hash('Password123!', 10));
 
   const jamila = loadJamilaData();
 
@@ -179,9 +236,15 @@ async function main() {
 
   console.log('\nSeed complete — Jamila data from sample study Excel only.');
   console.log('Source: apps/api/prisma/seed-data/jamila-from-sample.json');
-  console.log('Password for all users: Password123!\n');
-  console.log('Accounts:');
-  users.forEach((u) => console.log(`  ${u.role.padEnd(18)} ${u.email}`));
+
+  if (isProductionSeed) {
+    console.log('\nProduction seed: Super Admin only (create team users from the dashboard).');
+    console.log(`  SUPER_ADMIN  ${users[0].email}`);
+  } else {
+    console.log('Password for all users: Password123!\n');
+    console.log('Accounts:');
+    users.forEach((u) => console.log(`  ${u.role.padEnd(18)} ${u.email}`));
+  }
   console.log(
     `\nProject: ${jamila.project.name} (${jamila.project.code}) — ${jamila.project.client}`,
   );

@@ -128,7 +128,8 @@ export async function seedJamilaCatalog(
   users: User[],
   fileUrls: { dwg: string; dxf: string; pdf: string },
 ) {
-  const byRole = (role: Role) => users.find((u) => u.role === role)!;
+  const byRole = (role: Role) =>
+    users.find((u) => u.role === role) ?? users[0];
   const arch = byRole(Role.ARCH_CONSULTANT);
   const mep = byRole(Role.MEP_CONSULTANT);
   const struct = byRole(Role.STRUCT_CONSULTANT);

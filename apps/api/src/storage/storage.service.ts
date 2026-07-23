@@ -62,6 +62,16 @@ export class StorageService implements OnModuleInit {
     }
   }
 
+  private rewritePublicUrl(url: string): string {
+    const publicEndpoint = this.configService.get<string>('S3_PUBLIC_ENDPOINT');
+    const internalEndpoint =
+      this.configService.get<string>('S3_ENDPOINT') ?? 'http://localhost:9000';
+    if (!publicEndpoint || publicEndpoint === internalEndpoint) {
+      return url;
+    }
+    return url.replace(internalEndpoint, publicEndpoint.replace(/\/$/, ''));
+  }
+
   async generateUploadUrl(fileName: string, contentType: string) {
     const fileKey = this.buildFileKey(fileName);
 
@@ -71,9 +81,11 @@ export class StorageService implements OnModuleInit {
       ContentType: contentType,
     });
 
-    const presignedUrl = await getSignedUrl(this.client, command, {
-      expiresIn: 15 * 60,
-    });
+    const presignedUrl = this.rewritePublicUrl(
+      await getSignedUrl(this.client, command, {
+        expiresIn: 15 * 60,
+      }),
+    );
 
     return {
       presignedUrl,
@@ -113,9 +125,11 @@ export class StorageService implements OnModuleInit {
       PartNumber: partNumber,
     });
 
-    const url = await getSignedUrl(this.client, command, {
-      expiresIn: 15 * 60,
-    });
+    const url = this.rewritePublicUrl(
+      await getSignedUrl(this.client, command, {
+        expiresIn: 15 * 60,
+      }),
+    );
 
     return { url };
   }

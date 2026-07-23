@@ -6,16 +6,14 @@ export class AppController {
   @Public()
   @Get()
   root() {
+    if (process.env.NODE_ENV === 'production') {
+      return { status: 'ok' };
+    }
+
     return {
       name: 'Eng-NJD API',
       status: 'ok',
-      docs: 'Use the web app at http://localhost:3000 — this server exposes REST endpoints only.',
-      endpoints: [
-        'POST /auth/login',
-        'GET /drawings',
-        'GET /structural/pour-clearances',
-        'GET /mep/submittals',
-      ],
+      docs: 'Use the web app — this server exposes REST endpoints only.',
     };
   }
 

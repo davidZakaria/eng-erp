@@ -4,6 +4,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../../prisma/prisma.module';
 import { JwtPayload } from '../../common/decorators/current-user.decorator';
+import { requireJwtSecret } from '../../config/env';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -14,13 +15,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>('JWT_SECRET') ?? 'dev-secret',
+      secretOrKey: requireJwtSecret(configService),
     });
   }
 
   async validate(payload: JwtPayload): Promise<JwtPayload> {
     const user = await this.prisma.user.findFirst({
-      where: { id: payload.sub, deletedAt: null },
+      where: { id: payload.sub, deletedAt: null, isActive: true },
     });
 
     if (!user) {

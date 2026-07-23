@@ -49,7 +49,19 @@ Open http://localhost:3000
 | `>>` prompt in PowerShell | Press **Ctrl+C**, run one command per line |
 | Wrong context | `docker context use desktop-linux` |
 
-**MinIO console:** http://localhost:9001 — login `minioadmin` / `minioadmin123`
+**MinIO console:** http://localhost:9001 — login `admin` / `password123` (see `.env.example`)
+
+## Production deploy (VPS + DuckDNS)
+
+See **[deploy/DEPLOY.md](deploy/DEPLOY.md)** — includes **coexistence** with other projects on the same VPS (no port 80/443 takeover).
+
+```bash
+cp deploy/vps.env.example deploy/vps.env   # set secrets on server only
+./deploy/deploy.sh
+# Then add deploy/nginx/host-snippet.conf to your EXISTING host nginx
+```
+
+Production seed creates **Super Admin only** — set `SEED_SUPER_ADMIN_PASSWORD` in `deploy/vps.env`, then create Head Engineer and team users from the dashboard.
 
 ## Demo Users (password: `Password123!`)
 

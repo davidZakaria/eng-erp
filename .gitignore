@@ -3,6 +3,8 @@ dist/
 .next/
 .env
 .env.local
+.env.production
+deploy/vps.env
 *.log
 coverage/
 .turbo/

@@ -1,0 +1,111 @@
+# Isolated production stack — does NOT bind host ports 80/443.
+# Uses project name "eng-njd" so it won't clash with other Docker projects.
+# Web + MinIO are exposed on localhost only; plug into your EXISTING host nginx.
+
+name: eng-njd
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: eng-njd-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - eng_njd_postgres_data:/var/lib/postgresql/data
+    networks:
+      - eng_njd_net
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: eng-njd-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - eng_njd_minio_data:/data
+    ports:
+      # Localhost only — existing host nginx proxies /s3/ here
+      - '127.0.0.1:${ENG_NJD_MINIO_PORT:-19000}:9000'
+    networks:
+      - eng_njd_net
+
+  minio-init:
+    image: minio/mc:latest
+    container_name: eng-njd-minio-init
+    depends_on:
+      - minio
+    restart: 'no'
+    entrypoint: >
+      /bin/sh -c "
+      sleep 3;
+      mc alias set local http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD};
+      mc mb --ignore-existing local/eng-njd-documents;
+      mc mb --ignore-existing local/cad-files;
+      mc mb --ignore-existing local/backups;
+      mc cors set /tmp/cors.json local/eng-njd-documents || true;
+      mc cors set /tmp/cors.json local/cad-files || true;
+      exit 0;
+      "
+    volumes:
+      - ./docker/minio-cors.prod.json:/tmp/cors.json:ro
+    networks:
+      - eng_njd_net
+
+  api:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.api
+    container_name: eng-njd-api
+    restart: unless-stopped
+    env_file:
+      - deploy/vps.env
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      NODE_ENV: production
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
+    networks:
+      - eng_njd_net
+
+  web:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.web
+    container_name: eng-njd-web
+    restart: unless-stopped
+    env_file:
+      - deploy/vps.env
+    environment:
+      NODE_ENV: production
+      API_URL: http://api:3001
+    ports:
+      # Localhost only — existing host nginx proxies your DuckDNS host here
+      - '127.0.0.1:${ENG_NJD_WEB_PORT:-13000}:3000'
+    depends_on:
+      - api
+    networks:
+      - eng_njd_net
+
+networks:
+  eng_njd_net:
+    name: eng-njd-net
+    driver: bridge
+
+volumes:
+  eng_njd_postgres_data:
+    name: eng-njd-postgres-data
+  eng_njd_minio_data:
+    name: eng-njd-minio-data
