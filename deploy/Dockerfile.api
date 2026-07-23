@@ -19,7 +19,9 @@ RUN apk add --no-cache postgresql-client
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/apps/api/dist ./dist
 COPY --from=builder /app/apps/api/prisma ./prisma
+COPY --from=builder /app/apps/api/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/apps/api/tsconfig.seed.json ./tsconfig.seed.json
 COPY --from=builder /app/apps/api/package.json ./package.json
+COPY samples/cad ./samples/cad
 EXPOSE 3001
 CMD ["node", "dist/src/main.js"]

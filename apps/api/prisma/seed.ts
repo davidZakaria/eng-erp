@@ -1,5 +1,6 @@
 import { PrismaClient, Role } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { existsSync } from 'fs';
 import { mkdir, readFile, writeFile } from 'fs/promises';
 import { dirname, join } from 'path';
 import * as Minio from 'minio';
@@ -10,7 +11,9 @@ import {
 } from './jamila-seed-data';
 
 const prisma = new PrismaClient();
-const repoRoot = join(__dirname, '../../..');
+const repoRoot = existsSync(join(__dirname, '../samples/cad'))
+  ? join(__dirname, '..')
+  : join(__dirname, '../../..');
 const samplesDir = join(repoRoot, 'samples/cad');
 const localStorageRoot = join(__dirname, '../.local-storage');
 
