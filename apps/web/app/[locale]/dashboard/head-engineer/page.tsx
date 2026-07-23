@@ -26,7 +26,7 @@ export default function HeadEngineerDashboardPage() {
   const tNav = useTranslations('nav');
   const [tab, setTab] = useState<Tab>('drawings');
   const [focusPending, setFocusPending] = useState(false);
-  const { pendingCount, listRefresh, registerPendingNavigation } =
+  const { pendingCount, listRefresh, registerPendingNavigation, refreshPending } =
     useDrawingReviewNotifications();
 
   useEffect(() => {
@@ -74,7 +74,11 @@ export default function HeadEngineerDashboardPage() {
       {tab === 'drawings' && (
         <DrawingsAdminTab
           refreshToken={listRefresh}
+          defaultStatusFilter="PENDING_REVIEW"
           focusPendingFilter={focusPending}
+          onPendingChanged={() => {
+            refreshPending().catch(() => {});
+          }}
           onFocusPendingHandled={() => setFocusPending(false)}
         />
       )}

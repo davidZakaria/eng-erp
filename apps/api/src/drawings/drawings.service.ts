@@ -113,6 +113,14 @@ export class DrawingsService {
 
     const normalizedNumber = drawingNumber.trim().toUpperCase();
 
+    try {
+      await this.fileStorage.statFile(fileUrl);
+    } catch {
+      throw new BadRequestException(
+        'Uploaded file was not found in storage. Please upload again.',
+      );
+    }
+
     return this.prisma.$transaction(async (tx) => {
       const existing = await tx.drawing.findMany({
         where: { drawingNumber: normalizedNumber },
@@ -163,6 +171,7 @@ export class DrawingsService {
       role === Role.SUPER_ADMIN
     ) {
       return this.prisma.drawing.findMany({
+        where: { deletedAt: null },
         orderBy: [{ drawingNumber: 'asc' }, { revision: 'desc' }],
         include: {
           uploader: { select: { id: true, fullName: true, email: true } },
@@ -172,7 +181,7 @@ export class DrawingsService {
 
     if (CONSULTANT_ROLES.includes(role)) {
       return this.prisma.drawing.findMany({
-        where: { uploaderId: userId },
+        where: { uploaderId: userId, deletedAt: null },
         orderBy: [{ drawingNumber: 'asc' }, { revision: 'desc' }],
         include: {
           uploader: { select: { id: true, fullName: true, email: true } },
@@ -181,7 +190,10 @@ export class DrawingsService {
     }
 
     return this.prisma.drawing.findMany({
-      where: { status: ItemStatus.APPROVED_FOR_CONSTRUCTION },
+      where: {
+        status: ItemStatus.APPROVED_FOR_CONSTRUCTION,
+        deletedAt: null,
+      },
       orderBy: [{ drawingNumber: 'asc' }, { revision: 'desc' }],
       include: {
         uploader: { select: { id: true, fullName: true, email: true } },
@@ -191,7 +203,7 @@ export class DrawingsService {
 
   async findPendingForReview() {
     return this.prisma.drawing.findMany({
-      where: { status: ItemStatus.PENDING_REVIEW },
+      where: { status: ItemStatus.PENDING_REVIEW, deletedAt: null },
       orderBy: { createdAt: 'asc' },
       include: {
         uploader: { select: { id: true, fullName: true, email: true } },
@@ -305,15 +317,32 @@ export class DrawingsService {
     });
   }
 
-  async softDeleteDrawing(id: string) {
+  async softDeleteDrawing(id: string, userId: string, role: Role) {
     const existing = await this.prisma.drawing.findUnique({ where: { id } });
-    if (!existing) {
+    if (!existing || existing.deletedAt) {
       throw new NotFoundException('Drawing not found');
+    }
+
+    if (CONSULTANT_ROLES.includes(role)) {
+      if (existing.uploaderId !== userId) {
+        throw new ForbiddenException('You can only withdraw your own drawings');
+      }
+      if (existing.status !== ItemStatus.PENDING_REVIEW) {
+        throw new BadRequestException(
+          'Only pending submissions can be withdrawn',
+        );
+      }
+    } else if (
+      role !== Role.HEAD_ENGINEER &&
+      role !== Role.SUPER_ADMIN &&
+      role !== Role.PROJECT_MANAGER
+    ) {
+      throw new ForbiddenException('Insufficient role permissions');
     }
 
     return this.prisma.drawing.update({
       where: { id },
-      data: { status: ItemStatus.SUPERSEDED },
+      data: { deletedAt: new Date() },
       include: {
         uploader: { select: { id: true, fullName: true, email: true } },
       },
@@ -336,7 +365,7 @@ export class DrawingsService {
       where: { id: drawingId },
     });
 
-    if (!drawing) {
+    if (!drawing || drawing.deletedAt) {
       throw new NotFoundException('Drawing not found');
     }
 
@@ -363,7 +392,7 @@ export class DrawingsService {
       where: { id: drawingId },
     });
 
-    if (!drawing) {
+    if (!drawing || drawing.deletedAt) {
       throw new NotFoundException('Drawing not found');
     }
 

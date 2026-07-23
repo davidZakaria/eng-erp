@@ -31,6 +31,19 @@ export function DrawingRegister() {
   const [sheetCodeFilter, setSheetCodeFilter] = useState('');
   const [packageFilter, setPackageFilter] = useState('');
 
+  const [status, setStatus] = useState('');
+
+  async function withdrawDrawing(drawing: Drawing) {
+    if (!confirm(t('confirmWithdraw'))) return;
+    try {
+      await clientApi(`/drawings/${drawing.id}`, { method: 'DELETE' });
+      setStatus(t('submissionWithdrawn'));
+      await load();
+    } catch (err) {
+      setStatus(err instanceof Error ? err.message : t('registrationFailed'));
+    }
+  }
+
   async function load() {
     setLoading(true);
     try {
@@ -135,6 +148,11 @@ export function DrawingRegister() {
       <p className="px-4 py-2 text-xs text-[var(--muted)] border-b border-[var(--border)]">
         {t('registerCount', { shown: filtered.length, total: drawings.length })}
       </p>
+      {status && (
+        <p className="px-4 py-2 text-xs text-[var(--text)] border-b border-[var(--border)]">
+          {status}
+        </p>
+      )}
       <div className="overflow-x-auto">
         <table className="w-full text-sm min-w-[960px]">
           <thead className="bg-[var(--surface-elevated)] text-[var(--muted)]">
@@ -148,12 +166,13 @@ export function DrawingRegister() {
               <th className="text-start px-4 py-3 font-medium">{tCommon('revision')}</th>
               <th className="text-start px-4 py-3 font-medium">{tCommon('format')}</th>
               <th className="text-start px-4 py-3 font-medium">{tCommon('status')}</th>
+              <th className="text-end px-4 py-3 font-medium">{tCommon('actions')}</th>
             </tr>
           </thead>
           <tbody>
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={9} className="px-4 py-8 text-center text-[var(--muted)]">
+                <td colSpan={10} className="px-4 py-8 text-center text-[var(--muted)]">
                   {t('noDrawingsMatch')}
                 </td>
               </tr>
@@ -180,6 +199,17 @@ export function DrawingRegister() {
                     >
                       {tStatus.has(d.status) ? tStatus(d.status) : d.status.replace(/_/g, ' ')}
                     </span>
+                  </td>
+                  <td className="px-4 py-3 text-end">
+                    {d.status === 'PENDING_REVIEW' && (
+                      <button
+                        type="button"
+                        className="btn-danger !px-2 !py-1 !text-xs"
+                        onClick={() => withdrawDrawing(d)}
+                      >
+                        {t('withdrawSubmission')}
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))

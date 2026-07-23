@@ -55,10 +55,14 @@ function statusBadgeClass(status: string): string {
 export function DrawingsAdminTab({
   refreshToken = 0,
   focusPendingFilter = false,
+  defaultStatusFilter = '',
+  onPendingChanged,
   onFocusPendingHandled,
 }: {
   refreshToken?: number;
   focusPendingFilter?: boolean;
+  defaultStatusFilter?: string;
+  onPendingChanged?: () => void;
   onFocusPendingHandled?: () => void;
 }) {
   const t = useTranslations('admin');
@@ -69,7 +73,7 @@ export function DrawingsAdminTab({
   const [drawings, setDrawings] = useState<Drawing[]>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState(defaultStatusFilter);
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState<Drawing | null>(null);
   const [form, setForm] = useState(emptyForm);
@@ -177,6 +181,8 @@ export function DrawingsAdminTab({
     setMessage('');
     try {
       await clientApi(`/drawings/${drawing.id}`, { method: 'DELETE' });
+      setMessage(t('drawingDeleted'));
+      onPendingChanged?.();
       await load();
     } catch (err) {
       setMessage(err instanceof Error ? err.message : t('saveFailed'));

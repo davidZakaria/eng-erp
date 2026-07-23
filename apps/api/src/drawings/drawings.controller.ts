@@ -175,9 +175,20 @@ export class DrawingsController {
     return this.drawingsService.updateDrawingAdmin(id, dto);
   }
 
-  @Roles(Role.SUPER_ADMIN, Role.HEAD_ENGINEER)
+  @Roles(
+    Role.SUPER_ADMIN,
+    Role.HEAD_ENGINEER,
+    Role.PROJECT_MANAGER,
+    Role.CONSULTANT,
+    Role.ARCH_CONSULTANT,
+    Role.STRUCT_CONSULTANT,
+    Role.MEP_CONSULTANT,
+  )
   @Delete(':id')
-  softDeleteDrawing(@Param('id') id: string) {
-    return this.drawingsService.softDeleteDrawing(id);
+  softDeleteDrawing(
+    @CurrentUser() user: JwtPayload,
+    @Param('id') id: string,
+  ) {
+    return this.drawingsService.softDeleteDrawing(id, user.sub, user.role);
   }
 }

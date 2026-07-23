@@ -17,7 +17,7 @@ export default function SuperAdminDashboardPage() {
   const tNav = useTranslations('nav');
   const [tab, setTab] = useState<Tab>('team');
   const [focusPending, setFocusPending] = useState(false);
-  const { pendingCount, listRefresh, registerPendingNavigation } =
+  const { pendingCount, listRefresh, registerPendingNavigation, refreshPending } =
     useDrawingReviewNotifications();
 
   useEffect(() => {
@@ -69,7 +69,11 @@ export default function SuperAdminDashboardPage() {
       {tab === 'drawings' && (
         <DrawingsAdminTab
           refreshToken={listRefresh}
+          defaultStatusFilter="PENDING_REVIEW"
           focusPendingFilter={focusPending}
+          onPendingChanged={() => {
+            refreshPending().catch(() => {});
+          }}
           onFocusPendingHandled={() => setFocusPending(false)}
         />
       )}

@@ -21,6 +21,7 @@ type DrawingReviewNotificationsContextValue = {
   newUploads: Drawing[];
   listRefresh: number;
   dismissNewUploads: () => void;
+  refreshPending: () => Promise<Drawing[] | undefined>;
   registerPendingNavigation: (handler: PendingNavigationHandler) => () => void;
 };
 
@@ -32,7 +33,8 @@ export function DrawingReviewNotificationsProvider({
 }: {
   children: ReactNode;
 }) {
-  const { pendingCount, newUploads, dismissNewUploads } = usePendingDrawingsPoll({
+  const { pendingCount, newUploads, dismissNewUploads, refreshPending } =
+    usePendingDrawingsPoll({
     enabled: true,
   });
   const [listRefresh, setListRefresh] = useState(0);
@@ -67,6 +69,7 @@ export function DrawingReviewNotificationsProvider({
       newUploads,
       listRefresh,
       dismissNewUploads,
+      refreshPending,
       registerPendingNavigation,
     }),
     [
@@ -74,6 +77,7 @@ export function DrawingReviewNotificationsProvider({
       newUploads,
       listRefresh,
       dismissNewUploads,
+      refreshPending,
       registerPendingNavigation,
     ],
   );
