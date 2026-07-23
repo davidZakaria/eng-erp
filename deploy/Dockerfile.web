@@ -9,6 +9,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY package.json package-lock.json ./
 COPY apps/web ./apps/web
+RUN mkdir -p apps/web/public
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build --workspace=apps/web
 
