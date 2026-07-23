@@ -68,7 +68,7 @@ nano deploy/vps.env
 
 > **Security:** Never commit `deploy/vps.env`. Passwords stay only on the server.
 
-Update `docker/minio-cors.prod.json` `AllowedOrigins` to match your `PUBLIC_URL`.
+Update `docker/minio-cors.prod.json` `AllowedOrigins` to match your `PUBLIC_URL` (reference only — community MinIO uses `CORS_ORIGIN` / `MINIO_API_CORS_ALLOW_ORIGIN` instead of per-bucket CORS).
 
 ## 3. Docker (skip if already installed)
 

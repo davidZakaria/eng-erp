@@ -34,6 +34,7 @@ services:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
       MINIO_SERVER_URL: ${S3_PUBLIC_ENDPOINT}
+      MINIO_API_CORS_ALLOW_ORIGIN: ${CORS_ORIGIN}
     volumes:
       - eng_njd_minio_data:/data
     ports:
@@ -55,12 +56,8 @@ services:
       mc mb --ignore-existing local/eng-njd-documents;
       mc mb --ignore-existing local/cad-files;
       mc mb --ignore-existing local/backups;
-      mc cors set local/eng-njd-documents /tmp/cors.json || true;
-      mc cors set local/cad-files /tmp/cors.json || true;
       exit 0;
       "
-    volumes:
-      - ./docker/minio-cors.prod.json:/tmp/cors.json:ro
     networks:
       - eng_njd_net
 
