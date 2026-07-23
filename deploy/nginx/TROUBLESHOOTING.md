@@ -45,10 +45,74 @@ sudo nginx -t && sudo systemctl reload nginx
 TLS for Eng-NJD **after** HTTP routing works:
 
 ```bash
-sudo certbot --nginx -d eng-njd.duckdns.org
+chmod +x deploy/nginx/enable-ssl.sh
+./deploy/nginx/enable-ssl.sh eng-njd.duckdns.org
+# Or interactively: sudo certbot --nginx -d eng-njd.duckdns.org
 ```
 
 Do **not** run certbot with multiple unrelated domains in one command.
+
+## Eng-NJD shows "Not secure"
+
+Expected until certbot runs. The Docker stack is HTTP on localhost; host nginx must terminate TLS with Let's Encrypt. After `certbot --nginx -d eng-njd.duckdns.org`, use `https://eng-njd.duckdns.org/en/login`.
+
+Ensure `deploy/vps.env` has:
+
+```bash
+PUBLIC_URL=https://eng-njd.duckdns.org
+CORS_ORIGIN=https://eng-njd.duckdns.org
+S3_PUBLIC_ENDPOINT=https://eng-njd.duckdns.org/s3
+```
+
+Then restart Eng-NJD so API picks up HTTPS URLs:
+
+```bash
+docker compose -p eng-njd -f docker-compose.prod.yml --env-file deploy/vps.env up -d
+```
+
+## Wheelo still broken — restore order
+
+1. **Fix nginx syntax first** (Wheelo and everything else depends on this):
+
+```bash
+sudo nginx -t
+```
+
+2. **Find Wheelo's config** (name may vary):
+
+```bash
+ls -la /etc/nginx/sites-available/ | grep -i wheelo
+grep -rn 'wheelo' /etc/nginx/sites-enabled/
+```
+
+3. **Restore from certbot backup** (if certbot edited Wheelo):
+
+```bash
+sudo ls -lt /var/lib/letsencrypt/backups/
+# certbot stores numbered backups — restore the newest backup BEFORE eng-njd changes:
+# sudo cp /var/lib/letsencrypt/backups/XXXXX /etc/nginx/sites-available/wheelo
+```
+
+4. **Or restore manual .bak** if you created one:
+
+```bash
+sudo cp /etc/nginx/sites-available/wheelo.bak /etc/nginx/sites-available/wheelo
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+5. **Remove bad catch-all** Eng-NJD files if present (must NOT use `server_name _`):
+
+```bash
+grep -rn 'server_name _' /etc/nginx/sites-enabled/
+# sudo rm /etc/nginx/sites-enabled/<bad-file>
+```
+
+6. Run full diagnostics:
+
+```bash
+chmod +x deploy/nginx/diagnose-host.sh
+./deploy/nginx/diagnose-host.sh
+```
 
 ## Diagnostics
 
