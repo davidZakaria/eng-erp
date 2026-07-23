@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Drawing } from '@/lib/types';
 import {
-  drawingFileActionLabel,
   getDrawingFileUrl,
+  isDwgFileUrl,
   isPdfFileUrl,
 } from '@/lib/drawing-files';
 
@@ -17,8 +18,16 @@ function downloadFileName(drawing: Drawing): string {
 }
 
 export function DrawingFileButton({ drawing }: { drawing: Drawing }) {
+  const t = useTranslations('drawings');
+  const tCommon = useTranslations('common');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  function actionLabel(): string {
+    if (isPdfFileUrl(drawing.fileUrl)) return t('previewPdf');
+    if (isDwgFileUrl(drawing.fileUrl)) return t('downloadDwg');
+    return t('downloadCad');
+  }
 
   async function openFile() {
     setLoading(true);
@@ -55,17 +64,17 @@ export function DrawingFileButton({ drawing }: { drawing: Drawing }) {
   }
 
   return (
-    <div className="text-right">
+    <div className="text-end">
       <button
         type="button"
         onClick={openFile}
         disabled={loading}
         className="text-[var(--accent)] hover:underline text-xs disabled:opacity-50"
       >
-        {loading ? 'Loading…' : drawingFileActionLabel(drawing.fileUrl)}
+        {loading ? tCommon('loading') : actionLabel()}
       </button>
       {error && (
-        <p className="text-[10px] text-[var(--danger)] mt-1 max-w-[140px] ml-auto">
+        <p className="text-[10px] text-[var(--danger)] mt-1 max-w-[140px] ms-auto">
           {error}
         </p>
       )}

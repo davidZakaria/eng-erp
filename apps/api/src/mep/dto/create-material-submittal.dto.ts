@@ -1,6 +1,8 @@
 import {
   IsBoolean,
+  IsInt,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
 } from 'class-validator';
@@ -20,6 +22,14 @@ export class CreateMaterialSubmittalDto {
   @IsOptional()
   @IsString()
   equivalenceLetterUrl?: string;
+
+  @IsOptional()
+  @IsInt()
+  leadTimeWeeks?: number;
+
+  @IsOptional()
+  @IsNumber()
+  costDeltaEGP?: number;
 
   @IsString()
   @IsNotEmpty()

@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Drawing } from '@/lib/types';
 import { clientApi } from '@/lib/client-api';
 import { fileExtensionFromUrl } from '@/lib/drawing-files';
@@ -9,6 +10,9 @@ import { DrawingFileButton } from '@/components/drawings/DrawingFileButton';
 type ReviewDecision = 'APPROVED_FOR_CONSTRUCTION' | 'REVISION_REQUESTED';
 
 export function PendingDrawingsTab() {
+  const t = useTranslations('drawings');
+  const tCommon = useTranslations('common');
+  const tDisc = useTranslations('disciplines');
   const [drawings, setDrawings] = useState<Drawing[]>([]);
   const [reviewModal, setReviewModal] = useState<{
     drawing: Drawing;
@@ -49,44 +53,43 @@ export function PendingDrawingsTab() {
 
   return (
     <>
-      <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)]/60 overflow-hidden">
+      <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
         <p className="px-4 py-2 text-xs text-[var(--muted)] border-b border-[var(--border)]">
-          Review each drawing, then Approve for construction or Request Revision.
-          PDF opens in a new tab; DWG/DXF downloads for AutoCAD.
+          {t('pendingHint')}
         </p>
         <table className="w-full text-sm">
-          <thead className="bg-[#0f1419] text-[var(--muted)]">
+          <thead className="bg-[var(--surface-elevated)] text-[var(--muted)]">
             <tr>
-              <th className="text-left px-4 py-3 font-medium">Number</th>
-              <th className="text-left px-4 py-3 font-medium">Title</th>
-              <th className="text-left px-4 py-3 font-medium">Discipline</th>
-              <th className="text-left px-4 py-3 font-medium">Rev</th>
-              <th className="text-left px-4 py-3 font-medium">Format</th>
-              <th className="text-left px-4 py-3 font-medium">Consultant</th>
-              <th className="text-left px-4 py-3 font-medium">File</th>
-              <th className="text-right px-4 py-3 font-medium">Actions</th>
+              <th className="text-start px-4 py-3 font-medium">{tCommon('number')}</th>
+              <th className="text-start px-4 py-3 font-medium">{tCommon('title')}</th>
+              <th className="text-start px-4 py-3 font-medium">{t('discipline')}</th>
+              <th className="text-start px-4 py-3 font-medium">{tCommon('revision')}</th>
+              <th className="text-start px-4 py-3 font-medium">{tCommon('format')}</th>
+              <th className="text-start px-4 py-3 font-medium">{tCommon('consultant')}</th>
+              <th className="text-start px-4 py-3 font-medium">{tCommon('file')}</th>
+              <th className="text-end px-4 py-3 font-medium">{tCommon('actions')}</th>
             </tr>
           </thead>
           <tbody>
             {drawings.length === 0 ? (
               <tr>
                 <td colSpan={8} className="px-4 py-8 text-center text-[var(--muted)]">
-                  No drawings pending review.
+                  {t('noPending')}
                 </td>
               </tr>
             ) : (
               drawings.map((d) => (
-                <tr key={d.id} className="border-t border-[var(--border)]">
+                <tr key={d.id} className="border-t border-[var(--border)] text-[var(--text)]">
                   <td className="px-4 py-3 font-mono">{d.drawingNumber}</td>
                   <td className="px-4 py-3">{d.title}</td>
-                  <td className="px-4 py-3">{d.discipline}</td>
+                  <td className="px-4 py-3">{tDisc(d.discipline)}</td>
                   <td className="px-4 py-3">{d.revision}</td>
                   <td className="px-4 py-3">{fileExtensionFromUrl(d.fileUrl)}</td>
                   <td className="px-4 py-3">{d.uploader?.fullName}</td>
                   <td className="px-4 py-3">
                     <DrawingFileButton drawing={d} />
                   </td>
-                  <td className="px-4 py-3 text-right space-x-2 whitespace-nowrap">
+                  <td className="px-4 py-3 text-end space-x-2 rtl:space-x-reverse whitespace-nowrap">
                     <button
                       type="button"
                       onClick={() =>
@@ -95,9 +98,9 @@ export function PendingDrawingsTab() {
                           decision: 'APPROVED_FOR_CONSTRUCTION',
                         })
                       }
-                      className="rounded bg-[var(--success)] px-3 py-1 text-xs text-white"
+                      className="btn-success"
                     >
-                      Approve
+                      {tCommon('approve')}
                     </button>
                     <button
                       type="button"
@@ -107,9 +110,9 @@ export function PendingDrawingsTab() {
                           decision: 'REVISION_REQUESTED',
                         })
                       }
-                      className="rounded bg-[var(--danger)] px-3 py-1 text-xs text-white"
+                      className="btn-danger"
                     >
-                      Request Revision
+                      {t('requestRevision')}
                     </button>
                   </td>
                 </tr>
@@ -122,21 +125,21 @@ export function PendingDrawingsTab() {
       {reviewModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
           <div className="w-full max-w-md rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
-            <h3 className="text-lg font-medium mb-2">
+            <h3 className="text-lg font-medium mb-2 text-[var(--text)]">
               {reviewModal.decision === 'APPROVED_FOR_CONSTRUCTION'
-                ? 'Approve Drawing'
-                : 'Request Revision'}
+                ? t('approveDrawing')
+                : t('requestRevision')}
             </h3>
             <p className="text-sm text-[var(--muted)] mb-4">
-              {reviewModal.drawing.drawingNumber} · {reviewModal.drawing.title} ·
-              Rev {reviewModal.drawing.revision}
+              {reviewModal.drawing.drawingNumber} · {reviewModal.drawing.title} ·{' '}
+              {tCommon('revision')} {reviewModal.drawing.revision}
             </p>
             <textarea
               value={comments}
               onChange={(e) => setComments(e.target.value)}
-              placeholder="Comments for the consultant…"
+              placeholder={t('commentsPlaceholder')}
               rows={4}
-              className="w-full rounded border border-[var(--border)] bg-[#0f1419] px-3 py-2 text-sm mb-4"
+              className="w-full rounded border border-[var(--border)] bg-[var(--input-bg)] text-[var(--text)] px-3 py-2 text-sm mb-4"
             />
             <div className="flex gap-3 justify-end">
               <button
@@ -145,17 +148,17 @@ export function PendingDrawingsTab() {
                   setReviewModal(null);
                   setComments('');
                 }}
-                className="rounded border border-[var(--border)] px-4 py-2 text-sm"
+                className="btn-secondary"
               >
-                Cancel
+                {tCommon('cancel')}
               </button>
               <button
                 type="button"
                 onClick={submitReview}
                 disabled={loading || !comments.trim()}
-                className="rounded bg-[var(--accent)] px-4 py-2 text-sm text-white disabled:opacity-50"
+                className="btn-primary"
               >
-                Confirm
+                {tCommon('confirm')}
               </button>
             </div>
           </div>

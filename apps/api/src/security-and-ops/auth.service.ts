@@ -12,7 +12,7 @@ export class AuthService {
 
   async login(email: string, password: string) {
     const user = await this.prisma.user.findFirst({
-      where: { email, deletedAt: null },
+      where: { email, deletedAt: null, isActive: true },
     });
 
     if (!user) {

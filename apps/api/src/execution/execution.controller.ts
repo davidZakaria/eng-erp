@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Role } from '@prisma/client';
 import { ExecutionService } from './execution.service';
 import { CreateExecutionLogDto } from './dto/create-execution-log.dto';
@@ -8,6 +8,17 @@ import { CurrentUser, JwtPayload } from '../common/decorators/current-user.decor
 @Controller('execution-logs')
 export class ExecutionController {
   constructor(private executionService: ExecutionService) {}
+
+  @Roles(
+    Role.SITE_ENGINEER,
+    Role.HEAD_ENGINEER,
+    Role.PROJECT_MANAGER,
+    Role.ADMIN,
+  )
+  @Get()
+  findAll() {
+    return this.executionService.findAll();
+  }
 
   @Roles(Role.SITE_ENGINEER)
   @Post()

@@ -1,0 +1,4741 @@
+{
+  "project": {
+    "name": "Jamila Residences",
+    "code": "JAM-001",
+    "client": "New Jersey Developments",
+    "location": "North Coast, Egypt",
+    "buildingType": "G1",
+    "projectNumber": "2315"
+  },
+  "csiDivisions": [
+    {
+      "code": "02",
+      "title": "Site Construction / Earthwork"
+    },
+    {
+      "code": "03",
+      "title": "Concrete"
+    },
+    {
+      "code": "04",
+      "title": "Masonry"
+    },
+    {
+      "code": "05",
+      "title": "Metals"
+    },
+    {
+      "code": "07",
+      "title": "Thermal and Moisture Protection"
+    },
+    {
+      "code": "08",
+      "title": "Openings"
+    },
+    {
+      "code": "09",
+      "title": "Finishes"
+    },
+    {
+      "code": "10",
+      "title": "Specialties"
+    },
+    {
+      "code": "14",
+      "title": "Conveying Equipment"
+    },
+    {
+      "code": "21",
+      "title": "Fire Suppression"
+    },
+    {
+      "code": "22",
+      "title": "Plumbing"
+    },
+    {
+      "code": "23",
+      "title": "HVAC"
+    },
+    {
+      "code": "26",
+      "title": "Electrical"
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Egypt Ready Mix Co.",
+      "country": "Egypt",
+      "divisionCode": "03",
+      "disciplineTag": "Concrete"
+    },
+    {
+      "name": "Cairo Climate Systems",
+      "country": "Egypt",
+      "divisionCode": "23",
+      "disciplineTag": "HVAC"
+    },
+    {
+      "name": "Delta Fire Systems",
+      "country": "Egypt",
+      "divisionCode": "21",
+      "disciplineTag": "Fire Fighting"
+    },
+    {
+      "name": "Nile Plumbing Supplies",
+      "country": "Egypt",
+      "divisionCode": "22",
+      "disciplineTag": "Plumbing"
+    },
+    {
+      "name": "Alexandria Steel Works",
+      "country": "Egypt",
+      "divisionCode": "05",
+      "disciplineTag": "Structural Steel"
+    }
+  ],
+  "architecturalLod": [
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "001",
+      "title": "COVER SHEET",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "002",
+      "title": "DRAWING LIST",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "003",
+      "title": "APPREVIATIONS & GENERAL NOTES",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "B",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "GR",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "101",
+      "title": "FIRST FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "102",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "103",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "104",
+      "title": "UPPER ROOF FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "121",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "122",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "123",
+      "title": "FIRST FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "124",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "125",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "126",
+      "title": "UPPER ROOF FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "141",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "142",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "143",
+      "title": "FIRST FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "144",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "145",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "161",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "162",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "163",
+      "title": "FIRST FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "164",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "165",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "201",
+      "title": "ELEVATON 01",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "202",
+      "title": "ELEVATION 03",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "301",
+      "title": "SECTION B-B",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "311",
+      "title": "WALL SECTION 01-02-04",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "401",
+      "title": "STAIRCASE 01 DETAILED",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "402",
+      "title": "STAIRCASE 02 DETAILED",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "403",
+      "title": "STAIRCASE 03 DETAILED",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "404",
+      "title": "STAIRCASE 04 DETAILED",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "411",
+      "title": "ELEVATOR 01 DETAILED",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "412",
+      "title": "ELEVATOR 02 DETAILED",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "413",
+      "title": "ELEVATOR 03 DETAILED",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "414",
+      "title": "ELEVATOR 04 DETAILED",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "421-01",
+      "title": "RAMP 01 DETAILED PLANS",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "421-02",
+      "title": "RAMP 01 DETAILED SECTION",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "422-01",
+      "title": "RAMP 02 DETAILED PLANS",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "422-02",
+      "title": "RAMP 02 DETAILED SECTION",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-50",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "501",
+      "title": "DETAILS 01",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "502",
+      "title": "DETAILS 02",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "503",
+      "title": "DETAILS 03",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "504",
+      "title": "DETAILS 04",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "505",
+      "title": "DETAILS 05",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "601",
+      "title": "DOOR AND WINDOW TYPES",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-20",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "602",
+      "title": "DOOR AND WINDOW TYPES",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-20",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "603",
+      "title": "DOOR AND WINDOW TYPES",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-20",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "604",
+      "title": "DOOR AND WINDOW TYPES",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-20",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AE",
+      "sheetNumber": "605",
+      "title": "DOOR AND WINDOW TYPES",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-20",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AK",
+      "sheetNumber": "101",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": "DONE"
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AK",
+      "sheetNumber": "102",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AK",
+      "sheetNumber": "103",
+      "title": "FIRST FLOOR PLANR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AK",
+      "sheetNumber": "104",
+      "title": "SECOND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AK",
+      "sheetNumber": "105",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AK",
+      "sheetNumber": "106",
+      "title": "FOURTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AK",
+      "sheetNumber": "107",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "AK",
+      "sheetNumber": "108",
+      "title": "SIXTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    }
+  ],
+  "electricalLod": [
+    {
+      "projectNo": "2315",
+      "disciplineCode": "SLD",
+      "sheetNumber": "01.01",
+      "title": "SINGLE LINE DIAGRAM",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "SLD",
+      "sheetNumber": "01.02",
+      "title": "SINGLE LINE DIAGRAM",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "02",
+      "title": "LOW CURRENT RISER",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "FA",
+      "sheetNumber": "03",
+      "title": "FIRE ALARM RISER",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "NTS",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EL",
+      "sheetNumber": "B",
+      "title": "BASEMENT (LIGHTING SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EL",
+      "sheetNumber": "GR",
+      "title": "GROUND (LIGHTING SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EL",
+      "sheetNumber": "101",
+      "title": "FIRST (LIGHTING SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EL",
+      "sheetNumber": "102",
+      "title": "THIRD (LIGHTING SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EL",
+      "sheetNumber": "103",
+      "title": "FIFTH (LIGHTING SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EP",
+      "sheetNumber": "B",
+      "title": "BASEMENT (POWER SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EP",
+      "sheetNumber": "GR",
+      "title": "GROUND (POWER SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EP",
+      "sheetNumber": "101",
+      "title": "FIRST (POWER SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EP",
+      "sheetNumber": "102",
+      "title": "THIRD (POWER SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "EP",
+      "sheetNumber": "103",
+      "title": "FIFTH (POWER SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "B",
+      "title": "BASEMENT (LOW CURRENT SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "GR",
+      "title": "GROUND (LOW CURRENT SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "101",
+      "title": "FIRST (LOW CURRENT SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "102",
+      "title": "THIRD (LOW CURRENT SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "103",
+      "title": "FIFTH (LOW CURRENT SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "B",
+      "title": "BASEMENT (FIRE ALARM SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "GR",
+      "title": "GROUND (FIRE ALARM SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "101",
+      "title": "FIRST (FIRE ALARM SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "102",
+      "title": "THIRD (FIRE ALARM SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "LC",
+      "sheetNumber": "103",
+      "title": "FIFTH (FIRE ALARM SYSTEM)",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "HV",
+      "sheetNumber": "HV-100",
+      "title": "BASSEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "HV",
+      "sheetNumber": "HV-101",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "HV",
+      "sheetNumber": "HV-102",
+      "title": "FIRST FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "HV",
+      "sheetNumber": "HV-103",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "HV",
+      "sheetNumber": "HV-104",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "HV",
+      "sheetNumber": "HV-105",
+      "title": "SCHEDULE OF EQUIPMENTS",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "FF",
+      "sheetNumber": "FF-100",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "FF",
+      "sheetNumber": "FF-101",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "FF",
+      "sheetNumber": "FF-102",
+      "title": "FIRST FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "FF",
+      "sheetNumber": "FF-103",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "FF",
+      "sheetNumber": "FF-104",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "DR",
+      "sheetNumber": "DR-100-H.L",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "DR",
+      "sheetNumber": "DR-100-L.L",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "DR",
+      "sheetNumber": "DR-101",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "DR",
+      "sheetNumber": "DR-102",
+      "title": "FIRST FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "DR",
+      "sheetNumber": "DR-103",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "DR",
+      "sheetNumber": "DR-104",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "DR",
+      "sheetNumber": "DR-105",
+      "title": "RISER DIAGRAM",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "WS",
+      "sheetNumber": "WS-200",
+      "title": "BASEMENT FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "WS",
+      "sheetNumber": "WS-201",
+      "title": "GROUND FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "WS",
+      "sheetNumber": "WS-202",
+      "title": "FIRST FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "WS",
+      "sheetNumber": "WS-203",
+      "title": "THIRD FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "WS",
+      "sheetNumber": "WS-204",
+      "title": "FIFTH FLOOR PLAN",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    },
+    {
+      "projectNo": "2315",
+      "disciplineCode": "WS",
+      "sheetNumber": "WS-205",
+      "title": "RISER DIAGRAM",
+      "revision": 1,
+      "size": "140X90 CM",
+      "scale": "1-100",
+      "status": null
+    }
+  ],
+  "architecturalBoq": [
+    {
+      "itemCode": "3.2.1",
+      "description": "Precast concrete cover slab for ducts including fixing, painting, all accessories and any material or activity required to finish the works as per drawings and specifications.",
+      "unit": "m²",
+      "plannedQuantity": 4.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "3.2.2",
+      "description": "Precast concrete wheel stopper for cars at  parking areas",
+      "unit": "m",
+      "plannedQuantity": 105.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "3.1.1",
+      "description": "Light weight concrete with average thick.70 mm for roofs including all material or activity required to finish the works as per drawings and specifications.",
+      "unit": "m²",
+      "plannedQuantity": 1340.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "3.3.1",
+      "description": "Roof, 90 mm average thick. Sloped concrete",
+      "unit": "m²",
+      "plannedQuantity": 1340.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "3.3.2",
+      "description": "Parking, 100 mm thick. Sloped concrete",
+      "unit": "m²",
+      "plannedQuantity": 1600.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "3.3.3",
+      "description": "Ramps Floors with hardner , 100 mm thick.",
+      "unit": "m²",
+      "plannedQuantity": 250.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "4.1.1",
+      "description": "250 mm thick. Hollow Block , 2 hours fire rated",
+      "unit": "m²",
+      "plannedQuantity": 740.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.1.2",
+      "description": "100 mm thick. Hollow Block , 2 hours fire rated",
+      "unit": "m²",
+      "plannedQuantity": 110.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.1.3",
+      "description": "250 mm thick. Hollow Block , 1hours fire rated",
+      "unit": "m²",
+      "plannedQuantity": 10.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.1.4",
+      "description": "100 mm thick. Hollow Block, 1 hour fire rated",
+      "unit": "m²",
+      "plannedQuantity": 1380.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.1.5",
+      "description": "100 mm thick. Solid Block",
+      "unit": "m²",
+      "plannedQuantity": 3590.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.1.6",
+      "description": "250 mm thick. Solid Block",
+      "unit": "m²",
+      "plannedQuantity": 55.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.1.7",
+      "description": "250 mm thick. Hollow Block.",
+      "unit": "m²",
+      "plannedQuantity": 2350.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.1.8",
+      "description": "120 mm thick. Hollow Block .",
+      "unit": "m²",
+      "plannedQuantity": 500.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.1.9",
+      "description": "100 mm thick. Hollow Block.",
+      "unit": "m²",
+      "plannedQuantity": 5490.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "4.2",
+      "description": "Natural Stone cladding including  all necessary fixing accessories, size, color and pattern to Engineer's approval, all complete as specified and as shown on the drawings",
+      "unit": "m²",
+      "plannedQuantity": 805.0,
+      "rateEGP": 0,
+      "divisionCode": "04"
+    },
+    {
+      "itemCode": "5.1",
+      "description": "Supply and install steel Shade with aluminum cladding; including fixing anchor bolts, welds, bolts, fabric highy durability, grout, paints, sand plasting and all necessary works. Complete as shown on  drawings and as per specifications.",
+      "unit": "m²",
+      "plannedQuantity": 165.0,
+      "rateEGP": 0,
+      "divisionCode": "05"
+    },
+    {
+      "itemCode": "5.2.1",
+      "description": "To roof; with 3500 mm approx. height.",
+      "unit": "No.",
+      "plannedQuantity": 4.0,
+      "rateEGP": 0,
+      "divisionCode": "05"
+    },
+    {
+      "itemCode": "5.2.2",
+      "description": "Supply and install steel louvers with wooden texture including fixing, finishing, accessories and all associated works as shown in drawings and specifications",
+      "unit": "m²",
+      "plannedQuantity": 120.0,
+      "rateEGP": 0,
+      "divisionCode": "05"
+    },
+    {
+      "itemCode": "5.2.3",
+      "description": "Supply and install steel AC louvers  including fixing, finishing, accessories and all associated works as shown in drawings and specifications",
+      "unit": "No.",
+      "plannedQuantity": 256.0,
+      "rateEGP": 0,
+      "divisionCode": "05"
+    },
+    {
+      "itemCode": "5.3.1",
+      "description": "Floor mounted, height 900 mm (for stairs)",
+      "unit": "m",
+      "plannedQuantity": 195.0,
+      "rateEGP": 0,
+      "divisionCode": "05"
+    },
+    {
+      "itemCode": "5.3.2",
+      "description": "Stainless-steel handrail, including all related works as shown in drawing and as per specifications.(for duplex stairs)",
+      "unit": "m",
+      "plannedQuantity": 40.0,
+      "rateEGP": 0,
+      "divisionCode": "05"
+    },
+    {
+      "itemCode": "5.4.1",
+      "description": "Glass handrail, 650 mm clear height for terraces w/stainless steel hand-rail cap.",
+      "unit": "m",
+      "plannedQuantity": 600.0,
+      "rateEGP": 0,
+      "divisionCode": "05"
+    },
+    {
+      "itemCode": "7.1.1",
+      "description": "for wet area",
+      "unit": "m²",
+      "plannedQuantity": 650.0,
+      "rateEGP": 0,
+      "divisionCode": "07"
+    },
+    {
+      "itemCode": "7.2.1",
+      "description": "Horizontal expansion joint assemblies (heavy duty) at parking floors.",
+      "unit": "m",
+      "plannedQuantity": 18.0,
+      "rateEGP": 0,
+      "divisionCode": "07"
+    },
+    {
+      "itemCode": "7.2.2",
+      "description": "Horizontal expansion joint assemblies at parking ceilings.",
+      "unit": "m",
+      "plannedQuantity": 18.0,
+      "rateEGP": 0,
+      "divisionCode": "07"
+    },
+    {
+      "itemCode": "7.2.3",
+      "description": "Vertical expansion joint at internal walls and facades.",
+      "unit": "m",
+      "plannedQuantity": 70.0,
+      "rateEGP": 0,
+      "divisionCode": "07"
+    },
+    {
+      "itemCode": "7.3.1",
+      "description": "Roofing,2 mm thick.",
+      "unit": "m²",
+      "plannedQuantity": 1340.0,
+      "rateEGP": 0,
+      "divisionCode": "07"
+    },
+    {
+      "itemCode": "8.1.1",
+      "description": "Door type D06, size 1100 × 2200 mm high.Hinged , 90 minutes fire rated .",
+      "unit": "No.",
+      "plannedQuantity": 36.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.1.2",
+      "description": "Type \"D08\", size 1100 x 2200mm high,Hinged.",
+      "unit": "No.",
+      "plannedQuantity": 4.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.1.3",
+      "description": "Door type D09, size 900 × 2200 mm high.Hinged with wood finish.",
+      "unit": "No.",
+      "plannedQuantity": 30.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.2.1",
+      "description": "Door type D04, size 1900 × 2550 mm high.double sliding",
+      "unit": "No.",
+      "plannedQuantity": 110.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.2.2",
+      "description": "Door type D05, size 1300 × 2550 mm high.double sliding",
+      "unit": "No.",
+      "plannedQuantity": 40.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.2.3",
+      "description": "Door type D07, size 2000 × 2550 mm high.Hinged",
+      "unit": "No.",
+      "plannedQuantity": 2.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.2.4",
+      "description": "Door type D10, size 2800 × 2550 mm high.Trible sliding",
+      "unit": "No.",
+      "plannedQuantity": 20.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.2.5",
+      "description": "Door type D11, size 1600 × 2500 mm high.double sliding",
+      "unit": "No.",
+      "plannedQuantity": 2.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.3.1",
+      "description": "Type \"D01\", size 100 x 2200mm high, hinged door , 90 minutes fire rated .",
+      "unit": "No.",
+      "plannedQuantity": 2.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.3.2",
+      "description": "Type \"D01\", size 100 x 2200mm high, hinged door .",
+      "unit": "No.",
+      "plannedQuantity": 96.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.3.3",
+      "description": "Type \"D02\", size 900 x 2200mm high, hinged door.",
+      "unit": "No.",
+      "plannedQuantity": 172.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.3.4",
+      "description": "Type \"D03\", size 800 x 2200mm high, hinged door",
+      "unit": "No.",
+      "plannedQuantity": 178.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.4.1",
+      "description": "size 400x900 mm ,45 minutes fire rated.",
+      "unit": "No.",
+      "plannedQuantity": 24.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.4.2",
+      "description": "size 400x1800 mm,45 minutes fire rated.",
+      "unit": "No.",
+      "plannedQuantity": 24.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.4.3",
+      "description": "size 600x1800 mm,45 minutes fire rated.",
+      "unit": "No.",
+      "plannedQuantity": 26.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.5",
+      "description": "Glazed aluminum curtain walls with 12.8 thick. double glass, super durable Powder coating, color as shown in elevation drawings  and subject to client approval,  including all related works as shown in drawings and specifications and sizes ",
+      "unit": "m²",
+      "plannedQuantity": 42.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.6.1",
+      "description": "Window type W01, size 1900 mm width × 1650 mm height.Sliding.",
+      "unit": "No.",
+      "plannedQuantity": 86.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.6.2",
+      "description": "Window type W02, size 600 mm width × 800 mm height.Hinged.(small PS).",
+      "unit": "No.",
+      "plannedQuantity": 108.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.6.3",
+      "description": "Window type W03, size 1300 mm width × 1650 mm height.Sliding.",
+      "unit": "No.",
+      "plannedQuantity": 20.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.6.4",
+      "description": "Window type W04, size 2000 mm width × 1200 mm height.Hinged..",
+      "unit": "No.",
+      "plannedQuantity": 24.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.6.5",
+      "description": "Window type W05, size 1600 mm width × 1650 mm height.Sliding.",
+      "unit": "No.",
+      "plannedQuantity": 4.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.6.6",
+      "description": "Window type W06, size 1200 mm width × 1650 mm height.Sliding.",
+      "unit": "No.",
+      "plannedQuantity": 28.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.6.7",
+      "description": "Window type W07, size 1000 mm width × 1650 mm height.Sliding.",
+      "unit": "No.",
+      "plannedQuantity": 4.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "8.7",
+      "description": "Supply and install roof glazed skylight , fixed in accordance with the manufacturer’s instructions including frames, EPDM gasket ,weather selant , angles, glazing ,fixing accessories and all related works as shown on drawing and specificati",
+      "unit": "m²",
+      "plannedQuantity": 35.0,
+      "rateEGP": 0,
+      "divisionCode": "08"
+    },
+    {
+      "itemCode": "9.1.1",
+      "description": "Walls, internal.",
+      "unit": "m²",
+      "plannedQuantity": 22600.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.1.2",
+      "description": "Ceilings, internal",
+      "unit": "m²",
+      "plannedQuantity": 6740.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.1.3",
+      "description": "External Walls for facades, shafts ,elevator walls",
+      "unit": "m²",
+      "plannedQuantity": 8350.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.2.1",
+      "description": "Supply and install of 12 mm suspended ceiling, produced by (Knauf - Lafarge) vertically or horizontally.including bulkheads, paint, all galvanized steel suspension hangers system, fittings and fixing accessories, and adhesive tape must be p",
+      "unit": "m²",
+      "plannedQuantity": 975.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.3.1",
+      "description": "Floor, Ceramic tiles 60x60 cm. (F01)",
+      "unit": "m²",
+      "plannedQuantity": 5000.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.3.2",
+      "description": "Wall, Ceramic tiles 30x60 cm  (W02) with adhesive material.",
+      "unit": "m²",
+      "plannedQuantity": 4600.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.3.3",
+      "description": "Skirting, Ceramic tiles100 mm height, (S01)",
+      "unit": "m",
+      "plannedQuantity": 4550.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.4.1",
+      "description": "Terrazzo floor tiles 40x40x3 cm, (F02) for terraces and indoor roof",
+      "unit": "m²",
+      "plannedQuantity": 1170.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.4.2",
+      "description": "Skirting, Terrazzo  tiles100 mm height, (S02)",
+      "unit": "m",
+      "plannedQuantity": 1285.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.5.1",
+      "description": "Mosaic floor tiles 40x40x3 cm, (F09) for upper roof parking service rooms and shafts",
+      "unit": "m²",
+      "plannedQuantity": 1050.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.5.2",
+      "description": "Skirting, Terrazzo  tiles100 mm height, (S02)",
+      "unit": "m",
+      "plannedQuantity": 1230.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.6.1",
+      "description": "Marble tiles 80x80 cm (F03)",
+      "unit": "m²",
+      "plannedQuantity": 1036.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.6.2",
+      "description": "Skirting, Marble tiles100 mm height, (S04)",
+      "unit": "m",
+      "plannedQuantity": 1230.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.6.3",
+      "description": "To landings ; cut to size Marble flooring, 40mm thick.",
+      "unit": "m²",
+      "plannedQuantity": 250.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.6.4",
+      "description": "To stairs steps; cut to size Marble 30mm thick treads and 20mm thick risers.",
+      "unit": "m",
+      "plannedQuantity": 830.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.6.5",
+      "description": "To skirting; Marble skirting 100 mm high.",
+      "unit": "m",
+      "plannedQuantity": 500.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.6.6",
+      "description": "Parapet copping  ,size 20 mm thickness",
+      "unit": "m",
+      "plannedQuantity": 490.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.6.7",
+      "description": "Handrail base granite  ,size 20 mm thickness",
+      "unit": "m",
+      "plannedQuantity": 600.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.7.1",
+      "description": "20 mm thick ;",
+      "unit": "m",
+      "plannedQuantity": 800.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.8.1",
+      "description": "To external landings ; cut to size Granite flooring, 40mm thick.",
+      "unit": "m²",
+      "plannedQuantity": 26.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.8.2",
+      "description": "To external stairs steps; cut to size Granite 30mm thick treads and 20mm thick risers.",
+      "unit": "m",
+      "plannedQuantity": 55.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.8.3",
+      "description": "To skirting; Granite skirting 100 mm high.",
+      "unit": "m",
+      "plannedQuantity": 12.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.8.4",
+      "description": "To façade skirting; Granite skirting 350 mm high.",
+      "unit": "m",
+      "plannedQuantity": 290.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.9",
+      "description": "Polished marble vanity top with back splash including all associated  works all complete as detailed on drawings as specified and to Engineer's approval:",
+      "unit": "m²",
+      "plannedQuantity": 100.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.10.1",
+      "description": "Flooring . Epoxy paint on concrete (F08)",
+      "unit": "m²",
+      "plannedQuantity": 1600.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.11.1",
+      "description": "Walls. To walls and columns (W01) .",
+      "unit": "m²",
+      "plannedQuantity": 18000.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.11.2",
+      "description": "Ceiling. To ceilings (C01).",
+      "unit": "m²",
+      "plannedQuantity": 5765.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.11.3",
+      "description": "External paint, for facades, shafts including all related works as shown in drawings and specifications.",
+      "unit": "m²",
+      "plannedQuantity": 7500.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "9.11.4",
+      "description": "Anti carbon paint for basement walls and ceiling including all related works",
+      "unit": "m²",
+      "plannedQuantity": 3000.0,
+      "rateEGP": 0,
+      "divisionCode": "09"
+    },
+    {
+      "itemCode": "10.1.1",
+      "description": "Paper Holder",
+      "unit": "No.",
+      "plannedQuantity": 178.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "10.1.2",
+      "description": "Built in Soap Dispenser",
+      "unit": "No.",
+      "plannedQuantity": 178.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "10.1.3",
+      "description": "Paper Towel Dispenser",
+      "unit": "No.",
+      "plannedQuantity": 178.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "10.1.4",
+      "description": "Hand Dryer",
+      "unit": "No.",
+      "plannedQuantity": 178.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "10.1.5",
+      "description": "Mirror",
+      "unit": "No.",
+      "plannedQuantity": 178.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "10.1.6",
+      "description": "Waste Can",
+      "unit": "No.",
+      "plannedQuantity": 178.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "10.2",
+      "description": "Toilet shower cabinat ; plastic laminated panel (HPL) ; fixed to concrete slab and wall; including doors and all necessary support and fixing accessories; all in accordance with drawings and Specifications.",
+      "unit": "No.",
+      "plannedQuantity": 178.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "10.3",
+      "description": "Supply and install steel angle for exposed column's sides protection with 100cm height. including  any material or activity required to finish the work as per specification and drawings.",
+      "unit": "m",
+      "plannedQuantity": 150.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "10.4",
+      "description": "Supply & install rubber speed humps with end cap including  any material or activity required to finish the work as per specification and drawings.",
+      "unit": "m",
+      "plannedQuantity": 32.0,
+      "rateEGP": 0,
+      "divisionCode": "10"
+    },
+    {
+      "itemCode": "14.1.1",
+      "description": "Passenger Elevator-Rated load - 6 passengers,450 kg Rated speed - 1 m/s, no. of stop (8).",
+      "unit": "No.",
+      "plannedQuantity": 4.0,
+      "rateEGP": 0,
+      "divisionCode": "14"
+    }
+  ],
+  "structuralBoq": [
+    {
+      "itemCode": "1.1",
+      "description": "To under footings 300 mm thickness",
+      "unit": "m³",
+      "plannedQuantity": 580.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "2.1",
+      "description": "To slab-on-grade with 150 mm as per drawings including filling between the expansion joints as per specifications the rate includes polyethylene sheets 250 micron",
+      "unit": "m²",
+      "plannedQuantity": 1850.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "3.1",
+      "description": "To Footings",
+      "unit": "m³",
+      "plannedQuantity": 1210.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "3.2",
+      "description": "To ground beams",
+      "unit": "m³",
+      "plannedQuantity": 60.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "3.3",
+      "description": "To retaining wall",
+      "unit": "m³",
+      "plannedQuantity": 375.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "4.1",
+      "description": "Non-prestressed slabs and beams",
+      "unit": "m³",
+      "plannedQuantity": 525.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "4.2",
+      "description": "Prestressed slabs (excluding the prestressing steel)",
+      "unit": "m³",
+      "plannedQuantity": 2030.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "4.3",
+      "description": "Stair cases",
+      "unit": "m³",
+      "plannedQuantity": 55.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "1.1",
+      "description": "Shear walls, cores and columns",
+      "unit": "m³",
+      "plannedQuantity": 660.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    },
+    {
+      "itemCode": "2.1",
+      "description": "Slabs",
+      "unit": "ton",
+      "plannedQuantity": 44.0,
+      "rateEGP": 0,
+      "divisionCode": "03"
+    }
+  ],
+  "plumbingBoq": [
+    {
+      "itemCode": "22-1.1.2",
+      "description": "Diam. 160 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 120.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-1.1.3",
+      "description": "Diam. 160 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 111.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-1.1.4",
+      "description": "Diam. 110 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 1077.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-1.1.5",
+      "description": "Diam. 75 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 1706.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-1.1.6",
+      "description": "Diam. 50 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 605.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-1.2.1",
+      "description": "Diam.75 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 60.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-1.5.1",
+      "description": "Inspection Chamber  0.60 m x 0.60 m",
+      "unit": "No.",
+      "plannedQuantity": 2.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-1.6.1",
+      "description": "Supplying, installing, testing, commission and hand over of  Gully Trap size 0.30m x 0.30m complete with heavy duty steel cover, fittings, excavation, back filling, inlet and outlet pipes and all accessories required to complete the works t",
+      "unit": "No.",
+      "plannedQuantity": 2.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-1.7.1",
+      "description": "Q = 6L/S    @ H =15M for drainage  in basement",
+      "unit": "Item",
+      "plannedQuantity": 2.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-3.1.1.1",
+      "description": "Diam. 90 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 80.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-3.1.1.2",
+      "description": "Diam. 75 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 20.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-3.1.1.3",
+      "description": "Diam. 40 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 50.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-3.1.1.4",
+      "description": "Diam. 32 mm",
+      "unit": "Mt.",
+      "plannedQuantity": 2718.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-4.3.1",
+      "description": "50 liters",
+      "unit": "No.",
+      "plannedQuantity": 162.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-4.3.2",
+      "description": "30liters",
+      "unit": "No.",
+      "plannedQuantity": 4.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-5.1",
+      "description": "Water Closets",
+      "unit": "No.",
+      "plannedQuantity": 163.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-5.3",
+      "description": "Lavatories",
+      "unit": "No.",
+      "plannedQuantity": 163.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-5.3",
+      "description": "KS",
+      "unit": "No.",
+      "plannedQuantity": 85.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-5.4",
+      "description": "Shower",
+      "unit": "No.",
+      "plannedQuantity": 98.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    },
+    {
+      "itemCode": "22-6.4",
+      "description": "32mm Water Meter .",
+      "unit": "No.",
+      "plannedQuantity": 87.0,
+      "rateEGP": 0,
+      "divisionCode": "22"
+    }
+  ],
+  "fireFightingBoq": [
+    {
+      "itemCode": "FF-1.1",
+      "description": "1.0 ''",
+      "unit": "m",
+      "plannedQuantity": 396.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-1.2",
+      "description": "1.25''",
+      "unit": "m",
+      "plannedQuantity": 155.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-1.3",
+      "description": "1.5''",
+      "unit": "m",
+      "plannedQuantity": 75.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-1.4",
+      "description": "2.0''",
+      "unit": "m",
+      "plannedQuantity": 9.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-1.5",
+      "description": "2.5''",
+      "unit": "m",
+      "plannedQuantity": 28.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-1.6",
+      "description": "3.0''",
+      "unit": "m",
+      "plannedQuantity": 34.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-1.7",
+      "description": "4.0''",
+      "unit": "m",
+      "plannedQuantity": 80.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-1.8",
+      "description": "6.0''",
+      "unit": "m",
+      "plannedQuantity": 264.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-2.1",
+      "description": "Supply and install automatic fire sprinkler   which operate at 68 c, pendent Sprinkler 1/2\" threaded UL /FM listed approved , sprinkler with chrome finished and painted plate.",
+      "unit": "No.",
+      "plannedQuantity": 7.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-2.2",
+      "description": "Supply and install automatic fire sprinkler   which operate at 68 c, upright Sprinkler 1/2\" threaded UL /FM listed approved , sprinkler with chrome finished and painted plate.",
+      "unit": "No.",
+      "plannedQuantity": 204.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-3.1",
+      "description": "Zone Control Valve of 6.0\"",
+      "unit": "No.",
+      "plannedQuantity": 1.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-3.3.1",
+      "description": "Diam. 50mm",
+      "unit": "m",
+      "plannedQuantity": 20.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-4.1",
+      "description": "6\"",
+      "unit": "No.",
+      "plannedQuantity": 5.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-5.1",
+      "description": "A.A.V 1\" with ball valve",
+      "unit": "No.",
+      "plannedQuantity": 4.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-6.1",
+      "description": "of combined fire hose cabinet (FHC-3) consisting of 65 mm brass angle valve, fire hose reel swing type 30 m length and 65 mm diameter, 25 mm brass angle valve, fire hose reel swing type 30 m length and 25 mm diameter, pressure reducing valv",
+      "unit": "No.",
+      "plannedQuantity": 32.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-7.1.1",
+      "description": "Siamese Connection",
+      "unit": "No.",
+      "plannedQuantity": 1.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-8.1",
+      "description": "Multi propose  Dry chemical fire extinguisher (ABC)  FE-1 (6 kg)",
+      "unit": "No.",
+      "plannedQuantity": 9.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-9.1",
+      "description": "Elec Room   B1      1*45 KG",
+      "unit": "No.",
+      "plannedQuantity": 1.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-9.2",
+      "description": "Elec Room   B1      1*45 KG",
+      "unit": "No.",
+      "plannedQuantity": 1.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    },
+    {
+      "itemCode": "FF-10.1",
+      "description": "Low Current  ROOM     B1  5 KG",
+      "unit": "No.",
+      "plannedQuantity": 1.0,
+      "rateEGP": 0,
+      "divisionCode": "21"
+    }
+  ],
+  "electricalPanels": [
+    {
+      "panelReference": "DB-B.01",
+      "location": "Building G1 BASEMENT FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)*",
+          "connectedLoadVA": 600.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)*",
+          "connectedLoadVA": 300.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(L)*",
+          "connectedLoadVA": 300.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(L)*",
+          "connectedLoadVA": 600.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(L)*",
+          "connectedLoadVA": 450.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(L)*",
+          "connectedLoadVA": 500.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R3(L)",
+          "connectedLoadVA": 400.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y3(L)",
+          "connectedLoadVA": 600.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B3(L)",
+          "connectedLoadVA": 800.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R4(EXIT)*",
+          "connectedLoadVA": 150.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y4(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B4(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R5(S)",
+          "connectedLoadVA": 1260.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y5(S)",
+          "connectedLoadVA": 1440.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B5(S)",
+          "connectedLoadVA": 1440.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "R6(SP.U)",
+          "connectedLoadVA": 1500.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y6(SP.U)",
+          "connectedLoadVA": 1500.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B6(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 19,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R7(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 20,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "Y7(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 21,
+          "mcbRating": 32.0,
+          "wireSize": "",
+          "loadType": "B7(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 22,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R8(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 23,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "Y8(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 24,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-B.02",
+      "location": "Building G1 BASEMENT FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)*",
+          "connectedLoadVA": 600.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)*",
+          "connectedLoadVA": 300.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(L)*",
+          "connectedLoadVA": 300.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(L)*",
+          "connectedLoadVA": 600.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(L)*",
+          "connectedLoadVA": 450.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(L)*",
+          "connectedLoadVA": 500.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R3(L)",
+          "connectedLoadVA": 200.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y3(L)",
+          "connectedLoadVA": 300.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B3(L)",
+          "connectedLoadVA": 400.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R4(EXIT)*",
+          "connectedLoadVA": 150.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y4(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B4(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R5(S)",
+          "connectedLoadVA": 1260.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y5(S)",
+          "connectedLoadVA": 1440.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B5(S)",
+          "connectedLoadVA": 1440.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R6(S)",
+          "connectedLoadVA": 360.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y6(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B6(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 19,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R7(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 20,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y7(SP.U)",
+          "connectedLoadVA": 1500.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 21,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B7(SP.U)",
+          "connectedLoadVA": 1500.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 22,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R8(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 23,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "Y8(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 24,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B8(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-SER.01",
+      "location": "Building G1 BASEMENT FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)*",
+          "connectedLoadVA": 800.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)*",
+          "connectedLoadVA": 400.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(L)*",
+          "connectedLoadVA": 400.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(L)*",
+          "connectedLoadVA": 700.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(L)*",
+          "connectedLoadVA": 500.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(L)*",
+          "connectedLoadVA": 500.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R3(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y3(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B3(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R4(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y4(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B4(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R5(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y5(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B5(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R6(L)*",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y6(L)*",
+          "connectedLoadVA": 400.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B6(L)*",
+          "connectedLoadVA": 450.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 19,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R7(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 20,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y7(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 21,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B7(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 22,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R8(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 23,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y8(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 24,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B8(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 25,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R9(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 26,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y9(S)",
+          "connectedLoadVA": 1260.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 27,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B9(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 28,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R10(L)*",
+          "connectedLoadVA": 700.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 29,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y10(L)*",
+          "connectedLoadVA": 500.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 30,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B10(L)*",
+          "connectedLoadVA": 250.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 25,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R11(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 26,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y11(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 27,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B11(S)",
+          "connectedLoadVA": 900.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 28,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R12(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 29,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "Y12(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 30,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B12(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-GR.A1",
+      "location": "Building G1 GROUND FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)",
+          "connectedLoadVA": 800.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)",
+          "connectedLoadVA": 650.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(L)",
+          "connectedLoadVA": 450.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R3(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y3(S)",
+          "connectedLoadVA": 900.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R4(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y4(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B4(SP.U)",
+          "connectedLoadVA": 2625.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "R5(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y5(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B5(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R6(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y6(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B6(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 19,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R7(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 20,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "Y7(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 21,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "B7(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 22,
+          "mcbRating": 32.0,
+          "wireSize": "",
+          "loadType": "R8(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 23,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "Y8(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 24,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B8(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-GR.A2",
+      "location": "Building G1 GROUND FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)",
+          "connectedLoadVA": 850.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)",
+          "connectedLoadVA": 650.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(S)",
+          "connectedLoadVA": 900.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "R4(SP.U)",
+          "connectedLoadVA": 2625.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y4(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B4(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R5(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y5(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B5(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "R6(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 32.0,
+          "wireSize": "",
+          "loadType": "Y6(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-1ST.A1",
+      "location": "Building G1 FIRST FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R3(S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y3(S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B3(S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R4(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y4(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B4(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R5(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "Y5(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B5(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "R6(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "Y6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-1ST.A2",
+      "location": "Building G1 FIRST FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)",
+          "connectedLoadVA": 600.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)",
+          "connectedLoadVA": 350.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(S)",
+          "connectedLoadVA": 900.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B2(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B3(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "R4(SP.U)",
+          "connectedLoadVA": 2625.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y4(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B4(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R5(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "Y5(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 32.0,
+          "wireSize": "",
+          "loadType": "B5(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "Y6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-1ST.A3",
+      "location": "Building G1 FIRST FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)",
+          "connectedLoadVA": 900.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)",
+          "connectedLoadVA": 700.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(S)",
+          "connectedLoadVA": 900.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(S)",
+          "connectedLoadVA": 360.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "R4(SP.U)",
+          "connectedLoadVA": 2625.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y4(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B4(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R5(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y5(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B5(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R6(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "Y6(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-6TH.A1",
+      "location": "Building G1 FIRST FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)",
+          "connectedLoadVA": 450.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)",
+          "connectedLoadVA": 550.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(S)",
+          "connectedLoadVA": 900.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(S)",
+          "connectedLoadVA": 1260.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B2(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y3(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B3(SP.U)",
+          "connectedLoadVA": 3500.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "R4(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y4(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B4(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R5(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "Y5(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 32.0,
+          "wireSize": "",
+          "loadType": "B5(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "Y6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B6(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-6TH.A2",
+      "location": "Building G1 FIRST FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)",
+          "connectedLoadVA": 650.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)",
+          "connectedLoadVA": 750.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(L)",
+          "connectedLoadVA": 450.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(L)",
+          "connectedLoadVA": 500.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(S)",
+          "connectedLoadVA": 1260.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R3(S)",
+          "connectedLoadVA": 1440.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y3(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B3(S)",
+          "connectedLoadVA": 1260.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R4(S)",
+          "connectedLoadVA": 720.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y4(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B4(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R5(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y5(SP.U)",
+          "connectedLoadVA": 3500.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B5(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "R6(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y6(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B6(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 19,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R7(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 20,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y7(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 21,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B7(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 22,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "R8(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 23,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "Y8(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 24,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B8(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    },
+    {
+      "panelReference": "DB-6TH.A4",
+      "location": "Building G1 FIRST FLOOR",
+      "incomingCB": "40A",
+      "circuits": [
+        {
+          "circuitNumber": 1,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R1(L)",
+          "connectedLoadVA": 800.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 2,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y1(L)",
+          "connectedLoadVA": 650.0,
+          "demandFactor": 0.8,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 3,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B1(L)",
+          "connectedLoadVA": 650.0,
+          "demandFactor": 0.8,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 4,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R2(L)",
+          "connectedLoadVA": 800.0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 5,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y2(S)",
+          "connectedLoadVA": 1440.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 6,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B2(S)",
+          "connectedLoadVA": 1080.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 7,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R3(S)",
+          "connectedLoadVA": 1260.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 8,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "Y3(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 9,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "B3(S)",
+          "connectedLoadVA": 540.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 10,
+          "mcbRating": 16.0,
+          "wireSize": "3x3",
+          "loadType": "R4(S)",
+          "connectedLoadVA": 1260.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 11,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y4(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 12,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B4(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 13,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R5(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 14,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y5(SP.U)",
+          "connectedLoadVA": 5250.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 15,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "B5(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 16,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "R6(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 17,
+          "mcbRating": 32.0,
+          "wireSize": "3x6",
+          "loadType": "Y6(SP.U)",
+          "connectedLoadVA": 1750.0,
+          "demandFactor": 0.7,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 18,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B6(E.W.H)",
+          "connectedLoadVA": 1500.0,
+          "demandFactor": 0.4,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 19,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R7(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 20,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "Y7(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "Y"
+        },
+        {
+          "circuitNumber": 21,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "B7(E.W.H)",
+          "connectedLoadVA": 2000.0,
+          "demandFactor": 0.4,
+          "phase": "B"
+        },
+        {
+          "circuitNumber": 22,
+          "mcbRating": 20.0,
+          "wireSize": "3x4",
+          "loadType": "R8(P.S)",
+          "connectedLoadVA": 1000.0,
+          "demandFactor": 0.6,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 23,
+          "mcbRating": 20.0,
+          "wireSize": "",
+          "loadType": "Y8(SPARE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        },
+        {
+          "circuitNumber": 24,
+          "mcbRating": 16.0,
+          "wireSize": "",
+          "loadType": "B8(SPACE)",
+          "connectedLoadVA": 0,
+          "demandFactor": 0.8,
+          "phase": "R"
+        }
+      ]
+    }
+  ],
+  "specSections": [
+    {
+      "code": "02300",
+      "title": "EARTHWORK",
+      "divisionCode": "02"
+    },
+    {
+      "code": "03250",
+      "title": "POST-TENSIONING",
+      "divisionCode": "03"
+    },
+    {
+      "code": "03300",
+      "title": "CAST-IN-PLACE CONCRETE",
+      "divisionCode": "03"
+    },
+    {
+      "code": "03521",
+      "title": "LIGHTWEIGHT CONCRETE",
+      "divisionCode": "03"
+    },
+    {
+      "code": "03544",
+      "title": "CEMENT-BASED FLOOR SCREED",
+      "divisionCode": "03"
+    },
+    {
+      "code": "05120",
+      "title": "STRUCTURAL STEEL",
+      "divisionCode": "05"
+    },
+    {
+      "code": "07133",
+      "title": "SHEET WATERPROOFING",
+      "divisionCode": "07"
+    },
+    {
+      "code": "07143",
+      "title": "COLD FLUID-APPLIED WATERPROOFING",
+      "divisionCode": "07"
+    },
+    {
+      "code": "07920",
+      "title": "JOINT SEALANTS",
+      "divisionCode": "07"
+    },
+    {
+      "code": "104413",
+      "title": "- Fire Protection Cabinets",
+      "divisionCode": "10"
+    },
+    {
+      "code": "104416",
+      "title": "- Fire Extinguishers",
+      "divisionCode": "10"
+    },
+    {
+      "code": "210517",
+      "title": "- Sleeves and Sleeve Seals for Fire-Suppression Piping",
+      "divisionCode": "21"
+    },
+    {
+      "code": "210523",
+      "title": "- General-Duty Valves for Fire Protection Piping",
+      "divisionCode": "21"
+    },
+    {
+      "code": "210553",
+      "title": "- Identification for Fire-Suppression Piping and Equipment",
+      "divisionCode": "21"
+    },
+    {
+      "code": "211200",
+      "title": "- Fire-Suppression Standpipes",
+      "divisionCode": "21"
+    },
+    {
+      "code": "211213",
+      "title": "- Fire-Suppression Hoses and Nozzles",
+      "divisionCode": "21"
+    },
+    {
+      "code": "211313",
+      "title": "- Wet-Pipe Sprinkler Systems",
+      "divisionCode": "21"
+    },
+    {
+      "code": "213113",
+      "title": "Fire Pumps",
+      "divisionCode": "21"
+    },
+    {
+      "code": "220517",
+      "title": "- Sleeves and Sleeve Seals for Plumbing Piping",
+      "divisionCode": "22"
+    },
+    {
+      "code": "220523",
+      "title": "- General-Duty Valves for Plumbing Piping",
+      "divisionCode": "22"
+    },
+    {
+      "code": "220529",
+      "title": "- Hangers and Supports for Plumbing Piping and Equipment",
+      "divisionCode": "22"
+    },
+    {
+      "code": "220553",
+      "title": "- Identification for Plumbing Piping and Equipment",
+      "divisionCode": "22"
+    },
+    {
+      "code": "221116",
+      "title": "- Domestic Water Piping",
+      "divisionCode": "22"
+    },
+    {
+      "code": "221119",
+      "title": "- Domestic Water Piping Specialties",
+      "divisionCode": "22"
+    },
+    {
+      "code": "221316",
+      "title": "- Sanitary,Waste. Vent and Rain Water Piping",
+      "divisionCode": "22"
+    },
+    {
+      "code": "221319",
+      "title": "- Sanitary Waste Piping Specialties",
+      "divisionCode": "22"
+    },
+    {
+      "code": "221429",
+      "title": "- Sump Pumps",
+      "divisionCode": "22"
+    },
+    {
+      "code": "223300",
+      "title": "- Electric, Domestic-Water Heaters",
+      "divisionCode": "22"
+    }
+  ]
+}

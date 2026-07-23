@@ -1,6 +1,11 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.module';
 import { CreateBoqDto } from './dto/create-boq.dto';
+import { ExecuteQuantityDto } from './dto/execute-quantity.dto';
+import {
+  CreateBoqItemDto,
+  UpdateBoqItemDto,
+} from './dto/manage-boq-item.dto';
 
 @Injectable()
 export class BoqService {
@@ -40,5 +45,77 @@ export class BoqService {
         },
       },
     });
+  }
+
+  findAllItems() {
+    return this.prisma.bOQItem.findMany({
+      orderBy: { itemCode: 'asc' },
+    });
+  }
+
+  async executeQuantity(dto: ExecuteQuantityDto) {
+    const item = await this.prisma.bOQItem.findUnique({
+      where: { id: dto.boqItemId },
+    });
+
+    if (!item) {
+      throw new NotFoundException('BOQ item not found');
+    }
+
+    if (item.actualQuantity + dto.installedQuantity > item.plannedQuantity) {
+      throw new ForbiddenException('BUDGET EXCEEDED: VO Required.');
+    }
+
+    return this.prisma.bOQItem.update({
+      where: { id: dto.boqItemId },
+      data: {
+        actualQuantity: item.actualQuantity + dto.installedQuantity,
+      },
+    });
+  }
+
+  createItem(dto: CreateBoqItemDto) {
+    return this.prisma.bOQItem.create({
+      data: {
+        itemCode: dto.itemCode.trim(),
+        description: dto.description.trim(),
+        unit: dto.unit.trim(),
+        plannedQuantity: dto.plannedQuantity,
+        rateEGP: dto.rateEGP,
+        divisionCode: dto.divisionCode?.trim() || null,
+        actualQuantity: 0,
+      },
+    });
+  }
+
+  async updateItem(id: string, dto: UpdateBoqItemDto) {
+    const item = await this.prisma.bOQItem.findUnique({ where: { id } });
+    if (!item) throw new NotFoundException('BOQ item not found');
+
+    return this.prisma.bOQItem.update({
+      where: { id },
+      data: {
+        ...(dto.itemCode ? { itemCode: dto.itemCode.trim() } : {}),
+        ...(dto.description ? { description: dto.description.trim() } : {}),
+        ...(dto.unit ? { unit: dto.unit.trim() } : {}),
+        ...(dto.plannedQuantity != null
+          ? { plannedQuantity: dto.plannedQuantity }
+          : {}),
+        ...(dto.rateEGP != null ? { rateEGP: dto.rateEGP } : {}),
+        ...(dto.actualQuantity != null
+          ? { actualQuantity: dto.actualQuantity }
+          : {}),
+        ...(dto.divisionCode !== undefined
+          ? { divisionCode: dto.divisionCode?.trim() || null }
+          : {}),
+      },
+    });
+  }
+
+  async deleteItem(id: string) {
+    const item = await this.prisma.bOQItem.findUnique({ where: { id } });
+    if (!item) throw new NotFoundException('BOQ item not found');
+    await this.prisma.bOQItem.delete({ where: { id } });
+    return { deleted: true };
   }
 }

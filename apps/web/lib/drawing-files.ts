@@ -15,9 +15,3 @@ export function isPdfFileUrl(fileUrl: string): boolean {
 export function isDwgFileUrl(fileUrl: string): boolean {
   return fileUrl.toLowerCase().endsWith('.dwg');
 }
-
-export function drawingFileActionLabel(fileUrl: string): string {
-  if (isPdfFileUrl(fileUrl)) return 'Preview PDF';
-  if (isDwgFileUrl(fileUrl)) return 'Download DWG';
-  return 'Download CAD';
-}

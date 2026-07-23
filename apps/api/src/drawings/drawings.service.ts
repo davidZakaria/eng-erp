@@ -9,6 +9,11 @@ import { PrismaService } from '../prisma/prisma.module';
 import { FileStorageService } from '../security-and-ops/services/file-storage.service';
 import { isAllowedCadExtension } from './dto/upload-drawing.dto';
 import { ReviewDrawingDto } from './dto/review-drawing.dto';
+import {
+  assertDrawingFileUrl,
+  CreateDrawingAdminDto,
+  UpdateDrawingAdminDto,
+} from './dto/manage-drawing.dto';
 
 const CONSULTANT_ROLES: Role[] = [
   Role.CONSULTANT,
@@ -84,8 +89,79 @@ export class DrawingsService {
     });
   }
 
+  async registerDrawingFromStorage(
+    uploaderId: string,
+    drawingNumber: string,
+    title: string,
+    discipline: Discipline,
+    fileUrl: string,
+    lod?: {
+      projectNumber?: string;
+      disciplineCode?: string;
+      sheetNumber?: string;
+      sheetSize?: string;
+      scale?: string;
+      packageName?: string;
+    },
+  ) {
+    const fileName = fileUrl.split('/').pop() ?? '';
+    if (!isAllowedCadExtension(fileName)) {
+      throw new BadRequestException(
+        'Allowed formats: .dwg (preferred), .dxf, .pdf',
+      );
+    }
+
+    const normalizedNumber = drawingNumber.trim().toUpperCase();
+
+    return this.prisma.$transaction(async (tx) => {
+      const existing = await tx.drawing.findMany({
+        where: { drawingNumber: normalizedNumber },
+        orderBy: { revision: 'desc' },
+      });
+
+      const latestRevision = existing[0]?.revision ?? -1;
+      const nextRevision = latestRevision + 1;
+
+      if (existing.length > 0) {
+        await tx.drawing.updateMany({
+          where: {
+            drawingNumber: normalizedNumber,
+            status: { not: ItemStatus.SUPERSEDED },
+          },
+          data: { status: ItemStatus.SUPERSEDED },
+        });
+      }
+
+      return tx.drawing.create({
+        data: {
+          drawingNumber: normalizedNumber,
+          title: title.trim(),
+          discipline,
+          revision: nextRevision,
+          status: ItemStatus.PENDING_REVIEW,
+          fileUrl,
+          uploaderId,
+          projectNumber: lod?.projectNumber?.trim() || null,
+          disciplineCode: lod?.disciplineCode?.trim() || null,
+          sheetNumber: lod?.sheetNumber?.trim() || null,
+          sheetSize: lod?.sheetSize?.trim() || null,
+          scale: lod?.scale?.trim() || null,
+          packageName: lod?.packageName?.trim() || null,
+        },
+        include: {
+          uploader: { select: { id: true, fullName: true, email: true } },
+        },
+      });
+    });
+  }
+
   async findAll(userId: string, role: Role) {
-    if (role === Role.HEAD_ENGINEER || role === Role.PROJECT_MANAGER || role === Role.ADMIN) {
+    if (
+      role === Role.HEAD_ENGINEER ||
+      role === Role.PROJECT_MANAGER ||
+      role === Role.ADMIN ||
+      role === Role.SUPER_ADMIN
+    ) {
       return this.prisma.drawing.findMany({
         orderBy: [{ drawingNumber: 'asc' }, { revision: 'desc' }],
         include: {
@@ -117,6 +193,127 @@ export class DrawingsService {
     return this.prisma.drawing.findMany({
       where: { status: ItemStatus.PENDING_REVIEW },
       orderBy: { createdAt: 'asc' },
+      include: {
+        uploader: { select: { id: true, fullName: true, email: true } },
+      },
+    });
+  }
+
+  async createDrawingAdmin(uploaderId: string, dto: CreateDrawingAdminDto) {
+    try {
+      assertDrawingFileUrl(dto.fileUrl);
+    } catch {
+      throw new BadRequestException(
+        'Allowed formats: .dwg (preferred), .dxf, .pdf',
+      );
+    }
+
+    const drawingNumber = dto.drawingNumber.trim().toUpperCase();
+
+    return this.prisma.drawing.create({
+      data: {
+        drawingNumber,
+        title: dto.title.trim(),
+        discipline: dto.discipline,
+        revision: dto.revision,
+        status: dto.status,
+        fileUrl: dto.fileUrl.trim(),
+        uploaderId,
+        projectNumber: dto.projectNumber?.trim() || null,
+        disciplineCode: dto.disciplineCode?.trim() || null,
+        sheetNumber: dto.sheetNumber?.trim() || null,
+        sheetSize: dto.sheetSize?.trim() || null,
+        scale: dto.scale?.trim() || null,
+        packageName: dto.packageName?.trim() || null,
+      },
+      include: {
+        uploader: { select: { id: true, fullName: true, email: true } },
+      },
+    });
+  }
+
+  async updateDrawingAdmin(id: string, dto: UpdateDrawingAdminDto) {
+    const existing = await this.prisma.drawing.findUnique({ where: { id } });
+    if (!existing) {
+      throw new NotFoundException('Drawing not found');
+    }
+
+    if (dto.fileUrl) {
+      try {
+        assertDrawingFileUrl(dto.fileUrl);
+      } catch {
+        throw new BadRequestException(
+          'Allowed formats: .dwg (preferred), .dxf, .pdf',
+        );
+      }
+    }
+
+    const drawingNumber = dto.drawingNumber
+      ? dto.drawingNumber.trim().toUpperCase()
+      : undefined;
+    const revision = dto.revision;
+
+    if (drawingNumber !== undefined || revision !== undefined) {
+      const nextNumber = drawingNumber ?? existing.drawingNumber;
+      const nextRevision = revision ?? existing.revision;
+      const conflict = await this.prisma.drawing.findFirst({
+        where: {
+          drawingNumber: nextNumber,
+          revision: nextRevision,
+          NOT: { id },
+        },
+      });
+      if (conflict) {
+        throw new BadRequestException(
+          'A drawing with this number and revision already exists',
+        );
+      }
+    }
+
+    return this.prisma.drawing.update({
+      where: { id },
+      data: {
+        drawingNumber,
+        title: dto.title?.trim(),
+        discipline: dto.discipline,
+        revision: dto.revision,
+        status: dto.status,
+        fileUrl: dto.fileUrl?.trim(),
+        projectNumber:
+          dto.projectNumber !== undefined
+            ? dto.projectNumber.trim() || null
+            : undefined,
+        disciplineCode:
+          dto.disciplineCode !== undefined
+            ? dto.disciplineCode.trim() || null
+            : undefined,
+        sheetNumber:
+          dto.sheetNumber !== undefined
+            ? dto.sheetNumber.trim() || null
+            : undefined,
+        sheetSize:
+          dto.sheetSize !== undefined ? dto.sheetSize.trim() || null : undefined,
+        scale: dto.scale !== undefined ? dto.scale.trim() || null : undefined,
+        packageName:
+          dto.packageName !== undefined
+            ? dto.packageName.trim() || null
+            : undefined,
+      },
+      include: {
+        uploader: { select: { id: true, fullName: true, email: true } },
+      },
+    });
+  }
+
+  async softDeleteDrawing(id: string) {
+    const existing = await this.prisma.drawing.findUnique({ where: { id } });
+    if (!existing) {
+      throw new NotFoundException('Drawing not found');
+    }
+
+    return this.prisma.drawing.update({
+      where: { id },
+      data: { status: ItemStatus.SUPERSEDED },
       include: {
         uploader: { select: { id: true, fullName: true, email: true } },
       },

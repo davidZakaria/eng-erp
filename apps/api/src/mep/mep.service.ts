@@ -30,6 +30,7 @@ export class MepService {
     }
 
     let status: ItemStatus = ItemStatus.PENDING_REVIEW;
+    let systemRecommendation: string | null = null;
 
     if (!dto.isApprovedVendor) {
       if (!dto.equivalenceLetterUrl?.trim()) {
@@ -38,6 +39,10 @@ export class MepService {
         );
       }
       status = ItemStatus.DEVIATION_PENDING_OWNER;
+      systemRecommendation = this.computeSystemRecommendation(
+        dto.leadTimeWeeks,
+        dto.costDeltaEGP,
+      );
     }
 
     return this.prisma.materialSubmittal.create({
@@ -46,6 +51,9 @@ export class MepService {
         proposedVendor: dto.proposedVendor,
         isApprovedVendor: dto.isApprovedVendor,
         equivalenceLetterUrl: dto.equivalenceLetterUrl,
+        leadTimeWeeks: dto.leadTimeWeeks,
+        costDeltaEGP: dto.costDeltaEGP,
+        systemRecommendation,
         status,
         divisionId: dto.divisionId,
         vendorId: dto.vendorId,
@@ -53,6 +61,7 @@ export class MepService {
       include: {
         csiDivision: true,
         vendor: true,
+        specSection: { select: { code: true, title: true, divisionCode: true } },
       },
     });
   }
@@ -63,8 +72,28 @@ export class MepService {
       include: {
         csiDivision: true,
         vendor: true,
+        specSection: { select: { code: true, title: true, divisionCode: true } },
       },
     });
+  }
+
+  private computeSystemRecommendation(
+    leadTimeWeeks?: number,
+    costDeltaEGP?: number,
+  ): string | null {
+    if (leadTimeWeeks == null || costDeltaEGP == null) {
+      return null;
+    }
+
+    if (leadTimeWeeks < 4 && costDeltaEGP < 0) {
+      return '✅ Owner Override Advised: Saves schedule and reduces cost.';
+    }
+
+    if (costDeltaEGP > 0) {
+      return '⚠️ High Risk: Increases budget. Evaluate standard vendors.';
+    }
+
+    return null;
   }
 
   async calculatePanelLoad(panelId: string): Promise<PanelLoadResult> {

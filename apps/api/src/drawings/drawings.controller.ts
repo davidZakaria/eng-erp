@@ -2,8 +2,10 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
   Param,
+  Patch,
   Post,
   Query,
   Res,
@@ -16,6 +18,10 @@ import type { Response } from 'express';
 import { DrawingsService } from './drawings.service';
 import { UploadDrawingDto } from './dto/upload-drawing.dto';
 import { ReviewDrawingDto } from './dto/review-drawing.dto';
+import {
+  CreateDrawingAdminDto,
+  UpdateDrawingAdminDto,
+} from './dto/manage-drawing.dto';
 import { Roles } from '../common/decorators/roles.decorator';
 import { CurrentUser, JwtPayload } from '../common/decorators/current-user.decorator';
 
@@ -30,10 +36,38 @@ export class DrawingsController {
     Role.MEP_CONSULTANT,
   )
   @Post()
+  registerDrawing(
+    @CurrentUser() user: JwtPayload,
+    @Body() dto: UploadDrawingDto,
+  ) {
+    if (!dto.fileUrl?.trim()) {
+      throw new BadRequestException(
+        'fileUrl from pre-signed upload is required. Use POST /drawings/multipart for direct server upload.',
+      );
+    }
+
+    return this.drawingsService.registerDrawingFromStorage(
+      user.sub,
+      dto.drawingNumber,
+      dto.title,
+      dto.discipline,
+      dto.fileUrl.trim(),
+      {
+        projectNumber: dto.projectNumber,
+        disciplineCode: dto.disciplineCode,
+        sheetNumber: dto.sheetNumber,
+        sheetSize: dto.sheetSize,
+        scale: dto.scale,
+        packageName: dto.packageName,
+      },
+    );
+  }
+
+  @Post('multipart')
   @UseInterceptors(
     FileInterceptor('file', { limits: { fileSize: 500 * 1024 * 1024 } }),
   )
-  uploadDrawing(
+  uploadDrawingMultipart(
     @CurrentUser() user: JwtPayload,
     @Body() dto: UploadDrawingDto,
     @UploadedFile() file: Express.Multer.File,
@@ -41,6 +75,7 @@ export class DrawingsController {
     if (!file) {
       throw new BadRequestException('Drawing file is required');
     }
+
     return this.drawingsService.uploadDrawing(
       user.sub,
       dto.drawingNumber,
@@ -59,11 +94,21 @@ export class DrawingsController {
       pending === 'true' &&
       (user.role === Role.HEAD_ENGINEER ||
         user.role === Role.PROJECT_MANAGER ||
-        user.role === Role.ADMIN)
+        user.role === Role.ADMIN ||
+        user.role === Role.SUPER_ADMIN)
     ) {
       return this.drawingsService.findPendingForReview();
     }
     return this.drawingsService.findAll(user.sub, user.role);
+  }
+
+  @Roles(Role.SUPER_ADMIN, Role.HEAD_ENGINEER)
+  @Post('manage')
+  createDrawingAdmin(
+    @CurrentUser() user: JwtPayload,
+    @Body() dto: CreateDrawingAdminDto,
+  ) {
+    return this.drawingsService.createDrawingAdmin(user.sub, dto);
   }
 
   @Get(':id/file')
@@ -86,9 +131,29 @@ export class DrawingsController {
     res.send(file.buffer);
   }
 
-  @Roles(Role.HEAD_ENGINEER, Role.PROJECT_MANAGER, Role.ADMIN)
+  @Roles(
+    Role.HEAD_ENGINEER,
+    Role.PROJECT_MANAGER,
+    Role.ADMIN,
+    Role.SUPER_ADMIN,
+  )
   @Post(':id/review')
   reviewDrawing(@Param('id') id: string, @Body() dto: ReviewDrawingDto) {
     return this.drawingsService.reviewDrawing(id, dto);
+  }
+
+  @Roles(Role.SUPER_ADMIN, Role.HEAD_ENGINEER)
+  @Patch(':id')
+  updateDrawingAdmin(
+    @Param('id') id: string,
+    @Body() dto: UpdateDrawingAdminDto,
+  ) {
+    return this.drawingsService.updateDrawingAdmin(id, dto);
+  }
+
+  @Roles(Role.SUPER_ADMIN, Role.HEAD_ENGINEER)
+  @Delete(':id')
+  softDeleteDrawing(@Param('id') id: string) {
+    return this.drawingsService.softDeleteDrawing(id);
   }
 }

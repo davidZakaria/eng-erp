@@ -1,18 +1,13 @@
 'use client';
 
 import { AuthUser } from '@/lib/types';
-import { useRouter } from 'next/navigation';
-
-const roleLabels: Record<string, string> = {
-  ADMIN: 'Administrator',
-  CONSULTANT: 'Consultant',
-  ARCH_CONSULTANT: 'Architectural Consultant',
-  STRUCT_CONSULTANT: 'Structural Consultant',
-  MEP_CONSULTANT: 'MEP Consultant',
-  HEAD_ENGINEER: 'Head Engineer',
-  PROJECT_MANAGER: 'Project Manager',
-  SITE_ENGINEER: 'Site Engineer',
-};
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { DrawingReviewNotificationsProvider } from '@/components/drawings/DrawingReviewNotificationsProvider';
+import { PendingDrawingsHeaderBadge } from '@/components/drawings/PendingDrawingsHeaderBadge';
+import { canReviewDrawings } from '@/lib/drawing-review';
+import { useRouter } from '@/navigation';
+import { useTranslations } from 'next-intl';
 
 export function DashboardShell({
   user,
@@ -22,6 +17,9 @@ export function DashboardShell({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const t = useTranslations('common');
+  const tRoles = useTranslations('roles');
+  const showDrawingReviewAlerts = canReviewDrawings(user.role);
 
   async function logout() {
     await fetch('/api/auth/logout', { method: 'POST' });
@@ -29,19 +27,23 @@ export function DashboardShell({
     router.refresh();
   }
 
-  return (
-    <div className="min-h-screen">
-      <header className="border-b border-[var(--border)] bg-[var(--surface)]/50 backdrop-blur-sm">
-        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+  const shell = (
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      <header className="border-b border-[var(--border)] bg-[var(--surface)] backdrop-blur-sm">
+        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-4">
           <div>
             <p className="font-[family-name:var(--font-display)] text-2xl">
               Eng-NJD
             </p>
             <p className="text-xs text-[var(--muted)]">
-              Engineering Dashboard · {roleLabels[user.role] ?? user.role}
+              {t('engineeringDashboard')} ·{' '}
+              {tRoles.has(user.role) ? tRoles(user.role) : user.role}
             </p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {showDrawingReviewAlerts && <PendingDrawingsHeaderBadge />}
+            <LanguageSwitcher />
+            <ThemeToggle />
             <span className="text-sm text-[var(--muted)] hidden sm:inline">
               {user.fullName}
             </span>
@@ -49,7 +51,7 @@ export function DashboardShell({
               onClick={logout}
               className="text-sm text-[var(--muted)] hover:text-[var(--text)]"
             >
-              Sign out
+              {t('signOut')}
             </button>
           </div>
         </div>
@@ -58,4 +60,12 @@ export function DashboardShell({
       <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
     </div>
   );
+
+  if (showDrawingReviewAlerts) {
+    return (
+      <DrawingReviewNotificationsProvider>{shell}</DrawingReviewNotificationsProvider>
+    );
+  }
+
+  return shell;
 }

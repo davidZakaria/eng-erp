@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { VarianceReportRow } from '@/lib/types';
 import { clientApi } from '@/lib/client-api';
 
-function formatDate(iso: string | null) {
+function formatDate(iso: string | null, locale: string) {
   if (!iso) return '—';
-  return new Date(iso).toLocaleDateString('en-EG', {
+  return new Date(iso).toLocaleDateString(locale === 'ar' ? 'ar-EG' : 'en-EG', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
@@ -14,6 +15,9 @@ function formatDate(iso: string | null) {
 }
 
 export function ProjectManagerDashboard() {
+  const t = useTranslations('reports');
+  const tCommon = useTranslations('common');
+  const locale = useLocale();
   const [variance, setVariance] = useState<VarianceReportRow[]>([]);
 
   useEffect(() => {
@@ -23,18 +27,18 @@ export function ProjectManagerDashboard() {
   }, []);
 
   return (
-    <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)]/60 overflow-x-auto">
-      <h2 className="text-lg font-medium px-4 py-3 border-b border-[var(--border)]">
-        Site Progress — Variance Report
+    <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)] overflow-x-auto">
+      <h2 className="text-lg font-medium px-4 py-3 border-b border-[var(--border)] text-[var(--text)]">
+        {t('varianceTitle')}
       </h2>
       <table className="w-full text-sm min-w-[720px]">
-        <thead className="bg-[#0f1419] text-[var(--muted)]">
+        <thead className="bg-[var(--surface-elevated)] text-[var(--muted)]">
           <tr>
-            <th className="text-left px-4 py-3 font-medium">Component</th>
-            <th className="text-right px-4 py-3 font-medium">Planned Concrete (m³)</th>
-            <th className="text-right px-4 py-3 font-medium">Actual Concrete (m³)</th>
-            <th className="text-left px-4 py-3 font-medium">Planned End</th>
-            <th className="text-left px-4 py-3 font-medium">Actual End</th>
+            <th className="text-start px-4 py-3 font-medium">{tCommon('component')}</th>
+            <th className="text-end px-4 py-3 font-medium">{t('plannedConcrete')}</th>
+            <th className="text-end px-4 py-3 font-medium">{t('actualConcrete')}</th>
+            <th className="text-start px-4 py-3 font-medium">{t('plannedEnd')}</th>
+            <th className="text-start px-4 py-3 font-medium">{t('actualEnd')}</th>
           </tr>
         </thead>
         <tbody>
@@ -43,13 +47,13 @@ export function ProjectManagerDashboard() {
             return (
               <tr
                 key={row.componentId}
-                className={`border-t border-[var(--border)] ${flagged ? 'text-[var(--danger)]' : ''}`}
+                className={`border-t border-[var(--border)] ${flagged ? 'text-[var(--danger)]' : 'text-[var(--text)]'}`}
               >
                 <td className="px-4 py-3">{row.componentName}</td>
-                <td className="px-4 py-3 text-right">{row.plannedConcreteM3}</td>
-                <td className="px-4 py-3 text-right">{row.actualConcreteM3}</td>
-                <td className="px-4 py-3">{formatDate(row.plannedEndDate)}</td>
-                <td className="px-4 py-3">{formatDate(row.actualEndDate)}</td>
+                <td className="px-4 py-3 text-end">{row.plannedConcreteM3}</td>
+                <td className="px-4 py-3 text-end">{row.actualConcreteM3}</td>
+                <td className="px-4 py-3">{formatDate(row.plannedEndDate, locale)}</td>
+                <td className="px-4 py-3">{formatDate(row.actualEndDate, locale)}</td>
               </tr>
             );
           })}

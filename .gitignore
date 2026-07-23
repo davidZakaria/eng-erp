@@ -9,3 +9,4 @@ coverage/
 .local-storage/
 apps/api/.local-storage/
 apps/api/prisma/migrations/**/migration_lock.toml
+sample study/

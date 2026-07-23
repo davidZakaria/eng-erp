@@ -9,8 +9,8 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { RolesGuard } from './guards/roles.guard';
 import { AuditInterceptor } from './interceptors/audit.interceptor';
+import { AuditContextInterceptor } from './interceptors/audit-context.interceptor';
 import { FileStorageService } from './services/file-storage.service';
-import { BackupService } from './services/backup.service';
 
 @Module({
   imports: [
@@ -31,11 +31,12 @@ import { BackupService } from './services/backup.service';
     AuthService,
     JwtStrategy,
     FileStorageService,
-    BackupService,
     { provide: APP_GUARD, useClass: JwtAuthGuard },
     { provide: APP_GUARD, useClass: RolesGuard },
+    { provide: APP_INTERCEPTOR, useClass: AuditContextInterceptor },
     { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
   ],
   exports: [AuthService, FileStorageService, JwtModule],
 })
 export class SecurityAndOpsModule {}
+

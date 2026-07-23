@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Project } from '@/lib/types';
 import { clientApi } from '@/lib/client-api';
 
@@ -15,6 +16,9 @@ export function FileUploader({
   defaultTitle = '',
   onUploaded,
 }: FileUploaderProps) {
+  const t = useTranslations('models');
+  const tCommon = useTranslations('common');
+  const tDrawings = useTranslations('drawings');
   const [projects, setProjects] = useState<Project[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [projectId, setProjectId] = useState(defaultProjectId);
@@ -38,7 +42,7 @@ export function FileUploader({
 
   async function handleUpload() {
     if (!file || !projectId || !title.trim()) {
-      setStatus('Select project, title, and file.');
+      setStatus(t('selectAll'));
       return;
     }
 
@@ -56,11 +60,11 @@ export function FileUploader({
         body: formData,
       });
 
-      setStatus('Model submitted for review.');
+      setStatus(t('modelSubmitted'));
       setFile(null);
       onUploaded?.();
     } catch (err) {
-      setStatus(err instanceof Error ? err.message : 'Upload failed');
+      setStatus(err instanceof Error ? err.message : t('uploadFailed'));
     } finally {
       setUploading(false);
     }
@@ -74,17 +78,17 @@ export function FileUploader({
   }
 
   return (
-    <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)]/60 p-6">
-      <h2 className="text-lg font-medium mb-4">Submit CAD Model</h2>
+    <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
+      <h2 className="text-lg font-medium mb-4 text-[var(--text)]">{t('submitCad')}</h2>
 
       <div className="grid gap-4 sm:grid-cols-2 mb-4">
         <label className="block">
-          <span className="text-xs text-[var(--muted)]">Project</span>
+          <span className="text-xs text-[var(--muted)]">{tCommon('project')}</span>
           <select
             value={projectId}
             onFocus={() => loadProjects()}
             onChange={(e) => setProjectId(e.target.value)}
-            className="mt-1 w-full rounded border border-[var(--border)] bg-[#0f1419] px-3 py-2 text-sm"
+            className="mt-1 w-full rounded border border-[var(--border)] bg-[var(--input-bg)] text-[var(--text)] px-3 py-2 text-sm"
           >
             {projects.map((p) => (
               <option key={p.id} value={p.id}>
@@ -95,12 +99,12 @@ export function FileUploader({
         </label>
 
         <label className="block">
-          <span className="text-xs text-[var(--muted)]">Drawing Title</span>
+          <span className="text-xs text-[var(--muted)]">{tDrawings('drawingTitle')}</span>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g. Column A1 Structural"
-            className="mt-1 w-full rounded border border-[var(--border)] bg-[#0f1419] px-3 py-2 text-sm"
+            placeholder={t('placeholderTitle')}
+            className="mt-1 w-full rounded border border-[var(--border)] bg-[var(--input-bg)] text-[var(--text)] px-3 py-2 text-sm"
           />
         </label>
       </div>
@@ -119,12 +123,12 @@ export function FileUploader({
         }`}
       >
         {file ? (
-          <p className="text-sm">{file.name}</p>
+          <p className="text-sm text-[var(--text)]">{file.name}</p>
         ) : (
           <p className="text-sm text-[var(--muted)]">
-            Drag & drop CAD/PDF file here, or{' '}
+            {t('dragDrop')}{' '}
             <label className="text-[var(--accent)] cursor-pointer underline">
-              browse
+              {t('browse')}
               <input
                 type="file"
                 className="hidden"
@@ -138,11 +142,12 @@ export function FileUploader({
 
       <div className="mt-4 flex items-center gap-4">
         <button
+          type="button"
           onClick={handleUpload}
           disabled={uploading}
-          className="rounded bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] disabled:opacity-50"
+          className="btn-primary"
         >
-          {uploading ? 'Uploading…' : 'Submit for Review'}
+          {uploading ? tDrawings('uploading') : tDrawings('uploadSubmit')}
         </button>
         {status && (
           <span className="text-sm text-[var(--muted)]">{status}</span>

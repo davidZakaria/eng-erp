@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { DM_Sans, Instrument_Serif } from 'next/font/google';
+import { Cairo, DM_Sans, Instrument_Serif } from 'next/font/google';
+import type { ReactNode } from 'react';
 import './globals.css';
 
 const dmSans = DM_Sans({
@@ -13,19 +14,22 @@ const instrumentSerif = Instrument_Serif({
   variable: '--font-display',
 });
 
+const cairo = Cairo({
+  subsets: ['arabic'],
+  variable: '--font-arabic',
+});
+
 export const metadata: Metadata = {
   title: 'Eng-NJD Engineering Dashboard',
   description: 'Real Estate Engineering ERP — Egypt',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${dmSans.variable} ${instrumentSerif.variable} font-[family-name:var(--font-body)] antialiased`}>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
+      <body
+        className={`${dmSans.variable} ${instrumentSerif.variable} ${cairo.variable} antialiased bg-[var(--bg)] text-[var(--text)]`}
+      >
         {children}
       </body>
     </html>

@@ -8,6 +8,7 @@ datasource db {
 }
 
 enum Role {
+  SUPER_ADMIN
   ADMIN
   PROJECT_MANAGER
   HEAD_ENGINEER
@@ -53,7 +54,8 @@ model User {
   email        String    @unique
   passwordHash String
   fullName     String
-  role         Role
+  role         Role      @default(SITE_ENGINEER)
+  isActive     Boolean   @default(true)
   deletedAt    DateTime?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
@@ -68,14 +70,25 @@ model User {
 
 model AuditLog {
   id          String   @id @default(cuid())
-  userId      String
+  userId      String?
   action      String
   targetTable String
   targetId    String?
+  oldData     Json?
+  newData     Json?
   metadata    Json?
   createdAt   DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id])
+  user User? @relation(fields: [userId], references: [id])
+}
+
+model SystemBackup {
+  id        String   @id @default(uuid())
+  fileName  String
+  fileUrl   String
+  fileSize  Int
+  status    String   @default("SUCCESS")
+  createdAt DateTime @default(now())
 }
 
 model Project {
@@ -192,25 +205,45 @@ model CSIDivision {
 }
 
 model ApprovedVendor {
-  id         String              @id @default(uuid())
-  name       String
-  country    String?
-  divisionId String
-  csiDivision CSIDivision        @relation(fields: [divisionId], references: [id])
+  id            String              @id @default(uuid())
+  name          String
+  country       String?
+  disciplineTag String?
+  divisionId    String
+  csiDivision   CSIDivision         @relation(fields: [divisionId], references: [id])
+  submittals    MaterialSubmittal[]
+}
+
+model SpecSection {
+  id           String    @id @default(uuid())
+  code         String    @unique
+  title        String
+  divisionCode String
+  fileUrl      String?
+  deletedAt    DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
   submittals MaterialSubmittal[]
 }
 
 model Drawing {
-  id            String     @id @default(uuid())
-  drawingNumber String
-  title         String
-  discipline    Discipline
-  revision      Int        @default(0)
-  status        ItemStatus @default(PENDING_REVIEW)
-  fileUrl       String
-  uploaderId    String
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
+  id             String     @id @default(uuid())
+  drawingNumber  String
+  title          String
+  discipline     Discipline
+  revision       Int        @default(0)
+  status         ItemStatus @default(PENDING_REVIEW)
+  fileUrl        String
+  uploaderId     String
+  projectNumber  String?
+  disciplineCode String?
+  sheetNumber    String?
+  sheetSize      String?
+  scale          String?
+  packageName    String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 
   uploader User @relation(fields: [uploaderId], references: [id])
 
@@ -225,8 +258,22 @@ model PourClearance {
   rebarApproved       Boolean  @default(false)
   ptCablesXApproved   Boolean  @default(false)
   ptCablesYApproved   Boolean  @default(false)
+  isLockedByNCR       Boolean  @default(false)
+  isLockedByMEP       Boolean  @default(false)
+  isLockedByDefect    Boolean  @default(false)
   status              String   @default("PENDING")
   updatedAt           DateTime @updatedAt
+}
+
+model NonConformanceReport {
+  id          String   @id @default(uuid())
+  ncrNumber   String   @unique
+  description String
+  severity    String
+  status      String   @default("OPEN")
+  floorLevel  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model MaterialSubmittal {
@@ -235,11 +282,16 @@ model MaterialSubmittal {
   proposedVendor       String
   isApprovedVendor     Boolean
   equivalenceLetterUrl String?
+  leadTimeWeeks        Int?
+  costDeltaEGP         Float?
+  systemRecommendation String?
   status               ItemStatus @default(PENDING_REVIEW)
   divisionId           String
+  specSectionId        String?
   csiDivision          CSIDivision     @relation(fields: [divisionId], references: [id])
   vendorId             String?
   vendor               ApprovedVendor? @relation(fields: [vendorId], references: [id])
+  specSection          SpecSection?    @relation(fields: [specSectionId], references: [id])
 }
 
 model ElectricalPanel {
@@ -262,4 +314,35 @@ model PanelCircuit {
   phase           PanelPhase
   panelId         String
   panel           ElectricalPanel @relation(fields: [panelId], references: [id])
+}
+
+model BOQItem {
+  id              String @id @default(uuid())
+  itemCode        String
+  description     String
+  unit            String
+  plannedQuantity Float
+  rateEGP         Float
+  actualQuantity  Float  @default(0)
+  divisionCode    String?
+}
+
+model SiteDefect {
+  id          String   @id @default(uuid())
+  description String
+  location    String
+  severity    String   @default("HIGH")
+  status      String   @default("OPEN")
+  createdAt   DateTime @default(now())
+}
+
+model RFI {
+  id          String   @id @default(uuid())
+  rfiNumber   String   @unique
+  question    String
+  answer      String?
+  status      String   @default("OPEN")
+  impactsCost Boolean  @default(false)
+  dueDate     DateTime
+  createdAt   DateTime @default(now())
 }

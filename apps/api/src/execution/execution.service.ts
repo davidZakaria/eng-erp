@@ -11,6 +11,26 @@ import { CreateExecutionLogDto } from './dto/create-execution-log.dto';
 export class ExecutionService {
   constructor(private prisma: PrismaService) {}
 
+  findAll() {
+    return this.prisma.executionLog.findMany({
+      where: { deletedAt: null },
+      orderBy: { actualPourDate: 'desc' },
+      include: {
+        buildingComponent: {
+          include: {
+            building: { include: { project: true } },
+          },
+        },
+        siteEngineer: {
+          select: { id: true, fullName: true, email: true },
+        },
+        modelSubmission: {
+          select: { id: true, title: true, versionNumber: true, status: true },
+        },
+      },
+    });
+  }
+
   async create(siteEngineerId: string, dto: CreateExecutionLogDto) {
     const component = await this.prisma.buildingComponent.findFirst({
       where: { id: dto.buildingComponentId, deletedAt: null },

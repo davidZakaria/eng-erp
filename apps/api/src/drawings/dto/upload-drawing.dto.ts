@@ -1,6 +1,7 @@
 import {
   IsEnum,
   IsNotEmpty,
+  IsOptional,
   IsString,
 } from 'class-validator';
 import { Discipline } from '@prisma/client';
@@ -23,6 +24,35 @@ export class UploadDrawingDto {
 
   @IsEnum(Discipline)
   discipline!: Discipline;
+
+  /** Object key from pre-signed upload (`bucket/key` format). */
+  @IsOptional()
+  @IsString()
+  fileUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  projectNumber?: string;
+
+  @IsOptional()
+  @IsString()
+  disciplineCode?: string;
+
+  @IsOptional()
+  @IsString()
+  sheetNumber?: string;
+
+  @IsOptional()
+  @IsString()
+  sheetSize?: string;
+
+  @IsOptional()
+  @IsString()
+  scale?: string;
+
+  @IsOptional()
+  @IsString()
+  packageName?: string;
 }
 
 export { ALLOWED_EXTENSIONS };

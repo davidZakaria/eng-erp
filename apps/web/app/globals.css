@@ -1,19 +1,189 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --bg: #0f1419;
-  --surface: #1a2332;
-  --border: #2d3a4f;
-  --text: #e8edf4;
-  --muted: #8b9cb3;
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-elevated: #e2e8f0;
+  --input-bg: #ffffff;
+  --border: #cbd5e1;
+  --text: #0f172a;
+  --muted: #475569;
   --accent: #c45c26;
   --accent-hover: #d9733d;
+  --accent-disabled: #9a6a4a;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --status-pending-bg: #fef3c7;
+  --status-pending-text: #78350f;
+  --status-revision-bg: #ffedd5;
+  --status-revision-text: #7c2d12;
+  --banner-danger-bg: #fee2e2;
+  --banner-danger-text: #991b1b;
+  --banner-danger-border: #fca5a5;
+  --chip-success-bg: #d1fae5;
+  --chip-success-text: #065f46;
+  --chip-success-border: #6ee7b7;
+  --chip-warn-bg: #fef3c7;
+  --chip-warn-text: #78350f;
+  --chip-warn-border: #fcd34d;
+  --chip-cost-bg: #fef9c3;
+  --chip-cost-text: #713f12;
+  --chip-cost-border: #eab308;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0f1419;
+  --surface: #1a2332;
+  --surface-elevated: #121a24;
+  --input-bg: #0f1419;
+  --border: #2d3a4f;
+  --text: #e8edf4;
+  --muted: #94a3b8;
+  --accent: #c45c26;
+  --accent-hover: #d9733d;
+  --accent-disabled: #6b4423;
   --danger: #e05252;
   --success: #3d9a6a;
+  --status-pending-bg: #3b2a14;
+  --status-pending-text: #fbbf24;
+  --status-revision-bg: #3b2114;
+  --status-revision-text: #fb923c;
+  --banner-danger-bg: #3f1d1d;
+  --banner-danger-text: #fecaca;
+  --banner-danger-border: #7f1d1d;
+  --chip-success-bg: #064e3b;
+  --chip-success-text: #a7f3d0;
+  --chip-success-border: #065f46;
+  --chip-warn-bg: #3b2a14;
+  --chip-warn-text: #fde68a;
+  --chip-warn-border: #b45309;
+  --chip-cost-bg: #3b2f0e;
+  --chip-cost-text: #fde047;
+  --chip-cost-border: #a16207;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--bg);
 }
 
 body {
-  background: linear-gradient(160deg, #0f1419 0%, #152033 45%, #1a2838 100%);
+  background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+}
+
+input,
+select,
+textarea {
+  color: var(--text);
+  background-color: var(--input-bg);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+table {
+  color: var(--text);
+}
+
+thead {
+  background: var(--surface-elevated);
+  color: var(--muted);
+}
+
+th {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Primary actions: always crisp white label — never fade with opacity */
+.btn-primary {
+  background-color: var(--accent);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  cursor: pointer;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.btn-primary:disabled {
+  background-color: var(--accent-disabled);
+  color: #ffffff !important;
+  cursor: not-allowed;
+}
+
+.btn-success {
+  background-color: var(--success);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-success:disabled {
+  background-color: #2f6b4d;
+  color: #ffffff !important;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-secondary:disabled {
+  color: var(--muted) !important;
+  cursor: not-allowed;
+}
+
+.btn-browse {
+  background-color: var(--surface-elevated);
+  color: var(--text) !important;
+  border: 1px dashed var(--border);
+  border-radius: 0.5rem;
+  padding: 1.5rem 1rem;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-browse:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
 }
